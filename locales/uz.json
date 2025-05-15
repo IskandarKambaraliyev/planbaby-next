@@ -1,0 +1,97 @@
+{
+  "hello": "Salom",
+  "about": "Biz haqimizda",
+  "metadata": {
+    "keywords": "plan baby, sogʻlom homiladorlik, homiladorlikni rejalashtirish uchun maslahatlar,  homiladorlik uchun maslahatlar, sogʻlom bolalar uchun maslahatlar, chaqaloqlarni oziqlantirish, chaqaloqlarni parvarish qilish, chaqaloqlarni tarbiyalash, chaqaloqlarni parvarish qilish bo'yicha maslahatlar, chaqaloqlarni tarbiyalash bo'yicha maslahatlar",
+    "home": {
+      "title": "PlanBaby | Sogʻlom homiladorlik uchun birinchi qadam!",
+      "description": "Sogʻlom homiladorlik uchun birinchi qadam!"
+    }
+  },
+  "regions": {
+    "tashkent": "Toshkent",
+    "andijan": "Andijon viloyati",
+    "bukhara": "Buxoro viloyati",
+    "jizzakh": "Jizzax viloyati",
+    "kashkadarya": "Qashqadaryo viloyati",
+    "navoi": "Navoiy viloyati",
+    "namangan": "Namangan viloyati",
+    "samarkand": "Samarqand viloyati",
+    "surkhandarya": "Surxondaryo viloyati",
+    "syrdarya": "Sirdaryo viloyati",
+    "tashkent_region": "Toshkent viloyati",
+    "fergana": "Fargʻona viloyati",
+    "khorezm": "Xorazm viloyati",
+    "karakalpakstan": "Qoraqalpogʻiston Respublikasi",
+    "other": "Boshqa davlat",
+    "select": "Shaharni tanlang"
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "blog": "Blog",
+    "contact": "Kontaktlar",
+    "store": "Do'kon",
+    "cart": "Savat"
+  },
+  "footer": {
+    "copyright": "© 2024 «PlanBaby». Barcha huquqlar himoyalangan",
+    "contacts": "Kontaktlar",
+    "address": "Toshkent, Yunusobod t, 6-daha, Moʻljal: Amerika elchixonasi",
+    "company": "Kompaniya",
+    "about": "Biz haqimizda",
+    "blog": "Blog",
+    "useful": "Foydali"
+  },
+  "categories": {
+    "preparation": "Toʻydan oldingi tayyorgarlik",
+    "planning": "Rejalashtirish",
+    "pregnancy": "Homiladorlik",
+    "nutrition": "Oziqlantirish"
+  },
+  "currency": "soʻm",
+  "addCart": "Savatchaga qoʻshish",
+  "calculator": "Ovulyatsiya kalkulyatori",
+  "spermogram": "Spermogramma tasnifi",
+  "names": "Bolalar uchun ismlar",
+  "right_nutrition": "Toʻgʻri ovqatlanish",
+  "home": {
+    "banner": {
+      "title": "Sogʻlom homiladorlik sari {span}",
+      "span": "<br />birinchi qadam",
+      "btn": "Ariza qoldirish"
+    },
+    "categories": {
+      "preparation": {
+        "title": "Toʻydan oldingi tayyorgarlik",
+        "description": "Ushbu turkumdagi maqolalar endigina turmushga chiqmoqchi bo'lgan va hayotdagi ushbu muhim qadamga tayyor bo'lishni istaganlar uchun mo'ljallangan. Bu yerda siz sog‘lom va barkamol oilani yaratish bo‘yicha maslahatlar, munosabatlarning muhim jihatlarini muhokama qilish, turmush qurishga qanday tayyorgarlik ko‘rish bo‘yicha amaliy maslahatlar topasiz.",
+        "btn": "Mavzuga oid"
+      },
+      "planning": {
+        "title": "Rejalashtirish",
+        "description": "Ushbu turkumda biz homiladorlikni rejalashtirish bilan bog'liq hamma narsani muhokama qilamiz. Bu erda siz homilador bo'lish imkoniyatini qanday oshirish, kelajakdagi chaqalog'ingizga qanday tayyorgarlik ko'rish va oilani rejalashtirishni boshlashdan oldin qanday qadamlar qo'yish kerakligi haqida foydali maslahatlar topasiz.",
+        "btn": "Mavzuga oid"
+      },
+      "pregnancy": {
+        "title": "Homiladorlik",
+        "description": "Ushbu turkumda biz homiladorlikning barcha jihatlarini ko'rib chiqamiz, dastlabki belgilar va alomatlardan tortib, bachadonda bola rivojlanishining muhim bosqichlarigacha. Bu erda siz homiladorlik davrida sog'lom turmush tarzi haqida ma'lumot, homiladorlik va tug'ish bo'yicha maslahatlar, shuningdek, bo'lajak onalar uchun keng tarqalgan savollarga javoblarni topasiz.",
+        "btn": "Mavzuga oid"
+      },
+      "nutrition": {
+        "title": "Ovqatlantirish",
+        "description": "Ushbu turkum chaqaloqni oziqlantirishning barcha jihatlarini qamrab oladi - oziqlantirish usulini tanlashdan tortib, qattiq oziq-ovqatlarni kiritish va chaqalog'ingiz uchun to'g'ri oziq-ovqatlarni tanlashga oid savollargacha. Bu erda siz emizish, shishadan oziqlantirish bo'yicha maslahatlar, shuningdek, bir yildan keyin bolani boqish haqida ma'lumot topasiz.",
+        "btn": "Mavzuga oid"
+      }
+    },
+    "about": {
+      "title": "Biz haqimizda",
+      "description": "“Plan Baby” kompaniyasi o‘z faoliyatini birinchi marta 2019-yil 14-yanvarda boshlagan. <br /><br />Loyiha tashkil etilganidan buyon “Plan Baby” jamoasi oilalar ota-onalikdan baxtiyor bo‘lishlari uchun o‘z quvonchlarini baham ko‘rmoqda.",
+      "btn": "Batafsil"
+    },
+    "stories": {
+      "title": "Video sharhlar",
+      "description": "O‘z shahringizdan bo‘lgan bemorlarning hikoyalari bilan tanishing"
+    },
+    "uzum": "Qulay bo‘lib to‘lash orqali UZUM marketda xarid qiling!"
+  }
+}
