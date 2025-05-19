@@ -22,7 +22,7 @@ import CartCounter from "../CartCounter";
 const Navbar = ({ className }: PropsWithClassName) => {
   const t = useTranslations("nav");
   return (
-    <div
+    <nav
       className={cn(
         "lg:hidden fixed z-1 w-full bg-white h-20 bottom-0 left-0 rounded-t-3xl shadow-2xl border border-dark-blue-100 grid grid-cols-4 px-2 gap-2",
         className
@@ -35,7 +35,7 @@ const Navbar = ({ className }: PropsWithClassName) => {
       <BlogBtn label={t("blog")} icon={DocumentIcon} />
 
       <NavItem href="/cart" label={t("cart")} icon={CartIcon} count />
-    </div>
+    </nav>
   );
 };
 

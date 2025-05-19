@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import Title from "@/components/custom/Title";
 
 const Stories = () => {
   const { region, setRegion } = useRegion();
@@ -22,7 +23,11 @@ const Stories = () => {
   useEffect(() => {
     async function fetchStories() {
       if (region !== null) {
-        setStories((await getStories(locale, region)).results);
+        const newStories = await getStories(locale, region);
+
+        if (newStories) {
+          setStories(newStories.results || []);
+        }
       }
     }
 
@@ -178,14 +183,13 @@ const Stories = () => {
     <div className="container flex flex-col gap-5 md:gap-8">
       <div className="flex max-lg:flex-col lg:items-center justify-between gap-4">
         <div className="flex max-sm:flex-col sm:items-center gap-4 w-full md:w-[35rem] lg:w-2/5">
-          <h4 className="shrink-0 text-[1.5rem] md:text-[2.25rem] leading-tight font-bold">
-            {t("home.stories.title")}
-          </h4>
+          <Title className="w-fit max-w-max">{t("home.stories.title")}</Title>
 
           <SelectRegion
             value={region}
             onValueChange={setRegion}
             color="white"
+            className="flex-1"
           />
         </div>
         <p className="w-full lg:w-2/5 text-sm md:text-base text-dark-blue-400">

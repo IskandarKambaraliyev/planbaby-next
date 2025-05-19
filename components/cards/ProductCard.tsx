@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { RawProduct } from "@/types";
+import { PropsWithClassName, RawProduct } from "@/types";
 import { Button, CircleButton } from "../custom";
 import { CartPlusIcon, DeleteIcon, MinusIcon, PlusIcon } from "../icons";
 import { useCartStore } from "@/stores/cart";
@@ -13,9 +13,14 @@ import { formatPrice } from "@/utility/formatPrice";
 
 type Props = {
   item: RawProduct;
+  size?: "sm" | "lg";
 };
 
-const ProductCard = ({ item }: Props) => {
+const ProductCard = ({
+  item,
+  size = "lg",
+  className,
+}: Props & PropsWithClassName) => {
   const t = useTranslations();
   const [mounted, setMounted] = useState(false);
 
@@ -24,38 +29,52 @@ const ProductCard = ({ item }: Props) => {
   const productSummary = getProductSummary(item.id);
   const isInCart = Boolean(productSummary);
 
-  const { price, discount_price } = item;
-  const hasDiscount = Boolean(discount_price);
+  const { price, discount_price, image, name, short_description, id } = item;
   const finalPrice = discount_price || price;
+  const hasDiscount = !!discount_price;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const heightSize = size === "sm" ? "h-10" : "h-14";
 
+  useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   return (
-    <div className="group/card relative overflow-hidden hover:shadow-400 rounded-[2rem] transition">
-      <Link href={`/products/${item.id}`} className="p-2 flex flex-col gap-2">
+    <div
+      className={cn(
+        "group/card relative overflow-hidden rounded-[2rem] transition hover:shadow-400",
+        className
+      )}
+    >
+      {/* Product Info Section */}
+      <Link href={`/products/${id}`} className="flex-1 p-2 flex flex-col gap-2">
         <img
-          src={item.image}
-          alt={item.name}
+          src={image}
+          alt={name}
           width={300}
           height={300}
           className="w-full aspect-square rounded-[1.5rem]"
         />
 
         <div className="flex-1 flex flex-col gap-1">
-          <h4 className="line-clamp-1 font-bold text-lg md:text-2xl group-hover/card:text-blue-main transition">
-            {item.name}
+          <h4
+            className={cn(
+              "line-clamp-1 text-lg md:text-2xl font-bold transition group-hover/card:text-blue-main",
+              {
+                "!text-base": size === "sm",
+              }
+            )}
+          >
+            {name}
           </h4>
 
           <div
-            className="line-clamp-2 text-sm"
-            dangerouslySetInnerHTML={{ __html: item.short_description }}
+            className={cn("line-clamp-2 text-sm", {
+              "!text-xs": size === "sm",
+            })}
+            dangerouslySetInnerHTML={{ __html: short_description }}
           />
 
-          <div>
+          <div className="flex flex-wrap gap-x-2">
             <span
               className={cn("text-base font-bold", {
                 "text-pink-main": hasDiscount,
@@ -66,20 +85,27 @@ const ProductCard = ({ item }: Props) => {
             </span>
 
             {hasDiscount && (
-              <span className="text-sm text-dark-blue-400 line-through ml-2">
+              <span className="text-sm text-dark-blue-400 line-through">
                 {formatPrice(price)} {t("currency")}
               </span>
             )}
           </div>
 
-          <div className="w-full h-14" />
+          {/* Spacer to reserve space for cart buttons */}
+          <div className={cn("w-full", heightSize)} />
         </div>
       </Link>
 
-      <div className="absolute left-2 bottom-2 w-[calc(100%-1rem)] h-14">
+      {/* Cart Buttons Section */}
+      <div
+        className={cn(
+          "absolute left-2 bottom-2 w-[calc(100%-1rem)]",
+          heightSize
+        )}
+      >
         {/* Add to Cart Button */}
         <div
-          className={cn("w-full absolute transition duration-300", {
+          className={cn("absolute w-full transition duration-300", {
             "-translate-x-[calc(100%+1rem)]": isInCart,
             "translate-x-0": !isInCart,
           })}
@@ -87,21 +113,22 @@ const ProductCard = ({ item }: Props) => {
           <Button
             className="w-full"
             outlined
+            size={size === "sm" ? "sm" : "xl"}
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
               addProduct(item);
             }}
           >
-            <CartPlusIcon />
-            <span>{t("addCart")}</span>
+            <CartPlusIcon className="shrink-0" />
+            <span className="truncate">{t("addCart")}</span>
           </Button>
         </div>
 
         {/* Quantity Changer */}
         <div
           className={cn(
-            "w-full absolute transition duration-300 flex items-center justify-between gap-2",
+            "absolute w-full transition duration-300 flex items-center justify-between gap-2",
             {
               "translate-x-0": isInCart,
               "translate-x-[calc(100%+1rem)]": !isInCart,
@@ -110,25 +137,41 @@ const ProductCard = ({ item }: Props) => {
         >
           <div className="flex">
             <button
-              onClick={() => removeProduct(item.id)}
               type="button"
-              className="h-14 aspect-square bg-blue-100 flex-center rounded-l-full hover:bg-blue-300 transition"
+              onClick={() => removeProduct(id)}
+              className={cn(
+                "aspect-square flex-center rounded-l-full bg-blue-100 hover:bg-blue-300 transition",
+                heightSize
+              )}
             >
               <MinusIcon />
             </button>
-            <div className="h-14 min-w-14 bg-blue-100 px-4 flex-center">
+
+            <div
+              className={cn(
+                "min-w-14 px-4 bg-blue-100 flex-center",
+                heightSize
+              )}
+            >
               {productSummary?.count}
             </div>
+
             <button
-              onClick={() => addProduct(item)}
               type="button"
-              className="h-14 aspect-square bg-blue-100 flex-center rounded-r-full hover:bg-blue-300 transition"
+              onClick={() => addProduct(item)}
+              className={cn(
+                "aspect-square flex-center rounded-r-full bg-blue-100 hover:bg-blue-300 transition",
+                heightSize
+              )}
             >
               <PlusIcon />
             </button>
           </div>
 
-          <CircleButton onClick={() => clearProduct(item.id)}>
+          <CircleButton
+            size={size === "sm" ? "md" : undefined}
+            onClick={() => clearProduct(id)}
+          >
             <DeleteIcon />
           </CircleButton>
         </div>

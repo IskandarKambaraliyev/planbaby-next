@@ -1,5 +1,7 @@
 import { fetcher } from "@/lib/fetcher";
 import type {
+  BlogApi,
+  BlogCategoryForApi,
   HappyFamiliesApi,
   RawProduct,
   SlidersApi,
@@ -56,6 +58,50 @@ export async function getTools(locale: string) {
     return await fetcher<ToolsApi>(`/pages/tools/`, locale);
   } catch (err) {
     console.error("Error loading tools:", err);
+    return null;
+  }
+}
+
+export async function getBlog(
+  locale: string,
+  limit = 12,
+  category?: BlogCategoryForApi
+) {
+  try {
+    const query = category
+      ? `?category=${category}&limit=${limit}`
+      : `?limit=${limit}`;
+    return await fetcher<BlogApi>(`/articles/all/${query}`, locale);
+  } catch (err) {
+    console.error("Error loading blog:", err);
+    return null;
+  }
+}
+
+export async function searchBlog(
+  locale: string,
+  query: string,
+  category: BlogCategoryForApi
+) {
+  try {
+    return await fetcher<BlogApi>(
+      `/articles/all/?category=${category}&search=${query}`,
+      locale
+    );
+  } catch (err) {
+    console.error("Error searching blog:", err);
+    return null;
+  }
+}
+
+export async function searchProducts(locale: string, query: string) {
+  try {
+    return await fetcher<{ results: RawProduct[] }>(
+      `/stores/products/?search=${query}`,
+      locale
+    );
+  } catch (err) {
+    console.error("Error searching products:", err);
     return null;
   }
 }

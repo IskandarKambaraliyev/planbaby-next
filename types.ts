@@ -87,3 +87,43 @@ export type ToolsApi = {
   previous: string | null;
   results: ToolChild[];
 };
+
+export type BlogCategory =
+  | "preparation"
+  | "planning"
+  | "pregnancy"
+  | "nutrition";
+export type BlogCategoryForApi =
+  | "preparing"
+  | "pregnancy"
+  | "planning"
+  | "feeding";
+
+export type Blog = {
+  id: number;
+  languages: string[];
+  title: string;
+  short_content: string;
+  content: string;
+  tags: string[];
+  category: string;
+  article_status: string;
+  publish: string;
+  number_of_views: number;
+  is_pinned: boolean;
+  author_choice: boolean;
+  youtube_link: string | null;
+  youtube_image: string | null;
+  image_large: string;
+  thumbnail: string;
+  image_source: string | null;
+  image_name: string | null;
+  products: RawProduct[];
+};
+
+export type BlogApi = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Blog[];
+};

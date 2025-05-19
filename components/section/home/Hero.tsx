@@ -41,8 +41,9 @@ const HomeHero = ({ data }: { data: HappyFamiliesApi | null }) => {
       <div className="container flex max-lg:flex-col gap-4">
         <div className="flex flex-col gap-8">
           {data !== null && (
-            <div className="max-lg:justify-center flex items-center gap-5">
+            <div className="max-md:flex-col max-lg:justify-center flex items-center gap-5">
               <div className="relative w-fit font-bold text-[4.375rem] leading-[4rem] md:text-[5.5rem] md:leading-[5rem] lg:text-[7.5rem] lg:leading-[5.625rem]">
+                <span className="sr-only">{value.toLocaleString(locale)}</span>
                 <p className="tabular-nums opacity-0">
                   {Math.round(count as number).toLocaleString("ru-RU")}
                 </p>
@@ -53,6 +54,7 @@ const HomeHero = ({ data }: { data: HappyFamiliesApi | null }) => {
                   }}
                   value={value}
                   className="absolute top-0 left-0 text-blue-200"
+                  aria-hidden="true"
                 />
                 <AnimatedNumber
                   springOptions={{
@@ -65,11 +67,12 @@ const HomeHero = ({ data }: { data: HappyFamiliesApi | null }) => {
                     WebkitTextStrokeWidth: "0.0625rem",
                     WebkitTextStrokeColor: "var(--color-blue-main",
                   }}
+                  aria-hidden="true"
                 />
               </div>
 
-              <div className="flex flex-col gap-2">
-                <div className="flex">
+              <div className="max-md:-mr-[4rem] flex flex-col gap-2">
+                <div className="flex" role="group">
                   {images.map((image, index) => (
                     <motion.img
                       initial={{ opacity: 0, x: index + 1 * 16 }}
@@ -102,6 +105,7 @@ const HomeHero = ({ data }: { data: HappyFamiliesApi | null }) => {
                     duration: 0.35,
                     delay: 1,
                   }}
+                  aria-hidden="true"
                 >
                   <HappyFamilyTextIcon
                     locale={locale}

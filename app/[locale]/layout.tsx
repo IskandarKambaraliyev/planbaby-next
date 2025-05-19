@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
-import { Header, Footer, Navbar } from "@/components/layout";
+import { Header, Footer, Navbar, StoreModal } from "@/components/layout";
 
 import "../globals.css";
 
@@ -12,6 +12,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import { getBlog, getProducts } from "../api";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("metadata");
@@ -155,6 +156,20 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  const products = await getProducts(locale);
+  const preparationBlogs = await getBlog(locale, 12, "preparing");
+  const planningBlogs = await getBlog(locale, 12, "planning");
+  const pregnancyBlogs = await getBlog(locale, 12, "pregnancy");
+  const nutritionBlogs = await getBlog(locale, 12, "feeding");
+
+  const modalData = {
+    products: products?.results || [],
+    preparation: preparationBlogs?.results || [],
+    planning: planningBlogs?.results || [],
+    pregnancy: pregnancyBlogs?.results || [],
+    nutrition: nutritionBlogs?.results || [],
+  }
+
   return (
     <html lang={locale}>
       <body className={`${ttFonts.variable}`}>
@@ -166,6 +181,8 @@ export default async function LocaleLayout({
           <Footer className="pb-40" />
 
           <Navbar />
+
+          <StoreModal initialData={modalData} />
         </NextIntlClientProvider>
       </body>
     </html>

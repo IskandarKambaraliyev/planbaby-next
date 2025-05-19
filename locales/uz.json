@@ -32,7 +32,9 @@
     "blog": "Blog",
     "contact": "Kontaktlar",
     "store": "Do'kon",
-    "cart": "Savat"
+    "cart": "Savat",
+    "search": "Qidirish",
+    "phone": "{number} telefon raqami"
   },
   "footer": {
     "copyright": "© 2024 «PlanBaby». Barcha huquqlar himoyalangan",
@@ -48,6 +50,14 @@
     "planning": "Rejalashtirish",
     "pregnancy": "Homiladorlik",
     "nutrition": "Oziqlantirish"
+  },
+  "modal": {
+    "search": {
+      "both": "Mahsulot yoki maqolani qidiring",
+      "product": "Mahsulotni qidiring",
+      "blog": "Maqolani qidiring"
+    },
+    "close": "Yopish"
   },
   "currency": "soʻm",
   "addCart": "Savatchaga qoʻshish",

@@ -24,10 +24,13 @@ import {
 } from "../icons";
 import { Button, CircleButton } from "../custom";
 import CartCounter from "../CartCounter";
+import { useModalStore } from "@/stores/modal";
 
 const Header = ({ className }: PropsWithClassName) => {
   const t = useTranslations("nav");
   const pathname = usePathname();
+
+  const openModal = useModalStore((state) => state.openModal);
 
   const [isScrolled, setIsScrolled] = useState(true);
 
@@ -87,7 +90,7 @@ const Header = ({ className }: PropsWithClassName) => {
             <Logo />
           </Link>
 
-          <div className="max-lg:hidden flex items-center">
+          <nav className="max-lg:hidden flex items-center">
             {navLinks.map((link, index) => {
               if (link.href !== "/blog") {
                 return (
@@ -99,6 +102,7 @@ const Header = ({ className }: PropsWithClassName) => {
                       "bg-transparent text-foreground hover:bg-blue-100 active:bg-blue-200":
                         pathname !== link.href,
                     })}
+                    aria-current={pathname === link.href ? "page" : undefined}
                   >
                     {link.label}
                   </Link>
@@ -107,17 +111,24 @@ const Header = ({ className }: PropsWithClassName) => {
                 return <BlogCategories key={`${link.href}-${index}`} />;
               }
             })}
-          </div>
+          </nav>
         </div>
 
         <div className="flex items-center gap-4">
-          <CircleButton href="/cart" className="max-lg:!hidden">
+          <CircleButton
+            href="/cart"
+            className="max-lg:!hidden"
+            aria-label={t("cart")}
+          >
             <CartCounter />
           </CircleButton>
 
           <LangSwitcher />
 
-          <CircleButton>
+          <CircleButton
+            onClick={() => openModal("both")}
+            aria-label={t("search")}
+          >
             <SearchIcon />
           </CircleButton>
 
@@ -127,6 +138,9 @@ const Header = ({ className }: PropsWithClassName) => {
             outlined
             className="max-md:!hidden"
             data-testid="call-link"
+            aria-label={t("phone", {
+              number: "+998 71 200-08-07",
+            })}
           >
             <PhoneIcon />
             <span>+998 71 200-08-07</span>
@@ -189,6 +203,10 @@ const BlogCategories = () => {
           }
         )}
         onClick={() => setIsOpen((prev) => !prev)}
+        aria-haspopup="menu"
+        aria-expanded={isOpen}
+        aria-controls="blog-categories-menu"
+        id="blog-categories-button"
       >
         <span>{t("nav.blog")}</span>
         <DownIcon
@@ -196,12 +214,16 @@ const BlogCategories = () => {
             "rotate-180": isOpen,
             "rotate-0": !isOpen,
           })}
+          aria-hidden="true"
         />
       </button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="blog-categories-menu"
+            role="menu"
+            aria-labelledby="blog-categories-button"
             transition={dropdownTransition}
             variants={dropdownVariants}
             initial="initial"
@@ -218,6 +240,8 @@ const BlogCategories = () => {
                     "flex items-center gap-2 p-2 pr-4 rounded-full transition",
                     category.hoverColor
                   )}
+                  role="menuitem"
+                  tabIndex={-1}
                 >
                   <div
                     className={cn(
@@ -225,7 +249,7 @@ const BlogCategories = () => {
                       category.bgColor
                     )}
                   >
-                    <category.icon className="size-4.5" />
+                    <category.icon className="size-4.5" aria-hidden="true" />
                   </div>
 
                   <span className="w-max text-lg">
@@ -251,7 +275,11 @@ const LangSwitcher = ({ className }: PropsWithClassName) => {
     router.push(`/${lang}${pathname}`);
   };
   return (
-    <CircleButton className={cn("", className)} onClick={handleChangeLocale}>
+    <CircleButton
+      className={cn("", className)}
+      onClick={handleChangeLocale}
+      aria-label={`Switch language to ${locale === "uz" ? "Russian" : "Uzbek"}`}
+    >
       {locale === "uz" ? "Ru" : "Uz"}
     </CircleButton>
   );
