@@ -1,5 +1,11 @@
 import { getLocale } from "next-intl/server";
-import { getHappyFamilies, getProducts, getSliders, getTools } from "../api";
+import {
+  getBlog,
+  getHappyFamilies,
+  getProducts,
+  getSliders,
+  getTools,
+} from "../api";
 
 import {
   HomeHero,
@@ -11,6 +17,7 @@ import {
   Tools,
   Uzum,
 } from "@/components/section/home";
+import Articles from "@/components/section/home/Articles";
 
 export async function generateStaticParams() {
   return [{ locale: "uz" }, { locale: "ru" }];
@@ -23,6 +30,8 @@ export default async function HomePage() {
   const sliders = await getSliders(locale);
   const tools = await getTools(locale);
   const products = await getProducts(locale, 8);
+
+  const articles = await getBlog(locale, 5, undefined, false);
   return (
     <>
       {/* Hero */}
@@ -52,7 +61,11 @@ export default async function HomePage() {
       )}
 
       {/* Blogs */}
-      <div className="py-20 bg-blue-100"></div>
+      {articles && articles.results.length > 0 && (
+        <div className="py-20 bg-blue-100">
+          <Articles data={articles.results} />
+        </div>
+      )}
 
       {/* Video blogs */}
       <div className="py-20 bg-dark-blue-main"></div>

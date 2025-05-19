@@ -65,13 +65,17 @@ export async function getTools(locale: string) {
 export async function getBlog(
   locale: string,
   limit = 12,
-  category?: BlogCategoryForApi
+  category?: BlogCategoryForApi,
+  video?: boolean
 ) {
   try {
     const query = category
       ? `?category=${category}&limit=${limit}`
       : `?limit=${limit}`;
-    return await fetcher<BlogApi>(`/articles/all/${query}`, locale);
+    return await fetcher<BlogApi>(
+      `/articles/all/${query}${video ? `&youtube=${video}` : ""}`,
+      locale
+    );
   } catch (err) {
     console.error("Error loading blog:", err);
     return null;
