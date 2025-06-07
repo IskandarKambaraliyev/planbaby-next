@@ -13,6 +13,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { getBlog, getProducts } from "../api";
+import Providers from "./providers";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("metadata");
@@ -174,15 +175,17 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${ttFonts.variable}`}>
         <NextIntlClientProvider>
-          <Header />
+          <Providers>
+            <Header />
 
-          <main className="mt-26">{children}</main>
+            <main className="mt-26">{children}</main>
 
-          <Footer className="pb-40" />
+            <Footer className="pb-40" />
 
-          <Navbar />
+            <Navbar />
 
-          <StoreModal initialData={modalData} />
+            <StoreModal initialData={modalData} />
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>

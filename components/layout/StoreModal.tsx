@@ -9,8 +9,10 @@ import React, {
 } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
-import throttle from "lodash.throttle";
+import debounce from "lodash.debounce";
 import { AnimatePresence, motion } from "motion/react";
+
+import { useQuery } from "@tanstack/react-query";
 
 import { cn } from "@/lib/utils";
 import { searchBlog, searchProducts } from "@/app/api";
@@ -44,18 +46,68 @@ type Props = {
   initialData: States;
 };
 
+// 1️⃣ Fetch function used in useQuery
+const fetchStoreSearch = async (
+  locale: string,
+  query: string,
+  initialData: States
+): Promise<States> => {
+  const trimmed = query.trim();
+  if (!trimmed) return initialData;
+
+  const [products, preparation, pregnancy, planning, nutrition] =
+    await Promise.all([
+      searchProducts(locale, trimmed),
+      searchBlog(locale, trimmed, "preparing"),
+      searchBlog(locale, trimmed, "pregnancy"),
+      searchBlog(locale, trimmed, "planning"),
+      searchBlog(locale, trimmed, "feeding"),
+    ]);
+
+  return {
+    products: products.data?.results || [],
+    preparation: preparation.data?.results || [],
+    pregnancy: pregnancy.data?.results || [],
+    planning: planning.data?.results || [],
+    nutrition: nutrition.data?.results || [],
+  };
+};
+
 const StoreModal = ({ initialData }: Props) => {
   const t = useTranslations();
   const locale = useLocale();
 
-  const [search, setSearch] = useState("");
-  const [states, setStates] = useState<States>(initialData);
+  const [inputValue, setInputValue] = useState(""); // raw input value
+  const [search, setSearch] = useState(""); // debounced value
 
   const isOpen = useModalStore((state) => state.isOpen);
   const view = useModalStore((state) => state.view);
   const closeModal = useModalStore((state) => state.closeModal);
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Debounce search input
+  const debouncedSetSearch = useMemo(
+    () =>
+      debounce((value: string) => {
+        setSearch(value);
+      }, 500), // 500ms debounce
+    []
+  );
+
+  useEffect(() => {
+    return () => {
+      debouncedSetSearch.cancel();
+    };
+  }, [debouncedSetSearch]);
+
+  // React Query hook
+  const { data: states = initialData } = useQuery({
+    queryKey: ["storeSearch", locale, search],
+    queryFn: () => fetchStoreSearch(locale, search, initialData),
+    staleTime: 1000 * 60 * 1, // 5 minutes cache
+    enabled: isOpen, // only run when modal is open
+  });
 
   // Focus input and lock scroll when modal is open
   useEffect(() => {
@@ -89,37 +141,6 @@ const StoreModal = ({ initialData }: Props) => {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, closeModal]);
-
-  // Throttled API search
-  const throttledFetch = useMemo(
-    () =>
-      throttle(async (query: string) => {
-        const trimmed = query.trim();
-        if (!trimmed) return setStates(initialData);
-
-        const [products, preparation, pregnancy, planning, nutrition] =
-          await Promise.all([
-            searchProducts(locale, trimmed),
-            searchBlog(locale, trimmed, "preparing"),
-            searchBlog(locale, trimmed, "pregnancy"),
-            searchBlog(locale, trimmed, "planning"),
-            searchBlog(locale, trimmed, "feeding"),
-          ]);
-
-        setStates({
-          products: products.data?.results || [],
-          preparation: preparation.data?.results || [],
-          pregnancy: pregnancy.data?.results || [],
-          planning: planning.data?.results || [],
-          nutrition: nutrition.data?.results || [],
-        });
-      }, 1000),
-    [locale, initialData]
-  );
-
-  useEffect(() => {
-    throttledFetch(search);
-  }, [search, throttledFetch]);
 
   const titles = {
     products: {
@@ -198,10 +219,12 @@ const StoreModal = ({ initialData }: Props) => {
                   }
                   color="blue"
                   startIcon={<SearchIcon />}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    setSearch(e.target.value)
-                  }
-                  defaultValue={search}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    const value = e.target.value;
+                    setInputValue(value);
+                    debouncedSetSearch(value);
+                  }}
+                  defaultValue={inputValue}
                 />
               </div>
 
