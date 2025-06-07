@@ -1,20 +1,21 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
+
+import { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import type { SlidersApi } from "@/types";
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
-import type { Swiper as SwiperClass } from "swiper/types";
+import { CircleButton } from "@/components/custom";
+import { LeftIcon, RightIcon } from "@/components/icons";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import { CircleButton } from "@/components/custom";
-import { LeftIcon, RightIcon } from "@/components/icons";
 
-type Props = { data: SlidersApi["results"] };
+import type { Swiper as SwiperClass } from "swiper/types";
+import type { Slider as SliderType } from "@/types";
+
+type Props = { data: SliderType[] };
 
 const Slider = ({ data }: Props) => {
   const [mounted, setMounted] = useState(false);
@@ -48,21 +49,20 @@ const Slider = ({ data }: Props) => {
         {data.map((item, index) => (
           <SwiperSlide key={`${item.id}-${index}`}>
             <a href={item.link} className="w-full">
-              {/* TODO: change to Image component */}
-              <img
+              <Image
                 src={item.image_large}
                 alt={`Slider-${index}`}
                 width={1261}
                 height={388}
                 className="object-cover w-full h-full max-lg:hidden rounded-3xl"
-                // priority
+                priority
               />
-              <img
+              <Image
                 src={item.image_medium}
                 alt={`Slider-${index}`}
                 width={728}
                 height={310}
-                // priority
+                priority
                 className="object-cover w-full h-full lg:hidden rounded-2xl md:rounded-3xl"
               />
             </a>

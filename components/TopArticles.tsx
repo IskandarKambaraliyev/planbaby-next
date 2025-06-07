@@ -41,6 +41,7 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
         {
           "rounded-[1.25rem]": isFirst,
           "md:rounded-[1.25rem]": !isFirst,
+          "": categoryBadge
         },
         className
       )}

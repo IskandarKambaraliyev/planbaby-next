@@ -1,12 +1,12 @@
 "use client";
 
-import { ToolsApi } from "@/types";
+import { ToolChild } from "@/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import ToolCard from "@/components/cards/ToolCard";
 
 type Props = {
-  data: ToolsApi["results"];
+  data: ToolChild[];
 };
 const Tools = ({ data }: Props) => {
   return (

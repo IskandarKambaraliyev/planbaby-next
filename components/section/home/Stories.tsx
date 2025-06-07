@@ -3,7 +3,7 @@
 import { getStories } from "@/app/api";
 import { SelectRegion } from "@/components/custom";
 import { useRegion } from "@/hooks/useRegion";
-import { PropsWithClassName, RegionKey, StoriesApi } from "@/types";
+import { PropsWithClassName, RegionKey, Story } from "@/types";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ import Title from "@/components/custom/Title";
 
 const Stories = () => {
   const { region, setRegion } = useRegion();
-  const [stories, setStories] = useState<StoriesApi["results"]>([]);
+  const [stories, setStories] = useState<Story[]>([]);
 
   const t = useTranslations();
   const locale = useLocale();
@@ -26,156 +26,13 @@ const Stories = () => {
         const newStories = await getStories(locale, region);
 
         if (newStories) {
-          setStories(newStories.results || []);
+          setStories(newStories.data?.results || []);
         }
       }
     }
 
     fetchStories();
   }, [region, locale]);
-
-  const demoStories = [
-    {
-      id: 4,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 5,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 6,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 7,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 8,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 4,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 5,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 6,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 7,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 8,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 4,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 5,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 6,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 7,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 8,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 4,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 5,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 6,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 7,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-    {
-      id: 8,
-      name: "Andijon-1",
-      region: "Andijon",
-      video: "https://cp.plan-baby.uz/media/video/19.10.23_Andijon.mp4",
-      thumbnail: "https://cp.plan-baby.uz/media/pages/img-4.webp",
-    },
-  ];
 
   if (region === null) return null;
 
@@ -199,7 +56,7 @@ const Stories = () => {
 
       <AnimatePresence>
         {/* TODO: change data to stories */}
-        {stories.length > 0 && <StorySlider data={demoStories} />}
+        {stories.length > 0 && <StorySlider data={stories} />}
       </AnimatePresence>
 
       <Map
@@ -214,7 +71,7 @@ const Stories = () => {
 export default Stories;
 
 // TODO: add story videos
-type StorySliderProps = { data: StoriesApi["results"] };
+type StorySliderProps = { data: Story[] };
 const StorySlider = ({ data }: StorySliderProps) => {
   return (
     <motion.div
@@ -245,6 +102,8 @@ const StorySlider = ({ data }: StorySliderProps) => {
                   width={160}
                   height={160}
                   className="size-full object-cover rounded-full"
+                  placeholder="blur"
+                  blurDataURL={item.thumbnail}
                 />
               </button>
             </SwiperSlide>
