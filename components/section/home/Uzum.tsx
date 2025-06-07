@@ -5,7 +5,7 @@ import React from "react";
 const Uzum = () => {
   const t = useTranslations("home");
   return (
-    <section className="relative container flex gap-10 rounded-3xl bg-uzum-violet text-white max-lg:flex-col max-lg:items-center max-lg:p-8 max-lg:pb-0 max-md:p-5 max-md:pb-0">
+    <section className="relative container flex gap-10 rounded-3xl bg-uzum-violet text-white max-lg:flex-col items-center max-lg:p-8 max-lg:pb-0 max-md:p-5 max-md:pb-0">
       <h6 className="text-lg md:text-3xl font-bold max-lg:text-center lg:p-10">
         {t("uzum")}
       </h6>

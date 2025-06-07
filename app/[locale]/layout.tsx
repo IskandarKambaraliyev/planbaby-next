@@ -163,12 +163,12 @@ export default async function LocaleLayout({
   const nutritionBlogs = await getBlog(locale, 12, "feeding");
 
   const modalData = {
-    products: products?.results || [],
-    preparation: preparationBlogs?.results || [],
-    planning: planningBlogs?.results || [],
-    pregnancy: pregnancyBlogs?.results || [],
-    nutrition: nutritionBlogs?.results || [],
-  }
+    products: products.data?.results || [],
+    preparation: preparationBlogs.data?.results || [],
+    planning: planningBlogs.data?.results || [],
+    pregnancy: pregnancyBlogs.data?.results || [],
+    nutrition: nutritionBlogs.data?.results || [],
+  };
 
   return (
     <html lang={locale}>

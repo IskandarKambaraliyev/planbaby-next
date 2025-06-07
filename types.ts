@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { RegionKeySchema } from "./schemas";
 
+// ✨ Common Types
+
 export type PropsWithClassName = {
   className?: string;
 };
@@ -12,12 +14,28 @@ export type Region = {
   label: string;
 };
 
+export type PaginatedResponse<T> = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: T[];
+};
+
+export type ApiResult<T> = {
+  data: T | null;
+  error: unknown | null;
+};
+
+// ✨ Domain Types
+
 export type HappyFamiliesApi = {
   results: {
     id: number;
     results_count: number;
   }[];
 };
+
+// Product types
 
 export type RawProduct = {
   id: number;
@@ -45,32 +63,28 @@ export type CartProduct = {
   total_price: string;
 };
 
-export type SlidersApi = {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: {
-    id: number;
-    languages: string[];
-    image_large: string;
-    image_medium: string;
-    link: string;
-    is_active: boolean;
-  }[];
+// Sliders
+
+export type Slider = {
+  id: number;
+  languages: string[];
+  image_large: string;
+  image_medium: string;
+  link: string;
+  is_active: boolean;
 };
 
-export type StoriesApi = {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: {
-    id: number;
-    name: string;
-    region: string;
-    video: string;
-    thumbnail: string;
-  }[];
+// Stories
+
+export type Story = {
+  id: number;
+  name: string;
+  region: string;
+  video: string;
+  thumbnail: string;
 };
+
+// Tools
 
 export type ToolChild = {
   id: number;
@@ -81,18 +95,14 @@ export type ToolChild = {
   is_active: boolean;
 };
 
-export type ToolsApi = {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: ToolChild[];
-};
+// Blog
 
 export type BlogCategory =
   | "preparation"
   | "planning"
   | "pregnancy"
   | "nutrition";
+
 export type BlogCategoryForApi =
   | "preparing"
   | "pregnancy"
@@ -119,11 +129,4 @@ export type Blog = {
   image_source: string | null;
   image_name: string | null;
   products: RawProduct[];
-};
-
-export type BlogApi = {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Blog[];
 };

@@ -107,11 +107,11 @@ const StoreModal = ({ initialData }: Props) => {
           ]);
 
         setStates({
-          products: products?.results || [],
-          preparation: preparation?.results || [],
-          pregnancy: pregnancy?.results || [],
-          planning: planning?.results || [],
-          nutrition: nutrition?.results || [],
+          products: products.data?.results || [],
+          preparation: preparation.data?.results || [],
+          pregnancy: pregnancy.data?.results || [],
+          planning: planning.data?.results || [],
+          nutrition: nutrition.data?.results || [],
         });
       }, 1000),
     [locale, initialData]

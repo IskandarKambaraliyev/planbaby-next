@@ -35,12 +35,12 @@ export default async function HomePage() {
   return (
     <>
       {/* Hero */}
-      <HomeHero data={happyFamilies} />
+      <HomeHero data={happyFamilies.data} />
 
       {/* Slider, Categories, About */}
       <div className="flex flex-col py-20 gap-20">
-        {sliders && sliders.results.length > 0 && (
-          <Slider data={sliders.results} />
+        {sliders.data && sliders.data.results.length > 0 && (
+          <Slider data={sliders.data.results} />
         )}
 
         <Categories />
@@ -54,16 +54,16 @@ export default async function HomePage() {
       </div>
 
       {/* Tools */}
-      {tools && tools.results.length > 0 && (
+      {tools.data && tools.data.results.length > 0 && (
         <div className="py-20">
-          <Tools data={tools.results} />
+          <Tools data={tools.data.results} />
         </div>
       )}
 
       {/* Blogs */}
-      {articles && articles.results.length > 0 && (
+      {articles.data && articles.data.results.length > 0 && (
         <div className="py-20 bg-blue-100">
-          <Articles data={articles.results} />
+          <Articles data={articles.data.results} />
         </div>
       )}
 
@@ -72,8 +72,8 @@ export default async function HomePage() {
 
       {/* Store, Uzum */}
       <div className="flex flex-col py-20 gap-20">
-        {products && products.results.length > 0 && (
-          <Store data={products.results} />
+        {products.data && products.data.results.length > 0 && (
+          <Store data={products.data.results} />
         )}
 
         <Uzum />
