@@ -9,7 +9,7 @@ type RegionResult = {
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { lang: string } }
+  { params }: { params: Promise<{ lang: string }> }
 ) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -20,7 +20,7 @@ export async function GET(
     );
   }
 
-  const { lang } = params;
+  const { lang } = await params;
 
   const regions = [
     "tash",
