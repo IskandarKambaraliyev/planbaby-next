@@ -26,14 +26,9 @@ const Stories = ({ data }: StoriesProps) => {
 
   if (data.error) {
     return (
-      <div
-        className={cn(
-          "container flex flex-col gap-5 md:gap-8",
-          data.error && "text-red-500"
-        )}
-      >
+      <div className={cn("container flex flex-col gap-5 md:gap-8")}>
         <Title className="w-fit max-w-max">{t("home.stories.title")}</Title>
-        <p>{data.error}</p>
+        <p className="text-pink-main">{data.error}</p>
       </div>
     );
   }
