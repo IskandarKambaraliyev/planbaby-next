@@ -7,7 +7,7 @@ import type {
   HappyFamiliesApi,
   RawProduct,
   Slider,
-  Story,
+  FeedbackApi,
   ToolChild,
 } from "@/types";
 import type { FetcherOptions } from "@/lib/fetcher";
@@ -57,11 +57,12 @@ export async function getSliders(locale: string) {
 }
 
 // Stories
-export async function getStories(locale: string, region: string) {
-  return safeFetcher<PaginatedResponse<Story>>(
-    `/pages/feedback/?region=${region}`,
-    locale
+export async function getStories(locale: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_ORIGIN_URL}/api/${locale}/feedback`
   );
+  const data = (await res.json()) as FeedbackApi;
+  return data;
 }
 
 // Tools

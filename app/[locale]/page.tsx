@@ -4,6 +4,7 @@ import {
   getHappyFamilies,
   getProducts,
   getSliders,
+  getStories,
   getTools,
 } from "../apiCalls";
 
@@ -28,6 +29,7 @@ export default async function HomePage() {
 
   const happyFamilies = await getHappyFamilies(locale);
   const sliders = await getSliders(locale);
+  const stories = await getStories(locale);
   const tools = await getTools(locale);
   const products = await getProducts(locale, 8);
 
@@ -50,7 +52,7 @@ export default async function HomePage() {
 
       {/* Stories */}
       <div className="py-20 bg-blue-100">
-        <Stories />
+        <Stories data={stories} />
       </div>
 
       {/* Tools */}

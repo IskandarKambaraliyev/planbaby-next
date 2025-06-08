@@ -2,40 +2,25 @@
 
 import { SelectRegion } from "@/components/custom";
 import { useRegion } from "@/hooks/useRegion";
-import { PropsWithClassName, RegionKey, Story } from "@/types";
-import { useLocale, useTranslations } from "next-intl";
+import { FeedbackApi, PropsWithClassName, RegionKey, Story } from "@/types";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Title from "@/components/custom/Title";
+import { useState } from "react";
 
-const Stories = () => {
+type StoriesProps = {
+  data: FeedbackApi;
+};
+
+const Stories = ({ data }: StoriesProps) => {
   const { region, setRegion } = useRegion();
-  const [stories, setStories] = useState<Story[]>([]);
-
   const t = useTranslations();
-  const locale = useLocale();
 
-  useEffect(() => {
-    async function fetchStories() {
-      if (region !== null) {
-        const res = await fetch(`/api/${locale}/feedback?region=${region}`);
-
-        const data = await res.json();
-
-        if (!res.ok) {
-          setStories([]);
-        } else {
-          setStories(data.results);
-        }
-      }
-    }
-
-    fetchStories();
-  }, [region, locale]);
+  const stories = region && data?.[region] ? data[region] : [];
 
   if (region === null) return null;
 
@@ -58,7 +43,6 @@ const Stories = () => {
       </div>
 
       <AnimatePresence>
-        {/* TODO: change data to stories */}
         {stories.length > 0 && <StorySlider data={stories} />}
       </AnimatePresence>
 
@@ -73,8 +57,8 @@ const Stories = () => {
 
 export default Stories;
 
-// TODO: add story videos
 type StorySliderProps = { data: Story[] };
+
 const StorySlider = ({ data }: StorySliderProps) => {
   return (
     <motion.div
@@ -83,36 +67,34 @@ const StorySlider = ({ data }: StorySliderProps) => {
       exit={{ opacity: 0 }}
       className="relative"
     >
-      {data.length > 0 && (
-        <Swiper
-          slidesPerView={"auto"}
-          spaceBetween={20}
-          modules={[Pagination]}
-          pagination={{
-            clickable: true,
-          }}
-          className="blue-bullets select-none"
-        >
-          {data.map((item, index) => (
-            <SwiperSlide key={`${item.id}-${index}`} className="!w-fit">
-              <button
-                type="button"
-                className="w-20 md:w-32 lg:w-40 aspect-square p-0.5 rounded-full border-2 border-blue-main"
-              >
-                <Image
-                  src={item.thumbnail}
-                  alt={`Story image - ${item.id}`}
-                  width={160}
-                  height={160}
-                  className="size-full object-cover rounded-full"
-                  placeholder="blur"
-                  blurDataURL={item.thumbnail}
-                />
-              </button>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
+      <Swiper
+        slidesPerView={"auto"}
+        spaceBetween={20}
+        modules={[Pagination]}
+        pagination={{
+          clickable: true,
+        }}
+        className="blue-bullets select-none"
+      >
+        {data.map((item, index) => (
+          <SwiperSlide key={`${item.id}-${index}`} className="!w-fit">
+            <button
+              type="button"
+              className="w-20 md:w-32 lg:w-40 aspect-square p-0.5 rounded-full border-2 border-blue-main"
+            >
+              <Image
+                src={item.thumbnail}
+                alt={`Story image - ${item.id}`}
+                width={160}
+                height={160}
+                className="size-full object-cover rounded-full"
+                placeholder="blur"
+                blurDataURL={item.thumbnail}
+              />
+            </button>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </motion.div>
   );
 };

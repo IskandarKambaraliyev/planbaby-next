@@ -14,6 +14,12 @@ export type Region = {
   label: string;
 };
 
+export type FeedbackApi = {
+  [K in RegionKey]: Story[];
+} & {
+  error: string | null;
+};
+
 export type PaginatedResponse<T> = {
   count: number;
   next: string | null;
