@@ -58,11 +58,17 @@ export async function getSliders(locale: string) {
 
 // Stories
 export async function getStories(locale: string) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_ORIGIN_URL}/api/${locale}/feedback`
-  );
-  const data = (await res.json()) as FeedbackApi;
-  return data;
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_ORIGIN_URL}/api/${locale}/feedback`
+    );
+    const data = (await res.json()) as FeedbackApi;
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching stories:", error);
+    return { error: "Failed to fetch stories" };
+  }
 }
 
 // Tools

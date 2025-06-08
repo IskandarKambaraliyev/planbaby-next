@@ -13,14 +13,37 @@ import Title from "@/components/custom/Title";
 import { useState } from "react";
 
 type StoriesProps = {
-  data: FeedbackApi;
+  data:
+    | FeedbackApi
+    | {
+        error: string | null;
+      };
 };
 
 const Stories = ({ data }: StoriesProps) => {
   const { region, setRegion } = useRegion();
   const t = useTranslations();
 
-  const stories = region && data?.[region] ? data[region] : [];
+  if (data.error) {
+    return (
+      <div
+        className={cn(
+          "container flex flex-col gap-5 md:gap-8",
+          data.error && "text-red-500"
+        )}
+      >
+        <Title className="w-fit max-w-max">{t("home.stories.title")}</Title>
+        <p>{data.error}</p>
+      </div>
+    );
+  }
+
+  const stories =
+    region && !data.error
+      ? (data as FeedbackApi)[region]
+        ? (data as FeedbackApi)[region]
+        : []
+      : [];
 
   if (region === null) return null;
 
