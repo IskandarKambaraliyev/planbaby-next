@@ -1,6 +1,5 @@
 "use client";
 
-import { getStories } from "@/app/api";
 import { SelectRegion } from "@/components/custom";
 import { useRegion } from "@/hooks/useRegion";
 import { PropsWithClassName, RegionKey, Story } from "@/types";
@@ -23,10 +22,14 @@ const Stories = () => {
   useEffect(() => {
     async function fetchStories() {
       if (region !== null) {
-        const newStories = await getStories(locale, region);
+        const res = await fetch(`/api/${locale}/feedback?region=${region}`);
 
-        if (newStories) {
-          setStories(newStories.data?.results || []);
+        const data = await res.json();
+
+        if (!res.ok) {
+          setStories([]);
+        } else {
+          setStories(data.results);
         }
       }
     }

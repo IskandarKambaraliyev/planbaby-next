@@ -15,7 +15,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useQuery } from "@tanstack/react-query";
 
 import { cn } from "@/lib/utils";
-import { searchBlog, searchProducts } from "@/app/api";
+import { searchBlog, searchProducts } from "@/app/apiCalls";
 import { useModalStore } from "@/stores/modal";
 import { Blog, RawProduct } from "@/types";
 import { Link } from "@/i18n/navigation";

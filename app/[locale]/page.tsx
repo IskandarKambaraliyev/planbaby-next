@@ -5,7 +5,7 @@ import {
   getProducts,
   getSliders,
   getTools,
-} from "../api";
+} from "../apiCalls";
 
 import {
   HomeHero,

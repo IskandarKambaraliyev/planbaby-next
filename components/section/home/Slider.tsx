@@ -7,11 +7,6 @@ import Image from "next/image";
 import { CircleButton } from "@/components/custom";
 import { LeftIcon, RightIcon } from "@/components/icons";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-
 import type { Swiper as SwiperClass } from "swiper/types";
 import type { Slider as SliderType } from "@/types";
 

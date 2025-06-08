@@ -12,7 +12,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import { getBlog, getProducts } from "../api";
+import { getBlog, getProducts } from "../apiCalls";
 import Providers from "./providers";
 
 export async function generateMetadata(): Promise<Metadata> {
