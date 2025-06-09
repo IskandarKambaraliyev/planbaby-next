@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { dropdownTransition, dropdownVariants } from "@/variants";
 
 type Props = {
-  value: RegionKey;
+  value: string;
   className?: string;
   color?: "white" | "blue";
   onValueChange?: (value: RegionKey) => void;
@@ -105,6 +105,7 @@ const SelectRegion = ({
             "bg-white": color === "white",
             "bg-blue-100": color === "blue",
             "border-blue-main": isOpen,
+            "bg-transparent": isOpen && color === "blue",
             "border-transparent": !isOpen,
           }
         )}

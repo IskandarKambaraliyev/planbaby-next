@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
+import { useConsultationModal } from "@/stores/consultationModal";
 import { AnimatedNumber } from "../../ui/animated-number";
 import { Button } from "../../custom";
 import { HappyFamilyTextIcon } from "../../icons";
@@ -14,6 +15,8 @@ const HomeHero = ({ data }: { data: HappyFamiliesApi | null }) => {
   const t = useTranslations("home.banner");
   const locale = useLocale();
   const [value, setValue] = useState<number>(0);
+
+  const open = useConsultationModal((state) => state.open);
 
   const count = data?.results[0].results_count || 0;
 
@@ -123,7 +126,7 @@ const HomeHero = ({ data }: { data: HappyFamiliesApi | null }) => {
             className="max-lg:text-center font-bold text-[2.25rem] leading-[2.625rem] lg:text-[3.5rem] lg:leading-[3.75rem] text-blue-main"
           />
 
-          <Button className="max-lg:mx-auto" linkIcon>
+          <Button className="max-lg:mx-auto" linkIcon onClick={open}>
             {t("btn")}
           </Button>
         </div>

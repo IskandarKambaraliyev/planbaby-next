@@ -2,5 +2,11 @@
   "i18n-ally.localesPaths": [
     "i18n",
     "locales"
-  ]
+  ],
+  "editor.fontSize": 14,
+  "editor.tabSize": 2,
+  "editor.scrollbar.horizontalScrollbarSize": 12,
+  "chat.editor.fontSize": 14,
+  "npm.scriptExplorerAction": "run",
+  "npm.scriptRunner": "npm"
 }

@@ -96,7 +96,7 @@ const Button = (props: Props) => {
     : filledColorClasses;
 
   const sizeClasses = {
-    sm: "py-2 px-3",
+    sm: "py-2 px-3 text-sm",
     md: "py-3 px-3",
     lg: "py-3 px-4",
     xl: "h-14 px-6",

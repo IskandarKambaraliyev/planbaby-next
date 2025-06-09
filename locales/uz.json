@@ -59,6 +59,18 @@
     },
     "close": "Yopish"
   },
+  "consultationModal": {
+    "title": "Ariza qoldirish",
+    "description": "Ariza qoldiring va biz tez orada siz bilan bogʻlanamiz",
+    "name": "Ismingiz",
+    "name_3": "Ism kamida 2 ta harfdan iborat boʻlishi kerak",
+    "phone": "Telefon raqamingiz",
+    "invalid_phone": "Raqam +998901234567 shaklida boʻlishi kerak",
+    "btn": "Yuborish",
+    "privacy": "Ushbu formani yuborish orqali siz {link}ga rozilik bergan boʻlasiz",
+    "link": "ma'lumotlarni qayta ishlash siyosati",
+    "call_text": "Yoki bizga qoʻngʻiroq qiling"
+  },
   "articles": "Maqolalar",
   "currency": "soʻm",
   "addCart": "Savatchaga qoʻshish",

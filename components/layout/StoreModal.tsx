@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  ChangeEvent,
-} from "react";
+import React, { useEffect, useMemo, useState, ChangeEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import debounce from "lodash.debounce";
@@ -84,8 +78,6 @@ const StoreModal = ({ initialData }: Props) => {
   const view = useModalStore((state) => state.view);
   const closeModal = useModalStore((state) => state.closeModal);
 
-  const inputRef = useRef<HTMLInputElement>(null);
-
   // Debounce search input
   const debouncedSetSearch = useMemo(
     () =>
@@ -112,25 +104,25 @@ const StoreModal = ({ initialData }: Props) => {
   // Focus input and lock scroll when modal is open
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 200);
+      const input = document.getElementById("store-search-input");
+      setTimeout(() => input?.focus(), 200);
+      
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isOpen) return;
+
       const isPrintable =
         e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
       const tag = document.activeElement?.tagName.toLowerCase();
 
-      if (
-        isOpen &&
-        isPrintable &&
-        inputRef.current &&
-        tag !== "input" &&
-        tag !== "textarea"
-      ) {
-        inputRef.current.focus();
+      const input = document.getElementById("store-search-input");
+
+      if (isPrintable && input && tag !== "input" && tag !== "textarea") {
+        input.focus();
       }
 
       if (isOpen && e.key === "Escape") {
@@ -209,7 +201,7 @@ const StoreModal = ({ initialData }: Props) => {
             <div className="flex flex-col max-h-[85vh] h-auto">
               <div className="py-4 container">
                 <Input
-                  ref={inputRef}
+                  id="store-search-input"
                   label={
                     view === "products"
                       ? t("modal.search.product")

@@ -4,7 +4,13 @@ import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
-import { Header, Footer, Navbar, StoreModal } from "@/components/layout";
+import {
+  Header,
+  Footer,
+  Navbar,
+  StoreModal,
+  Loader,
+} from "@/components/layout";
 
 import "../globals.css";
 
@@ -14,7 +20,7 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { getBlog, getProducts } from "../apiCalls";
 import Providers from "./providers";
-import Loader from "@/components/layout/Loader";
+import ConsultationModal from "@/components/layout/ConsultationModal";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("metadata");
@@ -178,6 +184,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <Providers>
             <Loader />
+
             <Header />
 
             <main className="mt-26">{children}</main>
@@ -185,6 +192,8 @@ export default async function LocaleLayout({
             <Footer className="pb-40" />
 
             <Navbar />
+
+            <ConsultationModal />
 
             <StoreModal initialData={modalData} />
           </Providers>
