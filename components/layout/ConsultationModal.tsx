@@ -22,9 +22,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useConsultationModal } from "@/stores/consultationModal";
-import { Button, Input, SelectRegion } from "../custom";
+import { Button, Input, RegionSelect } from "../custom";
 import { PhoneIcon, UserIcon } from "../icons";
-import { useRegion } from "@/hooks/useRegion";
 import { useLocale, useTranslations } from "next-intl";
 
 const ConsultationModal = () => {
@@ -76,8 +75,6 @@ const ConsultationModal = () => {
     }
   }, [isOpen, removeHash]);
 
-  const { region, setRegion } = useRegion();
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -113,12 +110,7 @@ const ConsultationModal = () => {
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <SelectRegion
-              value={region || "tash"}
-              onValueChange={setRegion}
-              color="blue"
-              className="flex-1"
-            />
+            <RegionSelect color="blue" />
             <FormField
               control={form.control}
               name="fullname"

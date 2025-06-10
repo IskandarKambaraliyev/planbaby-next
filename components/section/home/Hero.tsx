@@ -36,7 +36,7 @@ const HomeHero = ({ data }: { data: HappyFamiliesApi | null }) => {
   ];
   return (
     <section
-      className="-mt-26 w-full relative pt-30"
+      className="-mt-26 w-full relative pt-28 lg:pt-40"
       style={{
         background: "var(--color-linear)",
       }}

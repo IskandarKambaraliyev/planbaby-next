@@ -1,7 +1,5 @@
 "use client";
 
-import { SelectRegion } from "@/components/custom";
-import { useRegion } from "@/hooks/useRegion";
 import { FeedbackApi, PropsWithClassName, RegionKey, Story } from "@/types";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -9,8 +7,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import Title from "@/components/custom/Title";
+import { Title, RegionSelect } from "@/components/custom";
 import { useState } from "react";
+import { useRegionStore } from "@/stores/region";
 
 type StoriesProps = {
   data:
@@ -21,7 +20,7 @@ type StoriesProps = {
 };
 
 const Stories = ({ data }: StoriesProps) => {
-  const { region, setRegion } = useRegion();
+  const region = useRegionStore((state) => state.region);
   const t = useTranslations();
 
   if (data.error) {
@@ -45,15 +44,10 @@ const Stories = ({ data }: StoriesProps) => {
   return (
     <div className="container flex flex-col gap-5 md:gap-8">
       <div className="flex max-lg:flex-col lg:items-center justify-between gap-4">
-        <div className="flex max-sm:flex-col sm:items-center gap-4 w-full md:w-[35rem] lg:w-2/5">
+        <div className="flex max-sm:flex-col sm:items-center gap-4 w-full md:w-[35rem] lg:w-1/2">
           <Title className="w-fit max-w-max">{t("home.stories.title")}</Title>
 
-          <SelectRegion
-            value={region}
-            onValueChange={setRegion}
-            color="white"
-            className="flex-1"
-          />
+          <RegionSelect color="white" className="flex-1" />
         </div>
         <p className="w-full lg:w-2/5 text-sm md:text-base text-dark-blue-400">
           {t("home.stories.description")}
@@ -64,11 +58,7 @@ const Stories = ({ data }: StoriesProps) => {
         {stories.length > 0 && <StorySlider data={stories} />}
       </AnimatePresence>
 
-      <Map
-        className="max-md:hidden max-w-[45rem] w-full mx-auto"
-        region={region}
-        setRegion={setRegion}
-      />
+      <Map className="max-md:hidden max-w-[45rem] w-full mx-auto" />
     </div>
   );
 };
@@ -117,11 +107,10 @@ const StorySlider = ({ data }: StorySliderProps) => {
   );
 };
 
-type MapProps = {
-  region: RegionKey;
-  setRegion: (region: RegionKey) => void;
-} & PropsWithClassName;
-const Map = ({ className, region, setRegion }: MapProps) => {
+type MapProps = PropsWithClassName;
+const Map = ({ className }: MapProps) => {
+  const region = useRegionStore((state) => state.region);
+  const setRegion = useRegionStore((state) => state.setRegion);
   const t = useTranslations("regions");
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });

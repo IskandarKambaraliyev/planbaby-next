@@ -1,6 +1,7 @@
 import Button from "./Button";
 import CircleButton from "./CircleButton";
 import Input from "./Input";
-import SelectRegion from "./SelectRegion";
+import RegionSelect from "./RegionSelect";
+import Title from "./Title";
 
-export { Button, CircleButton, Input, SelectRegion };
+export { Button, CircleButton, Input, RegionSelect, Title };
