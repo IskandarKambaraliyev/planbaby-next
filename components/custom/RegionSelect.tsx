@@ -138,7 +138,7 @@ const RegionSelect = ({ color = "white", className }: Props) => {
           <SelectItem
             key={item.key}
             value={item.key}
-            className={cn("rounded-full", {
+            className={cn("rounded-full py-2 px-4", {
               "!text-blue-main !bg-blue-200": region === item.key,
             })}
           >
