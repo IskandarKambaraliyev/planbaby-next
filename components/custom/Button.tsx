@@ -103,7 +103,7 @@ const Button = (props: Props) => {
   }[size];
 
   const classes = cn(
-    "group relative flex-center w-fit border rounded-full cursor-pointer font-medium overflow-hidden transition-all duration-100 hover:transition-[color] hover:duration-500 ease-in-out",
+    "group relative flex-center w-fit border rounded-full cursor-pointer font-medium overflow-hidden transition-all duration-100 hover:transition-[color] hover:duration-500 ease-in-out [&_svg:not([class*='size-'])]:size-4",
     {
       "cursor-default": isDisabled,
     },

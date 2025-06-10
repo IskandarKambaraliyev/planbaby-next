@@ -1,15 +1,19 @@
-import { create } from 'zustand';
+import { create } from "zustand";
+
+type Steps = "form" | "success" | "error";
 
 interface ConsultationModalStore {
   isOpen: boolean;
+  step: Steps;
   open: () => void;
   close: () => void;
-  toggle: () => void;
+  setStep: (step: Steps) => void;
 }
 
 export const useConsultationModal = create<ConsultationModalStore>((set) => ({
   isOpen: false,
-  open: () => set({ isOpen: true }),
-  close: () => set({ isOpen: false }),
-  toggle: () => set((state) => ({ isOpen: !state.isOpen })),
+  step: "form",
+  open: () => set({ isOpen: true, step: "form" }),
+  close: () => set({ isOpen: false, step: "form" }),
+  setStep: (val: Steps) => set({ step: val }),
 }));
