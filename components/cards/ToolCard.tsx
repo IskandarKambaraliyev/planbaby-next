@@ -20,6 +20,7 @@ const ToolCard = ({ item }: Props) => {
         height={64}
         alt={`Tool icon - ${item.name}`}
         className="size-16 group-hover:scale-120 transition-all origin-bottom duration-300 ease-out"
+        priority
       />
       <div className="absolute -z-1 bg-blue-100 h-full aspect-square rounded-full bottom-0 left-1/2 translate-y-[calc(50%-1.25rem)] -translate-x-1/2 group-hover:h-[200%] transition-[height] duration-300 ease-in-out pointer-events-none"></div>
     </a>

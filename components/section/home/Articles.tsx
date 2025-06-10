@@ -18,10 +18,10 @@ const Articles = ({ data }: Props) => {
   return (
     <section>
       <div className="container space-y-8">
-        <div className="grid grid-cols-3 md:grid-cols-2 gap-4">
-          <Title>{t("articles")}</Title>
+        <div className="flex items-center md:grid grid-cols-2 gap-4">
+          <Title className="flex-1">{t("articles")}</Title>
 
-          <div className="relative">
+          <div className="relative max-md:w-2/3">
             <Input
               color="white"
               startIcon={<SearchIcon />}

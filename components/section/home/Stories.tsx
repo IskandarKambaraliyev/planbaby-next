@@ -88,7 +88,7 @@ const StorySlider = ({ data }: StorySliderProps) => {
           <SwiperSlide key={`${item.id}-${index}`} className="!w-fit">
             <button
               type="button"
-              className="w-20 md:w-32 lg:w-40 aspect-square p-0.5 rounded-full border-2 border-blue-main"
+              className="w-20 md:w-32 lg:w-40 aspect-square shrink-0\ p-0.5 rounded-full border-2 border-blue-main"
             >
               <Image
                 src={item.thumbnail}

@@ -18,10 +18,12 @@ const Store = ({ data }: Props) => {
   const openModal = useModalStore((state) => state.openModal);
   return (
     <div className="container space-y-8">
-      <div className="grid grid-cols-3 md:grid-cols-2 gap-4">
-        <Title href="/store">{t("nav.store")}</Title>
+      <div className="flex items-center md:grid grid-cols-2 gap-4">
+        <Title href="/store" className="flex-1">
+          {t("nav.store")}
+        </Title>
 
-        <div className="relative">
+        <div className="relative max-md:w-2/3">
           <Input
             color="blue"
             startIcon={<SearchIcon />}
