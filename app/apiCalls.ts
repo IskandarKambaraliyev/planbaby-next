@@ -56,11 +56,16 @@ export async function getSliders(locale: string) {
   return safeFetcher<PaginatedResponse<Slider>>("/pages/sliders/", locale);
 }
 
+// Tools
+export async function getTools(locale: string) {
+  return safeFetcher<PaginatedResponse<ToolChild>>(`/pages/tools/`, locale);
+}
+
 // Stories
 export async function getStories(locale: string) {
   try {
     const res = await fetch(
-      `${process.env.ORIGIN_URL}/api/${locale}/feedback`
+      `${process.env.NEXT_PUBLIC_ORIGIN_URL}/api/${locale}/feedback`
     );
     const data = (await res.json()) as FeedbackApi;
 
@@ -71,11 +76,6 @@ export async function getStories(locale: string) {
   }
 }
 
-// Tools
-export async function getTools(locale: string) {
-  return safeFetcher<PaginatedResponse<ToolChild>>(`/pages/tools/`, locale);
-}
-
 // Blog
 export async function getBlog(
   locale: string,
@@ -83,24 +83,47 @@ export async function getBlog(
   category?: BlogCategoryForApi,
   video?: boolean
 ) {
-  const query = category
-    ? `?category=${category}&limit=${limit}`
-    : `?limit=${limit}`;
-  const videoParam = video ? `&youtube=${video}` : "";
+  try {
+    const queryParams = new URLSearchParams();
+    queryParams.append("limit", limit.toString());
+    if (category) queryParams.append("category", category);
+    if (video !== undefined) queryParams.append("youtube", String(video));
 
-  return safeFetcher<PaginatedResponse<Blog>>(
-    `/articles/all/${query}${videoParam}`,
-    locale
-  );
+    const res = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_ORIGIN_URL
+      }/api/${locale}/articles?${queryParams.toString()}`
+    );
+    const data = (await res.json()) as PaginatedResponse<Blog>;
+
+    return { data };
+  } catch (error) {
+    console.error("Error fetching blog:", error);
+    return { error: "Failed to fetch blog", data: null };
+  }
 }
 
+// Blog search
 export async function searchBlog(
   locale: string,
   query: string,
   category: BlogCategoryForApi
 ) {
-  return safeFetcher<PaginatedResponse<Blog>>(
-    `/articles/all/?category=${category}&search=${query}`,
-    locale
-  );
+  try {
+    const queryParams = new URLSearchParams();
+    queryParams.append("search", query);
+    queryParams.append("category", category);
+
+    const res = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_ORIGIN_URL
+      }/api/${locale}/articles?${queryParams.toString()}`
+    );
+    const data = (await res.json()) as PaginatedResponse<Blog>;
+
+    return { data };
+  } catch (error) {
+    console.error("Error searching blog:", error);
+    return { error: "Failed to search blog", data: null };
+  }
 }

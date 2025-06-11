@@ -17,5 +17,20 @@ export const regions = [
   "kar",
   "other",
 ] as const;
-
 export const RegionKeySchema = z.enum(regions);
+
+export const categories = [
+  "preparation",
+  "planning",
+  "pregnancy",
+  "nutrition",
+] as const;
+export const CategoriesSchema = z.enum(categories);
+
+export const apiCategories = [
+  "preparing",
+  "pregnancy",
+  "planning",
+  "feeding",
+] as const;
+export const ApiCategoriesSchema = z.enum(apiCategories);

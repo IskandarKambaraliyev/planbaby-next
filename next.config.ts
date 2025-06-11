@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
     ],
   },
   devIndicators: false,
+  allowedDevOrigins: ["192.168.0.102"],
 };
 
 const withNextIntl = createNextIntlPlugin();

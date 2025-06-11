@@ -1,4 +1,4 @@
-import { regions } from "./schemas";
+import { apiCategories, categories, regions } from "./schemas";
 
 // ✨ Common Types
 
@@ -102,17 +102,9 @@ export type ToolChild = {
 
 // Blog
 
-export type BlogCategory =
-  | "preparation"
-  | "planning"
-  | "pregnancy"
-  | "nutrition";
+export type BlogCategory = (typeof categories)[number];
 
-export type BlogCategoryForApi =
-  | "preparing"
-  | "pregnancy"
-  | "planning"
-  | "feeding";
+export type BlogCategoryForApi = (typeof apiCategories)[number];
 
 export type Blog = {
   id: number;
