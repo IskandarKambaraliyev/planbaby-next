@@ -88,17 +88,18 @@ const StorySlider = ({ data }: StorySliderProps) => {
           <SwiperSlide key={`${item.id}-${index}`} className="!w-fit">
             <button
               type="button"
-              className="w-20 md:w-32 lg:w-40 aspect-square shrink-0\ p-0.5 rounded-full border-2 border-blue-main"
+              className="size-20 md:size-32 lg:size-40 shrink-0 p-0.5 rounded-full border-2 border-blue-main"
             >
-              <Image
-                src={item.thumbnail}
-                alt={`Story image - ${item.id}`}
-                width={160}
-                height={160}
-                className="size-full object-cover rounded-full"
-                placeholder="blur"
-                blurDataURL={item.thumbnail}
-              />
+              <div className="relative size-full rounded-full overflow-hidden">
+                <Image
+                  src={item.thumbnail}
+                  alt={`Story image - ${item.id}`}
+                  fill
+                  className="object-cover"
+                  placeholder="blur"
+                  blurDataURL={item.thumbnail}
+                />
+              </div>
             </button>
           </SwiperSlide>
         ))}
