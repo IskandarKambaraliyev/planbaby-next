@@ -1,3 +1,4 @@
+import { regions } from "@/schemas";
 import { Story } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -21,24 +22,6 @@ export async function GET(
   }
 
   const { lang } = await params;
-
-  const regions = [
-    "tash",
-    "and",
-    "bukh",
-    "jiz",
-    "kashk",
-    "nav",
-    "nam",
-    "sam",
-    "surkh",
-    "sir",
-    "tash_reg",
-    "fer",
-    "khor",
-    "kar",
-    "other",
-  ];
 
   // Promise.allSettled - parallel + fail-proof
   const fetchPromises = regions.map((region) =>

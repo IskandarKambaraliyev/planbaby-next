@@ -1,5 +1,4 @@
-import { z } from "zod";
-import { RegionKeySchema } from "./schemas";
+import { regions } from "./schemas";
 
 // ✨ Common Types
 
@@ -7,7 +6,7 @@ export type PropsWithClassName = {
   className?: string;
 };
 
-export type RegionKey = z.infer<typeof RegionKeySchema>;
+export type RegionKey = (typeof regions)[number];
 
 export type Region = {
   key: RegionKey;

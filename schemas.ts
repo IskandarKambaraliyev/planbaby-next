@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const RegionKeySchema = z.enum([
+export const regions = [
   "tash",
   "and",
   "bukh",
@@ -16,4 +16,6 @@ export const RegionKeySchema = z.enum([
   "khor",
   "kar",
   "other",
-]);
+] as const;
+
+export const RegionKeySchema = z.enum(regions);

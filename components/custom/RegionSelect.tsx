@@ -99,7 +99,7 @@ const RegionSelect = ({ color = "white", className }: Props) => {
     >
       <SelectTrigger
         className={cn(
-          "relative w-full !h-14 rounded-full flex items-center gap-2 cursor-pointer border-2 px-4 transition focus-visible:ring-blue-200 focus-visible:border-transparent",
+          "relative w-full !h-14 rounded-full flex items-center gap-2 cursor-pointer border-2 px-4 transition focus-visible:ring-blue-200 focus-visible:border-transparent shadow-none",
           {
             "bg-white": color === "white",
             "bg-blue-100": color === "blue",
