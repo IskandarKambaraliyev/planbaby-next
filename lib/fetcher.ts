@@ -33,8 +33,8 @@ export async function fetcher<TResponse, TBody = unknown>(
     next = { revalidate: 60 },
   } = options;
 
-  const baseUrl = process.env.BASE_URL;
-  if (!baseUrl) throw new Error("BASE_URL is not set");
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  if (!baseUrl) throw new Error("NEXT_PUBLIC_BASE_URL is not set");
 
   const res = await fetch(`${baseUrl}/${locale}/api${path}`, {
     method,

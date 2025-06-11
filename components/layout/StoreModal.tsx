@@ -106,7 +106,7 @@ const StoreModal = ({ initialData }: Props) => {
     if (isOpen) {
       const input = document.getElementById("store-search-input");
       setTimeout(() => input?.focus(), 200);
-      
+
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -198,7 +198,7 @@ const StoreModal = ({ initialData }: Props) => {
               <XIcon className="-ml-2" />
             </Button>
 
-            <div className="flex flex-col max-h-[85vh] h-auto">
+            <div className="flex flex-col max-h-[80vh] h-auto">
               <div className="py-4 container">
                 <Input
                   id="store-search-input"
@@ -263,7 +263,7 @@ const StoreModal = ({ initialData }: Props) => {
                         >
                           {list.map((item) => (
                             <SwiperSlide
-                              key={item.id}
+                              key={`${section}-${item.id}`}
                               className="!w-[13rem] !h-[unset] flex"
                             >
                               {section === "products" ? (

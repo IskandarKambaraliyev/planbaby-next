@@ -22,6 +22,7 @@ const Tools = ({ data }: Props) => {
         pagination={{
           clickable: true,
         }}
+        className="blue-bullets"
       >
         {data.map((item) => (
           <SwiperSlide key={item.id} className="!w-[11rem] !h-[unset] flex">

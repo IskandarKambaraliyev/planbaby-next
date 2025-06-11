@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("home.title"),
     description: t("home.description"),
-    metadataBase: new URL(`${process.env.BASE_URL}/`),
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/`),
     alternates: {
       canonical: "/",
       languages: {
@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: t("home.title"),
       description: t("home.description"),
-      url: `${process.env.BASE_URL}/`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
       siteName: "Plan Baby",
       type: "website",
       images: [
