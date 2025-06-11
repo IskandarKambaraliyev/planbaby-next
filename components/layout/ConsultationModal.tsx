@@ -107,7 +107,7 @@ const ConsultationModal = () => {
         region: region,
       };
 
-      const res = await fetch(`/api/${locale}/consultation`, {
+      const res = await fetch(`/api/${locale}/apply`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

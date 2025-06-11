@@ -60,7 +60,7 @@ export async function getSliders(locale: string) {
 export async function getStories(locale: string) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_ORIGIN_URL}/api/${locale}/feedback`
+      `${process.env.ORIGIN_URL}/api/${locale}/feedback`
     );
     const data = (await res.json()) as FeedbackApi;
 
