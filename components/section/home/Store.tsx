@@ -37,7 +37,7 @@ const Store = ({ data }: Props) => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 min-[1024px]:grid-cols-3 lg:grid-cols-4 gap-y-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-4">
         {data.map((item) => (
           <ProductCard key={item.id} item={item} />
         ))}

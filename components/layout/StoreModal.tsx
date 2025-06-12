@@ -104,9 +104,6 @@ const StoreModal = ({ initialData }: Props) => {
   // Focus input and lock scroll when modal is open
   useEffect(() => {
     if (isOpen) {
-      const input = document.getElementById("store-search-input");
-      setTimeout(() => input?.focus(), 200);
-
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -269,7 +266,7 @@ const StoreModal = ({ initialData }: Props) => {
                               {section === "products" ? (
                                 <ProductCard
                                   item={item as RawProduct}
-                                  size="sm"
+                                  responsive={false}
                                   className="h-full hover:shadow-none border border-dark-blue-100 select-none"
                                 />
                               ) : (

@@ -19,6 +19,7 @@ import {
   Uzum,
 } from "@/components/section/home";
 import Articles from "@/components/section/home/Articles";
+import VideoArticles from "@/components/section/home/VideoArticles";
 
 export async function generateStaticParams() {
   return [{ locale: "uz" }, { locale: "ru" }];
@@ -34,13 +35,14 @@ export default async function HomePage() {
   const products = await getProducts(locale, 8);
 
   const articles = await getBlog(locale, 5, undefined, false);
+  const videoArticles = await getBlog(locale, 12, undefined, true);
   return (
     <>
       {/* Hero */}
       <HomeHero data={happyFamilies.data} />
 
       {/* Slider, Categories, About */}
-      <div className="flex flex-col py-20 gap-20">
+      <section className="flex flex-col py-20 gap-20">
         {sliders.data && sliders.data.results.length > 0 && (
           <Slider data={sliders.data.results} />
         )}
@@ -48,38 +50,42 @@ export default async function HomePage() {
         <Categories />
 
         <About />
-      </div>
+      </section>
 
       {/* Stories */}
-      <div className="py-20 bg-blue-100">
+      <section className="py-20 bg-blue-100">
         <Stories data={stories} />
-      </div>
+      </section>
 
       {/* Tools */}
       {tools.data && tools.data.results.length > 0 && (
-        <div className="py-20">
+        <section className="py-20">
           <Tools data={tools.data.results} />
-        </div>
+        </section>
       )}
 
       {/* Blogs */}
       {articles.data && articles.data.results.length > 0 && (
-        <div className="py-20 bg-blue-100">
+        <section className="py-20 bg-blue-100">
           <Articles data={articles.data.results} />
-        </div>
+        </section>
       )}
 
       {/* Video blogs */}
-      <div className="py-20 bg-dark-blue-main"></div>
+      {videoArticles.data && videoArticles.data.results.length > 0 && (
+        <section className="py-20 bg-dark-blue-main">
+          <VideoArticles data={videoArticles.data.results} />
+        </section>
+      )}
 
       {/* Store, Uzum */}
-      <div className="flex flex-col py-20 gap-20">
+      <section className="flex flex-col py-20 gap-20">
         {products.data && products.data.results.length > 0 && (
           <Store data={products.data.results} />
         )}
 
         <Uzum />
-      </div>
+      </section>
     </>
   );
 }

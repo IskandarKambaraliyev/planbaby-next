@@ -13,12 +13,12 @@ import { formatPrice } from "@/utility/formatPrice";
 
 type Props = {
   item: RawProduct;
-  size?: "sm" | "lg";
+  responsive?: boolean;
 };
 
 const ProductCard = ({
   item,
-  size = "lg",
+  responsive = true,
   className,
 }: Props & PropsWithClassName) => {
   const t = useTranslations();
@@ -33,15 +33,14 @@ const ProductCard = ({
   const finalPrice = discount_price || price;
   const hasDiscount = !!discount_price;
 
-  const heightSize = size === "sm" ? "h-10" : "h-14";
-
   useEffect(() => setMounted(true), []);
+
   if (!mounted) return null;
 
   return (
     <div
       className={cn(
-        "group/card relative overflow-hidden rounded-[2rem] transition hover:shadow-400",
+        "group/card relative overflow-hidden rounded-3xl sm:rounded-4xl transition hover:shadow-400",
         className
       )}
     >
@@ -58,9 +57,10 @@ const ProductCard = ({
         <div className="flex-1 flex flex-col gap-1">
           <h4
             className={cn(
-              "line-clamp-1 text-lg md:text-2xl font-bold transition group-hover/card:text-blue-main",
+              "line-clamp-1 font-bold transition group-hover/card:text-blue-main",
               {
-                "!text-base": size === "sm",
+                "text-sm sm:text-lg lg:text-2xl": responsive,
+                "text-base": !responsive,
               }
             )}
           >
@@ -68,40 +68,53 @@ const ProductCard = ({
           </h4>
 
           <div
-            className={cn("line-clamp-2 text-sm", {
-              "!text-xs": size === "sm",
+            className={cn("line-clamp-2", {
+              "text-xs sm:text-sm": responsive,
+              "text-xs": !responsive,
             })}
             dangerouslySetInnerHTML={{ __html: short_description }}
           />
 
-          <div className="flex flex-wrap gap-x-2">
+          <div className="flex flex-wrap items-center gap-x-2">
             <span
-              className={cn("text-base font-bold", {
+              className={cn("font-bold", {
                 "text-pink-main": hasDiscount,
                 "text-foreground": !hasDiscount,
+                "text-sm sm:text-base": responsive,
+                "text-sm": !responsive,
               })}
             >
               {formatPrice(finalPrice)} {t("currency")}
             </span>
 
             {hasDiscount && (
-              <span className="text-sm text-dark-blue-400 line-through">
+              <span
+                className={cn("text-dark-blue-400 line-through", {
+                  "text-xs sm:text-sm": responsive,
+                  "text-xs": !responsive,
+                })}
+              >
                 {formatPrice(price)} {t("currency")}
               </span>
             )}
           </div>
 
           {/* Spacer to reserve space for cart buttons */}
-          <div className={cn("w-full", heightSize)} />
+          <div
+            className={cn("w-full", {
+              "h-8 sm:h-10 lg:h-14": responsive,
+              "h-10": !responsive,
+            })}
+          />
         </div>
       </Link>
 
       {/* Cart Buttons Section */}
       <div
-        className={cn(
-          "absolute left-2 bottom-2 w-[calc(100%-1rem)]",
-          heightSize
-        )}
+        className={cn("absolute left-2 bottom-2 w-[calc(100%-1rem)]", {
+          "h-8 sm:h-10 lg:h-14": responsive,
+          "h-10": !responsive,
+        })}
       >
         {/* Add to Cart Button */}
         <div
@@ -111,9 +124,11 @@ const ProductCard = ({
           })}
         >
           <Button
-            className="w-full"
+            className={cn("w-full", {
+              "h-8 text-xs px-2 sm:h-10 sm:text-sm sm:px-4 lg:h-14": responsive,
+              "h-10 text-sm px-4": !responsive,
+            })}
             outlined
-            size={size === "sm" ? "sm" : "xl"}
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -141,17 +156,21 @@ const ProductCard = ({
               onClick={() => removeProduct(id)}
               className={cn(
                 "aspect-square flex-center rounded-l-full bg-blue-100 hover:bg-blue-300 transition",
-                heightSize
+                {
+                  "h-8 [&_svg]:size-5 sm:h-10 sm:[&_svg]:size-6 lg:h-14 ":
+                    responsive,
+                  "h-10 [&_svg]:size-6": !responsive,
+                }
               )}
             >
               <MinusIcon />
             </button>
 
             <div
-              className={cn(
-                "min-w-14 px-4 bg-blue-100 flex-center",
-                heightSize
-              )}
+              className={cn("min-w-10 bg-blue-100 flex-center ", {
+                "h-8 text-sm sm:h-10 sm:text-base lg:h-14": responsive,
+                "h-10 text-sm": !responsive,
+              })}
             >
               {productSummary?.count}
             </div>
@@ -161,7 +180,11 @@ const ProductCard = ({
               onClick={() => addProduct(item)}
               className={cn(
                 "aspect-square flex-center rounded-r-full bg-blue-100 hover:bg-blue-300 transition",
-                heightSize
+                {
+                  "h-8 [&_svg]:size-5 sm:h-10 sm:[&_svg]:size-6 lg:h-14 ":
+                    responsive,
+                  "h-10 [&_svg]:size-6": !responsive,
+                }
               )}
             >
               <PlusIcon />
@@ -169,8 +192,12 @@ const ProductCard = ({
           </div>
 
           <CircleButton
-            size={size === "sm" ? "md" : undefined}
             onClick={() => clearProduct(id)}
+            className={cn("shrink-0", {
+              "size-8 [&_svg]:size-5 sm:size-10 sm:[&_svg]:size-6 lg:size-14":
+                responsive,
+              "size-10 [&_svg]:size-6": !responsive,
+            })}
           >
             <DeleteIcon />
           </CircleButton>

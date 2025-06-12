@@ -243,3 +243,12 @@
 .blue-bullets .swiper-pagination-bullet-active {
   background: var(--color-blue-main);
 }
+
+/* white-bullets */
+.white-bullets .swiper-pagination-bullet {
+  background: var(--color-white-400);
+}
+
+.white-bullets .swiper-pagination-bullet-active {
+  background: var(--color-white-main);
+}
