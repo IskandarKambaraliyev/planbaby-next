@@ -66,7 +66,11 @@ export async function getTools(locale: string) {
 export async function getStories(locale: string) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_ORIGIN_URL}/api/${locale}/feedback`
+      `${process.env.NEXT_PUBLIC_ORIGIN_URL}/api/${locale}/feedback`,
+      {
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
     );
     const data = (await res.json()) as FeedbackApi;
 
@@ -93,7 +97,10 @@ export async function getBlog(
     process.env.NEXT_PUBLIC_ORIGIN_URL
   }/api/${locale}/articles?${queryParams.toString()}`;
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
     const data = (await res.json()) as PaginatedResponse<Blog>;
 
     return { data };
@@ -117,7 +124,11 @@ export async function searchBlog(
     const res = await fetch(
       `${
         process.env.NEXT_PUBLIC_ORIGIN_URL
-      }/api/${locale}/articles?${queryParams.toString()}`
+      }/api/${locale}/articles?${queryParams.toString()}`,
+      {
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
     );
     const data = (await res.json()) as PaginatedResponse<Blog>;
 
@@ -131,7 +142,11 @@ export async function searchBlog(
 export async function getBlogDetail(locale: string, blogId: string) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/${blogId}`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/${blogId}`,
+      {
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
     );
     const data = (await res.json()) as BlogWithSimilarArticles;
 

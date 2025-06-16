@@ -17,7 +17,7 @@ const Loader = () => {
 
   return (
     <div
-      className="fixed inset-0 z-10 flex-center"
+      className="fixed inset-0 min-h-lvh z-10 flex-center"
       style={{
         background: "var(--color-linear)",
       }}
