@@ -1,6 +1,7 @@
 import { getBlogDetail } from "@/app/apiCalls";
 import Article from "@/components/section/blog/Article";
 import VideoArticle from "@/components/section/blog/VideoArticle";
+import { Blog } from "@/types";
 import htmlToPlainText from "@/utility/htmlToPlainText";
 import { notFound } from "next/navigation";
 
@@ -56,4 +57,35 @@ export default async function BlogDetailPage({
   ) : (
     <Article data={data} />
   );
+}
+
+const LOCALES = ["uz", "ru"];
+
+export async function generateStaticParams() {
+  const staticParams: { blogId: string; locale: string }[] = [];
+
+  for (const locale of LOCALES) {
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/all/?limit=200`;
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        console.warn(`Failed fetch: ${url}`);
+        continue;
+      }
+
+      const articles = (await res.json()).results as Blog[];
+
+      for (const article of articles) {
+        staticParams.push({
+          blogId: article.id.toString(),
+          locale,
+        });
+      }
+    } catch (error) {
+      console.error(`Error fetching articles for ${url}:`, error);
+    }
+  }
+
+  return staticParams;
 }

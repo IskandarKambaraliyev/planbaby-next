@@ -94,8 +94,8 @@ export async function getBlog(
   if (video !== undefined) queryParams.append("youtube", String(video));
 
   const url = `${
-    process.env.NEXT_PUBLIC_ORIGIN_URL
-  }/api/${locale}/articles?${queryParams.toString()}`;
+    process.env.NEXT_PUBLIC_BASE_URL
+  }/${locale}/api/articles/all/?${queryParams.toString()}`;
   try {
     const res = await fetch(url, {
       cache: "force-cache",
@@ -105,7 +105,7 @@ export async function getBlog(
 
     return { data };
   } catch (error) {
-    console.error("Error fetching blog:", error);
+    console.error("Error fetching blog:", url, error);
     return { error: "Failed to fetch blog", data: null };
   }
 }
