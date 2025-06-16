@@ -9,6 +9,7 @@ import type {
   Slider,
   FeedbackApi,
   ToolChild,
+  BlogWithSimilarArticles,
 } from "@/types";
 import type { FetcherOptions } from "@/lib/fetcher";
 
@@ -83,17 +84,16 @@ export async function getBlog(
   category?: BlogCategoryForApi,
   video?: boolean
 ) {
-  try {
-    const queryParams = new URLSearchParams();
-    queryParams.append("limit", limit.toString());
-    if (category) queryParams.append("category", category);
-    if (video !== undefined) queryParams.append("youtube", String(video));
+  const queryParams = new URLSearchParams();
+  queryParams.append("limit", limit.toString());
+  if (category) queryParams.append("category", category);
+  if (video !== undefined) queryParams.append("youtube", String(video));
 
-    const res = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_ORIGIN_URL
-      }/api/${locale}/articles?${queryParams.toString()}`
-    );
+  const url = `${
+    process.env.NEXT_PUBLIC_ORIGIN_URL
+  }/api/${locale}/articles?${queryParams.toString()}`;
+  try {
+    const res = await fetch(url);
     const data = (await res.json()) as PaginatedResponse<Blog>;
 
     return { data };
@@ -133,7 +133,7 @@ export async function getBlogDetail(locale: string, blogId: string) {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/${blogId}`
     );
-    const data = (await res.json()) as Blog;
+    const data = (await res.json()) as BlogWithSimilarArticles;
 
     if (!res.ok) {
       return {

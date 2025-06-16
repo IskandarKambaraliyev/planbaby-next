@@ -12,11 +12,11 @@ import {
   Toolbar,
 } from "./Detail";
 import { cn } from "@/lib/utils";
-import type { Blog, PropsWithClassName } from "@/types";
 import getYoutubeVideoId from "@/utility/getYoutubeVideoId";
+import type { BlogWithSimilarArticles, PropsWithClassName } from "@/types";
 
 type Props = {
-  data: Blog;
+  data: BlogWithSimilarArticles;
 } & PropsWithClassName;
 const VideoArticle = ({ data, className }: Props) => {
   const videoId = getYoutubeVideoId(data.youtube_link as string);

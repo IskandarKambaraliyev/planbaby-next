@@ -54,14 +54,14 @@ export async function GET(
       },
     });
 
+    const data = await res.json();
+
     if (!res.ok) {
       return NextResponse.json(
         { error: "Failed to fetch data from backend" },
         { status: res.status }
       );
     }
-
-    const data = await res.json();
     return NextResponse.json(data);
   } catch (err) {
     return NextResponse.json(

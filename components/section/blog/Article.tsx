@@ -1,4 +1,4 @@
-import { Blog, PropsWithClassName } from "@/types";
+import type { BlogWithSimilarArticles, PropsWithClassName } from "@/types";
 import React from "react";
 import { cn } from "@/lib/utils";
 import {
@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 
 type Props = {
-  data: Blog;
+  data: BlogWithSimilarArticles;
 } & PropsWithClassName;
 const Article = ({ data, className }: Props) => {
   return (
