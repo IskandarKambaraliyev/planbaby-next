@@ -34,7 +34,7 @@ const Article = ({ data, className }: Props) => {
           }}
         />
 
-        <div className="relative w-full aspect-[2/1] rounded-3xl overflow-hidden select-none mt-4">
+        <div className="relative w-full aspect-[3/2] md:aspect-[2/1] rounded-3xl overflow-hidden select-none mt-4 border border-dark-blue-200">
           <Image
             src={data.image_large}
             alt={`Banner image for - ${data.title}`}

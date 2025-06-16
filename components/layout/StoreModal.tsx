@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { searchBlog, searchProducts } from "@/app/apiCalls";
 import { useModalStore } from "@/stores/modal";
 import { Blog, RawProduct } from "@/types";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 
 import { Button, Input } from "../custom";
 import ProductCard from "../cards/ProductCard";
@@ -70,6 +70,7 @@ const fetchStoreSearch = async (
 const StoreModal = ({ initialData }: Props) => {
   const t = useTranslations();
   const locale = useLocale();
+  const pathname = usePathname();
 
   const [inputValue, setInputValue] = useState(""); // raw input value
   const [search, setSearch] = useState(""); // debounced value
@@ -130,6 +131,10 @@ const StoreModal = ({ initialData }: Props) => {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, closeModal]);
+
+  useEffect(() => {
+    closeModal();
+  }, [pathname, closeModal]);
 
   const titles = {
     products: {

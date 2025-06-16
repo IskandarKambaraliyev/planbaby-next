@@ -255,7 +255,7 @@
 .detail-content {
   font-family: "Inter", sans-serif;
   line-height: 1.75;
-  color: var(--color-dark-blue-500);
+  color: var(--color-dark-blue-600);
   word-wrap: break-word;
 }
 
@@ -270,6 +270,17 @@
   color: var(--color-dark-blue-main);
 }
 
+.detail-content h1 {
+  font-size: 1.5rem;
+}
+.detail-content h2 {
+  font-size: 1.25rem;
+}
+
+.detail-content h3 {
+  font-size: 1.125rem;
+}
+
 .detail-content strong {
   color: var(--color-dark-blue-main);
 }
@@ -277,23 +288,45 @@
 .detail-content p {
   font-size: 1rem;
 }
+.detail-content p + p {
+  margin-top: 0.5rem;
+}
+
+.detail-content a {
+  color: var(--color-blue-main);
+  text-decoration: none;
+}
+.detail-content a:hover {
+  text-decoration: underline;
+}
 
 .detail-content ul,
 .detail-content ol {
   margin-left: 1.5rem;
-  margin-bottom: 0.6em;
-  padding-left: 1rem;
+}
+
+.detail-content ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+.detail-content ol {
+  list-style-type: decimal;
+  list-style-position: inside;
 }
 
 .detail-content li {
-  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.detail-content li + li {
+  margin-top: 0.25em;
 }
 
 .detail-content blockquote {
   border-left: 0.25rem solid var(--color-blue-200);
   padding: 0.25rem 0.5rem;
   margin: 1.5em 0;
-  color: var(--color-dark-blue-500);
+  color: var(--color-dark-blue-600);
   font-style: italic;
   background: var(--color-blue-100);
 }
@@ -328,8 +361,14 @@
 .detail-content img,
 .detail-content iframe,
 .detail-content video {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   display: block;
-  margin: 1.5em 0;
+  margin: 0.5rem 0;
+}
+
+.detail-content img {
+  object-fit: contain;
+  aspect-ratio: unset !important;
+  max-height: 40rem;
 }
