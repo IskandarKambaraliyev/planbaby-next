@@ -187,7 +187,7 @@ export default async function LocaleLayout({
 
             <Header />
 
-            <main className="mt-26">{children}</main>
+            <main className="mt-18 md:mt-22">{children}</main>
 
             <Footer className="pb-40" />
 

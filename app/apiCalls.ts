@@ -127,3 +127,24 @@ export async function searchBlog(
     return { error: "Failed to search blog", data: null };
   }
 }
+
+export async function getBlogDetail(locale: string, blogId: string) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/${blogId}`
+    );
+    const data = (await res.json()) as Blog;
+
+    if (!res.ok) {
+      return {
+        error: "Blog not found",
+        data: null,
+      };
+    }
+
+    return { data };
+  } catch (error) {
+    console.error("Error fetching blog detail:", error);
+    return { error: "Failed to fetch blog detail", data: null };
+  }
+}

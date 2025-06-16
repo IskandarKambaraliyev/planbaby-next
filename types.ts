@@ -126,4 +126,5 @@ export type Blog = {
   image_source: string | null;
   image_name: string | null;
   products: RawProduct[];
+  similar_articles: Blog[];
 };

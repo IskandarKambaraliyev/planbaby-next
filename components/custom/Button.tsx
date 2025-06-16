@@ -96,14 +96,14 @@ const Button = (props: Props) => {
     : filledColorClasses;
 
   const sizeClasses = {
-    sm: "py-2 px-3 text-sm",
-    md: "py-3 px-3",
-    lg: "py-3 px-4",
-    xl: "h-14 px-6",
+    sm: "py-2 px-3 text-sm [&_svg:not([class*='size-'])]:size-4",
+    md: "py-3 px-3 [&_svg:not([class*='size-'])]:size-5",
+    lg: "py-3 px-4 [&_svg:not([class*='size-'])]:size-6",
+    xl: "h-14 px-6 [&_svg:not([class*='size-'])]:size-6",
   }[size];
 
   const classes = cn(
-    "group relative flex-center w-fit border rounded-full cursor-pointer font-medium overflow-hidden transition-all duration-100 hover:transition-[color] hover:duration-500 ease-in-out [&_svg:not([class*='size-'])]:size-4",
+    "group relative flex-center w-fit border rounded-full cursor-pointer font-medium overflow-hidden transition-all duration-100 hover:transition-[color] hover:duration-500 ease-in-out",
     {
       "cursor-default": isDisabled,
     },
@@ -137,7 +137,7 @@ const Button = (props: Props) => {
       />
       <div className="w-full relative flex-center gap-2">
         {children}
-        {linkIcon && <RightIcon className="size-6" />}
+        {linkIcon && <RightIcon />}
       </div>
     </>
   );

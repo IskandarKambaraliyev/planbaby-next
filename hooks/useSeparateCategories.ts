@@ -1,12 +1,26 @@
 import { useTranslations } from "next-intl";
 
-export default function useSeparateCategories(title: string) {
+// 1. Define reusable union type for allowed category colors
+type CategoryColor = "yellow" | "blue" | "pink" | "green" | "white" | "gray";
+
+// 2. Define the shape of a single category
+type Category = {
+  label: string;
+  link: string;
+  color: CategoryColor;
+};
+
+// 3. Hook function with return type explicitly typed
+export default function useSeparateCategories(title: string): {
+  categoryTitle: string;
+  categoryLabel: string;
+  categoryLink: string;
+  categoryColor: CategoryColor;
+} {
   const t = useTranslations("categories");
 
-  const categoriesMap: Record<
-    string,
-    { label: string; link: string; color: string }
-  > = {
+  // 4. Category map with explicit types
+  const categoriesMap: Record<string, Category> = {
     Oziqlantirish: {
       label: t("nutrition"),
       link: "/nutrition",
@@ -39,12 +53,14 @@ export default function useSeparateCategories(title: string) {
     },
   };
 
-  const defaultCategory = {
+  // 5. Default fallback category if no match is found
+  const defaultCategory: Category = {
     label: t("preparation"),
     link: "/preparation",
     color: "yellow",
   };
 
+  // 6. Lookup or fallback
   const category = categoriesMap[title] ?? defaultCategory;
 
   return {

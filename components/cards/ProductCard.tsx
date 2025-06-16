@@ -125,8 +125,9 @@ const ProductCard = ({
         >
           <Button
             className={cn("w-full", {
-              "h-8 text-xs px-2 sm:h-10 sm:text-sm sm:px-4 lg:h-14": responsive,
-              "h-10 text-sm px-4": !responsive,
+              "h-8 text-xs px-2 sm:h-10 sm:text-sm sm:px-4 lg:h-14 lg:text-base":
+                responsive,
+              "h-10 text-sm px-3": !responsive,
             })}
             outlined
             onClick={(e) => {
@@ -135,7 +136,12 @@ const ProductCard = ({
               addProduct(item);
             }}
           >
-            <CartPlusIcon className="shrink-0" />
+            <CartPlusIcon
+              className={cn("shrink-0 ", {
+                "size-4 sm:size-5 lg:size-6": responsive,
+                "size-5": !responsive,
+              })}
+            />
             <span className="truncate">{t("addCart")}</span>
           </Button>
         </div>

@@ -90,6 +90,11 @@
   "spermogram": "Spermogramma tasnifi",
   "names": "Bolalar uchun ismlar",
   "right_nutrition": "Toʻgʻri ovqatlanish",
+  "recommended_products": "Tavsiya etilgan mahsulotlar",
+  "similar_articles": "Oʻxshash maqolalar",
+  "share": "Ulashish",
+  "copy": "Nusxalash",
+  "copied": "Nusxalandi",
   "home": {
     "banner": {
       "title": "Sogʻlom homiladorlik sari {span}",
@@ -128,5 +133,10 @@
       "description": "O‘z shahringizdan bo‘lgan bemorlarning hikoyalari bilan tanishing"
     },
     "uzum": "Qulay bo‘lib to‘lash orqali UZUM marketda xarid qiling!"
+  },
+  "errorPage": {
+    "title": "Sahifa topilmadi",
+    "description": "Siz tashrif buyurgan sahifa mavjud emas yoki o'chirilgan.",
+    "btn": "Bosh sahifaga qaytish"
   }
 }
