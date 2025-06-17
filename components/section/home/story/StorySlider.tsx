@@ -50,6 +50,7 @@ const StorySlider = ({ data }: StorySliderProps) => {
                       src={item.thumbnail}
                       alt={`Story image - ${item.id}`}
                       fill
+                      sizes="(max-width: 640px) 5rem, (max-width: 768px) 8rem, 10rem"
                       className="object-cover"
                       placeholder="blur"
                       blurDataURL={item.thumbnail}

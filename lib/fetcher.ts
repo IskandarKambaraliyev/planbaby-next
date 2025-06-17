@@ -30,7 +30,7 @@ export async function fetcher<TResponse, TBody = unknown>(
     body,
     headers,
     cache = "force-cache",
-    next = { revalidate: 60 },
+    next = { revalidate: 300 },
   } = options;
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;

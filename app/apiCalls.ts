@@ -68,7 +68,7 @@ function buildQuery(
 // 🎉 Happy Families
 export const getHappyFamilies = (locale: string) =>
   safeFetcher<HappyFamiliesApi>("/pages/main/", locale, {
-    next: { revalidate: 600 },
+    next: { revalidate: 3000 },
   });
 
 // 🛍 Products
@@ -113,7 +113,7 @@ export async function getBlog(
   try {
     const res = await fetch(url, {
       cache: "force-cache",
-      next: { revalidate: 60 },
+      next: { revalidate: 300 },
     });
     const data = (await res.json()) as PaginatedResponse<Blog>;
     return { data, error: null };
@@ -143,7 +143,7 @@ export async function getBlogDetail(
   try {
     const res = await fetch(url, {
       cache: "force-cache",
-      next: { revalidate: 60 },
+      next: { revalidate: 300 },
     });
 
     if (!res.ok) {
