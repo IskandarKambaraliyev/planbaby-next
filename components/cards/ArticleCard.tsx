@@ -1,8 +1,9 @@
+import Image from "next/image";
+
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-import { type Blog, PropsWithClassName } from "@/types";
-import Image from "next/image";
+import type { Blog, PropsWithClassName } from "@/types";
 
 type Props = {
   item: Blog;

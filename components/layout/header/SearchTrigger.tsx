@@ -1,9 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { CircleButton } from "@/components/custom";
 import { SearchIcon } from "@/components/icons";
+
 import { useModalStore } from "@/stores/modal";
-import { useTranslations } from "next-intl";
 
 const SearchTrigger = () => {
   const t = useTranslations("nav");

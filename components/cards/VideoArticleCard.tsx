@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Link } from "@/i18n/navigation";
 import { Blog } from "@/types";
-import Image from "next/image";
 
 type Props = {
   item: Blog;
@@ -13,13 +13,12 @@ const VideoArticleCard = ({ item }: Props) => {
       href={`/blog/${item.id}`}
       className="relative block group size-full rounded-2xl md:rounded-3xl overflow-hidden"
     >
-      <Image
-        src={item.image_large}
+      <img
+        src={`/api/proxy/icon?url=${item.image_large}`}
         alt={`Blog image for - ${item.title}`}
-        fill
-        sizes="(max-width: 768px) 18rem, (min-width: 769px) 24rem"
+        width={192}
+        height={342}
         className="size-full object-cover  group-hover:scale-105 transition duration-300 ease-in-out"
-        quality={100}
         loading="lazy"
       />
 

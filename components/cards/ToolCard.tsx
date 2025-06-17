@@ -1,6 +1,5 @@
-import { ToolChild } from "@/types";
-import Image from "next/image";
-import React from "react";
+/* eslint-disable @next/next/no-img-element */
+import type { ToolChild } from "@/types";
 
 type Props = {
   item: ToolChild;
@@ -14,8 +13,8 @@ const ToolCard = ({ item }: Props) => {
       <h6 className="font-bold text-lg group-hover:text-blue-main">
         {item.name}
       </h6>
-      <Image
-        src={item.icon}
+      <img
+        src={`/api/proxy/icon?url=${encodeURIComponent(item.icon)}`}
         width={64}
         height={64}
         alt={`Tool icon - ${item.name}`}

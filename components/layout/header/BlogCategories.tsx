@@ -2,6 +2,9 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+
+import { AnimatePresence, motion } from "motion/react";
 import {
   DownIcon,
   NutritionIcon,
@@ -9,11 +12,10 @@ import {
   PregnancyIcon,
   PreparationIcon,
 } from "@/components/icons";
+
 import useClickOutside from "@/hooks/useClickOutside";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "motion/react";
 import { dropdownTransition, dropdownVariants } from "@/variants";
-import { Link } from "@/i18n/navigation";
 
 const BlogCategories = () => {
   const t = useTranslations();

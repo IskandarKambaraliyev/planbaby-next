@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { AnimatePresence } from "motion/react";
-import Image from "next/image";
 import { motion } from "motion/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -46,14 +46,12 @@ const StorySlider = ({ data }: StorySliderProps) => {
                   className="size-20 md:size-32 lg:size-40 shrink-0 p-0.5 rounded-full border-2 border-blue-main"
                 >
                   <div className="relative size-full rounded-full overflow-hidden">
-                    <Image
-                      src={item.thumbnail}
+                    <img
+                      src={`/api/proxy/icon?url=${item.thumbnail}`}
                       alt={`Story image - ${item.id}`}
-                      fill
-                      sizes="(max-width: 640px) 5rem, (max-width: 768px) 8rem, 10rem"
+                      width={160}
+                      height={160}
                       className="object-cover"
-                      placeholder="blur"
-                      blurDataURL={item.thumbnail}
                       loading="lazy"
                     />
                   </div>

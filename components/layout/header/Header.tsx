@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 
 import Logo from "../../Logo";
@@ -12,7 +13,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
 import type { PropsWithClassName } from "@/types";
-import { useTranslations } from "next-intl";
 
 const CartCounter = dynamic(() => import("../../CartCounter"), {
   ssr: false,

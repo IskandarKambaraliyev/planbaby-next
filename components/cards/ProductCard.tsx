@@ -4,12 +4,15 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { PropsWithClassName, RawProduct } from "@/types";
+
 import { Button, CircleButton } from "../custom";
 import { CartPlusIcon, DeleteIcon, MinusIcon, PlusIcon } from "../icons";
+
 import { useCartStore } from "@/stores/cart";
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/utility/formatPrice";
+
+import type { PropsWithClassName, RawProduct } from "@/types";
 
 type Props = {
   item: RawProduct;
@@ -47,7 +50,7 @@ const ProductCard = ({
       {/* Product Info Section */}
       <Link href={`/products/${id}`} className="flex-1 p-2 flex flex-col gap-2">
         <img
-          src={image}
+          src={`/api/proxy/icon?url=${image}`}
           alt={name}
           width={300}
           height={300}

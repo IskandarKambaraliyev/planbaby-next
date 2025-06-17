@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 import { Link } from "@/i18n/navigation";
 
 import useSeparateCategories from "@/hooks/useSeparateCategories";
@@ -53,8 +53,8 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
           "max-md:hidden aspect-video": !isFirst,
         })}
       >
-        <Image
-          src={item.image_large}
+        <img
+          src={`/api/proxy/icon?url=${item.image_large}`}
           alt={`Blog image of - ${item.title}`}
           width={300}
           height={200}

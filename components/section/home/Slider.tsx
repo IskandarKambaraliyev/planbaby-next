@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
@@ -46,21 +46,21 @@ const Slider = ({ data }: Props) => {
         {data.map((item, index) => (
           <SwiperSlide key={`${item.id}-${index}`}>
             <a href={item.link} className="w-full">
-              <Image
-                src={item.image_large}
+              <img
+                src={`/api/proxy/icon?url=${item.image_large}`}
                 alt={`Slider-${index}`}
                 width={1261}
                 height={388}
                 className="object-cover w-full h-full max-lg:hidden rounded-3xl"
-                priority
+                loading="lazy"
               />
-              <Image
-                src={item.image_medium}
+              <img
+                src={`/api/proxy/icon?url=${item.image_medium}`}
                 alt={`Slider-${index}`}
                 width={728}
                 height={310}
-                priority
                 className="object-cover w-full h-full lg:hidden rounded-2xl md:rounded-3xl"
+                loading="lazy"
               />
             </a>
           </SwiperSlide>
