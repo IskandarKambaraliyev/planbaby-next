@@ -8,7 +8,12 @@ import { AnimatePresence, motion } from "motion/react";
 import { Link, usePathname } from "@/i18n/navigation";
 
 import { useQuery } from "@tanstack/react-query";
-import { searchBlog, searchProducts } from "@/app/apiCalls";
+import {
+  searchBlog,
+  searchProducts,
+  getBlog,
+  getProducts,
+} from "@/app/apiCalls";
 
 import { Button, Input } from "../custom";
 import ProductCard from "../cards/ProductCard";
@@ -37,18 +42,30 @@ type States = {
   nutrition: Blog[];
 };
 
-type Props = {
-  initialData: States;
-};
-
-// 1️⃣ Fetch function used in useQuery
 const fetchStoreSearch = async (
   locale: string,
-  query: string,
-  initialData: States
+  query: string
 ): Promise<States> => {
   const trimmed = query.trim();
-  if (!trimmed) return initialData;
+
+  if (!trimmed) {
+    const [products, preparation, pregnancy, planning, nutrition] =
+      await Promise.all([
+        getProducts(locale, 12),
+        getBlog(locale, 12, "preparing"),
+        getBlog(locale, 12, "pregnancy"),
+        getBlog(locale, 12, "planning"),
+        getBlog(locale, 12, "feeding"),
+      ]);
+
+    return {
+      products: products.data?.results || [],
+      preparation: preparation.data?.results || [],
+      pregnancy: pregnancy.data?.results || [],
+      planning: planning.data?.results || [],
+      nutrition: nutrition.data?.results || [],
+    };
+  }
 
   const [products, preparation, pregnancy, planning, nutrition] =
     await Promise.all([
@@ -68,65 +85,53 @@ const fetchStoreSearch = async (
   };
 };
 
-const StoreModal = ({ initialData }: Props) => {
+const StoreModal = () => {
   const t = useTranslations();
   const locale = useLocale();
   const pathname = usePathname();
-
-  const [inputValue, setInputValue] = useState(""); // raw input value
-  const [search, setSearch] = useState(""); // debounced value
+  const [inputValue, setInputValue] = useState("");
+  const [search, setSearch] = useState("");
 
   const isOpen = useModalStore((state) => state.isOpen);
   const view = useModalStore((state) => state.view);
   const closeModal = useModalStore((state) => state.closeModal);
 
-  // Debounce search input
   const debouncedSetSearch = useMemo(
-    () =>
-      debounce((value: string) => {
-        setSearch(value);
-      }, 500), // 500ms debounce
+    () => debounce((value: string) => setSearch(value), 500),
     []
   );
 
-  useEffect(() => {
-    return () => {
-      debouncedSetSearch.cancel();
-    };
-  }, [debouncedSetSearch]);
+  useEffect(() => () => debouncedSetSearch.cancel(), [debouncedSetSearch]);
 
-  // React Query hook
-  const { data: states = initialData } = useQuery({
+  const {
+    data: states = {
+      products: [],
+      preparation: [],
+      pregnancy: [],
+      planning: [],
+      nutrition: [],
+    },
+  } = useQuery({
     queryKey: ["storeSearch", locale, search],
-    queryFn: () => fetchStoreSearch(locale, search, initialData),
-    staleTime: 1000 * 60 * 1, // 5 minutes cache
-    enabled: isOpen, // only run when modal is open
+    queryFn: () => fetchStoreSearch(locale, search),
+    staleTime: 1000 * 60 * 1,
+    enabled: isOpen,
   });
 
-  // Focus input and lock scroll when modal is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    if (isOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isOpen) return;
-
+      const input = document.getElementById("store-search-input");
+      const tag = document.activeElement?.tagName.toLowerCase();
       const isPrintable =
         e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
-      const tag = document.activeElement?.tagName.toLowerCase();
 
-      const input = document.getElementById("store-search-input");
-
-      if (isPrintable && input && tag !== "input" && tag !== "textarea") {
+      if (isPrintable && input && tag !== "input" && tag !== "textarea")
         input.focus();
-      }
-
-      if (isOpen && e.key === "Escape") {
-        closeModal();
-      }
+      if (e.key === "Escape") closeModal();
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -182,7 +187,6 @@ const StoreModal = ({ initialData }: Props) => {
             className="absolute inset-0 bg-dark-blue-400 backdrop-blur-sm"
             onClick={closeModal}
           />
-
           <motion.div
             initial={{ y: "100%" }}
             animate={{ y: 0 }}

@@ -1,5 +1,5 @@
 import { mount } from "cypress/react";
-import Header from "../../components/layout/Header";
+import Header from "../../components/layout/header/Header";
 import { TestProviders } from "@/test-utils/TestProviders";
 
 describe("<Header /> responsive behavior", () => {
