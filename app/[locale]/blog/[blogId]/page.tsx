@@ -69,7 +69,7 @@ export async function generateStaticParams() {
   const staticParams: { blogId: string; locale: string }[] = [];
 
   for (const locale of LOCALES) {
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/all/?limit=50000`;
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/all/?limit=10`;
     try {
       const res = await fetch(url);
 

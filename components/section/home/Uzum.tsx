@@ -22,7 +22,7 @@ const Uzum = async () => {
         height={374}
         className="object-contain max-md:w-full max-lg:w-[70%] lg:h-full lg:ml-[10%] lg:opacity-0 lg:invisible"
         aria-hidden="true"
-        priority
+        loading="lazy"
       />
 
       <Image
@@ -31,6 +31,7 @@ const Uzum = async () => {
         width={486}
         height={244}
         className="absolute bottom-0 h-[130%] w-auto max-w-[40%] object-contain object-bottom lg:rounded-br-3xl max-lg:hidden max-lg:left-1/2 max-lg:-translate-x-1/2 lg:right-0"
+        loading="lazy"
       />
     </a>
   );
