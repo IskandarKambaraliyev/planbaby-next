@@ -1,8 +1,9 @@
 "use client";
 
-import { useCartStore } from "@/stores/cart";
 import { SlidingNumber } from "./ui/sliding-number";
 import { CartIcon } from "./icons";
+
+import { useCartStore } from "@/stores/cart";
 
 const CartCounter = () => {
   const count = useCartStore((state) => state.all_count);

@@ -9,7 +9,7 @@ import {
 } from "../apiCalls";
 
 import {
-  HomeHero,
+  Hero,
   Slider,
   Categories,
   About,
@@ -17,13 +17,9 @@ import {
   Store,
   Tools,
   Uzum,
+  Articles,
+  VideoArticles,
 } from "@/components/section/home";
-import Articles from "@/components/section/home/Articles";
-import VideoArticles from "@/components/section/home/VideoArticles";
-
-export async function generateStaticParams() {
-  return [{ locale: "uz" }, { locale: "ru" }];
-}
 
 export default async function HomePage() {
   const locale = await getLocale();
@@ -39,7 +35,7 @@ export default async function HomePage() {
   return (
     <>
       {/* Hero */}
-      <HomeHero data={happyFamilies.data} />
+      <Hero data={happyFamilies.data} />
 
       {/* Slider, Categories, About */}
       <section className="flex flex-col py-20 gap-20">
@@ -53,9 +49,11 @@ export default async function HomePage() {
       </section>
 
       {/* Stories */}
-      <section className="py-20 bg-blue-100">
-        <Stories data={stories} />
-      </section>
+      {stories && stories.data && (
+        <section className="py-20 bg-blue-100">
+          <Stories data={stories.data} />
+        </section>
+      )}
 
       {/* Tools */}
       {tools.data && tools.data.results.length > 0 && (

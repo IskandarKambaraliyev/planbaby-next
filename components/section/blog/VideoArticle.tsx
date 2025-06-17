@@ -1,6 +1,6 @@
-import React from "react";
-import { YouTubeEmbed } from "@next/third-parties/google";
 import Image from "next/image";
+import { YouTubeEmbed } from "@next/third-parties/google";
+
 import {
   Category,
   DateLabel,
@@ -11,6 +11,7 @@ import {
   Title,
   Toolbar,
 } from "./Detail";
+
 import { cn } from "@/lib/utils";
 import getYoutubeVideoId from "@/utility/getYoutubeVideoId";
 import type { BlogWithSimilarArticles, PropsWithClassName } from "@/types";

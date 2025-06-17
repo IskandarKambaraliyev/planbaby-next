@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
-import { PropsWithClassName } from "@/types";
+
+import type { PropsWithClassName } from "@/types";
 
 const HeroImage = ({ className }: PropsWithClassName) => {
   return (

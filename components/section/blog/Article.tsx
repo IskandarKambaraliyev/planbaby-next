@@ -1,6 +1,5 @@
-import type { BlogWithSimilarArticles, PropsWithClassName } from "@/types";
-import React from "react";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
+
 import {
   Products,
   ShareBlog,
@@ -9,7 +8,10 @@ import {
   Title,
   Toolbar,
 } from "./Detail";
-import Image from "next/image";
+
+import { cn } from "@/lib/utils";
+
+import type { BlogWithSimilarArticles, PropsWithClassName } from "@/types";
 
 type Props = {
   data: BlogWithSimilarArticles;

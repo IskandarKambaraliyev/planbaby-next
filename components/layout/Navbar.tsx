@@ -4,7 +4,7 @@ import { JSX, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Sheet } from "react-modal-sheet";
 import { Link, usePathname } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
+
 import {
   CartIcon,
   DocumentIcon,
@@ -15,9 +15,11 @@ import {
   PreparationIcon,
   StoreIcon,
 } from "../icons";
-
-import { type PropsWithClassName } from "@/types";
 import CartCounter from "../CartCounter";
+
+import { cn } from "@/lib/utils";
+
+import type { PropsWithClassName } from "@/types";
 
 const Navbar = ({ className }: PropsWithClassName) => {
   const t = useTranslations("nav");

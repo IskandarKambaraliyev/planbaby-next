@@ -1,10 +1,23 @@
-import HomeHero from "./Hero";
+import Hero from "./hero/Hero";
 import Slider from "./Slider";
 import Categories from "./Categories";
 import About from "./About";
-import Stories from "./Stories";
+import Stories from "./story/Stories";
 import Tools from "./Tools";
-import Store from "./Store";
+import Store from "./store/Store";
 import Uzum from "./Uzum";
+import Articles from "./articles/Articles";
+import VideoArticles from "./VideoArticles";
 
-export { HomeHero, Slider, Categories, About, Stories, Tools, Store, Uzum };
+export {
+  Hero,
+  Slider,
+  Categories,
+  About,
+  Stories,
+  Tools,
+  Store,
+  Uzum,
+  Articles,
+  VideoArticles,
+};

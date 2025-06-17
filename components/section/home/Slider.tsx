@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import Image from "next/image";
+
 import { CircleButton } from "@/components/custom";
 import { LeftIcon, RightIcon } from "@/components/icons";
 

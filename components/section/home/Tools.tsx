@@ -1,9 +1,11 @@
 "use client";
 
-import { ToolChild } from "@/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+
 import ToolCard from "@/components/cards/ToolCard";
+
+import type { ToolChild } from "@/types";
 
 type Props = {
   data: ToolChild[];

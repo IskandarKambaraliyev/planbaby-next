@@ -1,9 +1,13 @@
+import { notFound } from "next/navigation";
+
 import { getBlogDetail } from "@/app/apiCalls";
+
 import Article from "@/components/section/blog/Article";
 import VideoArticle from "@/components/section/blog/VideoArticle";
-import { Blog } from "@/types";
+
 import htmlToPlainText from "@/utility/htmlToPlainText";
-import { notFound } from "next/navigation";
+
+import type { Blog } from "@/types";
 
 export async function generateMetadata({
   params,
@@ -65,7 +69,7 @@ export async function generateStaticParams() {
   const staticParams: { blogId: string; locale: string }[] = [];
 
   for (const locale of LOCALES) {
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/all/?limit=200`;
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/all/?limit=50000`;
     try {
       const res = await fetch(url);
 

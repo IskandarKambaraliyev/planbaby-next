@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 import { Button } from "@/components/custom";
 import {
   NutritionIcon,
@@ -5,8 +7,6 @@ import {
   PregnancyIcon,
   PreparationIcon,
 } from "@/components/icons";
-import { useTranslations } from "next-intl";
-import React from "react";
 
 const Categories = () => {
   const t = useTranslations("home.categories");

@@ -1,115 +1,17 @@
 "use client";
 
-import { FeedbackApi, PropsWithClassName, RegionKey, Story } from "@/types";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
-import { AnimatePresence, motion } from "motion/react";
-import { cn } from "@/lib/utils";
-import { Title, RegionSelect } from "@/components/custom";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { AnimatePresence, motion } from "motion/react";
+
+import { cn } from "@/lib/utils";
 import { useRegionStore } from "@/stores/region";
 
-type StoriesProps = {
-  data:
-    | FeedbackApi
-    | {
-        error: string | null;
-      };
-};
-
-const Stories = ({ data }: StoriesProps) => {
-  const region = useRegionStore((state) => state.region);
-  const t = useTranslations();
-
-  if (data.error) {
-    return (
-      <div className={cn("container flex flex-col gap-5 md:gap-8")}>
-        <Title className="w-fit max-w-max">{t("home.stories.title")}</Title>
-        <p className="text-pink-main">{data.error}</p>
-      </div>
-    );
-  }
-
-  const stories =
-    region && !data.error
-      ? (data as FeedbackApi)[region]
-        ? (data as FeedbackApi)[region]
-        : []
-      : [];
-
-  if (region === null) return null;
-
-  return (
-    <div className="container flex flex-col gap-5 md:gap-8">
-      <div className="flex max-lg:flex-col lg:items-center justify-between gap-4">
-        <div className="flex max-sm:flex-col sm:items-center gap-4 w-full md:w-[35rem] lg:w-1/2">
-          <Title className="w-fit max-w-max">{t("home.stories.title")}</Title>
-
-          <RegionSelect color="white" className="flex-1" />
-        </div>
-        <p className="w-full lg:w-2/5 text-sm md:text-base text-dark-blue-400">
-          {t("home.stories.description")}
-        </p>
-      </div>
-
-      <AnimatePresence>
-        {stories.length > 0 && <StorySlider data={stories} />}
-      </AnimatePresence>
-
-      <Map className="max-md:hidden max-w-[45rem] w-full mx-auto" />
-    </div>
-  );
-};
-
-export default Stories;
-
-type StorySliderProps = { data: Story[] };
-
-const StorySlider = ({ data }: StorySliderProps) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="relative"
-    >
-      <Swiper
-        slidesPerView={"auto"}
-        spaceBetween={20}
-        modules={[Pagination]}
-        pagination={{
-          clickable: true,
-        }}
-        className="blue-bullets select-none"
-      >
-        {data.map((item, index) => (
-          <SwiperSlide key={`${item.id}-${index}`} className="!w-fit">
-            <button
-              type="button"
-              className="size-20 md:size-32 lg:size-40 shrink-0 p-0.5 rounded-full border-2 border-blue-main"
-            >
-              <div className="relative size-full rounded-full overflow-hidden">
-                <Image
-                  src={item.thumbnail}
-                  alt={`Story image - ${item.id}`}
-                  fill
-                  className="object-cover"
-                  placeholder="blur"
-                  blurDataURL={item.thumbnail}
-                />
-              </div>
-            </button>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </motion.div>
-  );
-};
+import type { PropsWithClassName, RegionKey } from "@/types";
 
 type MapProps = PropsWithClassName;
-const Map = ({ className }: MapProps) => {
+
+const StoryMap = ({ className }: MapProps) => {
   const region = useRegionStore((state) => state.region);
   const setRegion = useRegionStore((state) => state.setRegion);
   const t = useTranslations("regions");
@@ -256,3 +158,5 @@ const Map = ({ className }: MapProps) => {
     </div>
   );
 };
+
+export default StoryMap;

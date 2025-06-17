@@ -2,15 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { AnimatePresence, motion } from "motion/react";
 // eslint-disable-next-line no-restricted-imports
 import { useRouter } from "next/navigation";
-
+import { AnimatePresence, motion } from "motion/react";
 import { Link, usePathname } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
-import useClickOutside from "@/hooks/useClickOutside";
-import { PropsWithClassName } from "@/types";
-import { dropdownTransition, dropdownVariants } from "@/variants";
 
 import Logo from "../Logo";
 import {
@@ -24,7 +19,13 @@ import {
 } from "../icons";
 import { Button, CircleButton } from "../custom";
 import CartCounter from "../CartCounter";
+
 import { useModalStore } from "@/stores/modal";
+import { cn } from "@/lib/utils";
+import useClickOutside from "@/hooks/useClickOutside";
+import { dropdownTransition, dropdownVariants } from "@/variants";
+
+import type { PropsWithClassName } from "@/types";
 
 const Header = ({ className }: PropsWithClassName) => {
   const t = useTranslations("nav");

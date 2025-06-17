@@ -2,6 +2,9 @@
 
 import { useEffect, useCallback, useState } from "react";
 import { usePathname } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import { Loader2Icon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,11 +27,8 @@ import {
 import { useConsultationModal } from "@/stores/consultationModal";
 import { Button, Input, RegionSelect } from "../custom";
 import { ErrorIcon, PhoneIcon, SuccesIcon, UserIcon } from "../icons";
-import { useLocale, useTranslations } from "next-intl";
 import devLog from "@/utility/devLog";
 import { useRegionStore } from "@/stores/region";
-import { Loader2Icon } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
 
 const variants = {
   initial: { opacity: 0 },

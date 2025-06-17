@@ -1,11 +1,8 @@
-"use client";
-
 import { JSX } from "react";
 import { Link } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
-import { PropsWithClassName } from "@/types";
+import { getTranslations } from "next-intl/server";
+
 import Logo from "../Logo";
-import { useTranslations } from "next-intl";
 import {
   EmailIcon,
   FacebookIcon,
@@ -18,6 +15,10 @@ import {
 } from "../icons";
 import { CircleButton } from "../custom";
 
+import { cn } from "@/lib/utils";
+
+import type { PropsWithClassName } from "@/types";
+
 type Links = {
   title: string;
   children: {
@@ -27,8 +28,8 @@ type Links = {
   }[];
 }[];
 
-const Footer = ({ className }: PropsWithClassName) => {
-  const t = useTranslations();
+const Footer = async ({ className }: PropsWithClassName) => {
+  const t = await getTranslations();
 
   const links: Links = [
     {

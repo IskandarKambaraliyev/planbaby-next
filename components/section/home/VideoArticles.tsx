@@ -1,11 +1,13 @@
 "use client";
 
-import VideoArticleCard from "@/components/cards/VideoArticleCard";
-import { Title } from "@/components/custom";
-import { Blog } from "@/types";
 import { useTranslations } from "next-intl";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import VideoArticleCard from "@/components/cards/VideoArticleCard";
+import { Title } from "@/components/custom";
+
+import type { Blog } from "@/types";
 
 type Props = {
   data: Blog[];

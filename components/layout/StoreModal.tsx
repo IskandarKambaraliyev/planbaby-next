@@ -5,14 +5,10 @@ import { useLocale, useTranslations } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import debounce from "lodash.debounce";
 import { AnimatePresence, motion } from "motion/react";
+import { Link, usePathname } from "@/i18n/navigation";
 
 import { useQuery } from "@tanstack/react-query";
-
-import { cn } from "@/lib/utils";
 import { searchBlog, searchProducts } from "@/app/apiCalls";
-import { useModalStore } from "@/stores/modal";
-import { Blog, RawProduct } from "@/types";
-import { Link, usePathname } from "@/i18n/navigation";
 
 import { Button, Input } from "../custom";
 import ProductCard from "../cards/ProductCard";
@@ -27,6 +23,11 @@ import {
   StoreIcon,
   XIcon,
 } from "../icons";
+
+import { cn } from "@/lib/utils";
+import { useModalStore } from "@/stores/modal";
+
+import type { Blog, RawProduct } from "@/types";
 
 type States = {
   products: RawProduct[];

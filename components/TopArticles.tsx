@@ -1,9 +1,10 @@
-import useSeparateCategories from "@/hooks/useSeparateCategories";
-import { Link } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
-import { Blog, PropsWithClassName } from "@/types";
 import Image from "next/image";
-import React from "react";
+import { Link } from "@/i18n/navigation";
+
+import useSeparateCategories from "@/hooks/useSeparateCategories";
+import { cn } from "@/lib/utils";
+
+import type { Blog, PropsWithClassName } from "@/types";
 
 type Props = {
   data: Blog[];
@@ -41,7 +42,7 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
         {
           "rounded-[1.25rem]": isFirst,
           "md:rounded-[1.25rem]": !isFirst,
-          "": categoryBadge
+          "": categoryBadge,
         },
         className
       )}

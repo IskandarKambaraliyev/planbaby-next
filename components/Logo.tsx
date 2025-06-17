@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import { PropsWithClassName } from "@/types";
-import React from "react";
+
+import type { PropsWithClassName } from "@/types";
 
 type Props = {
   color?: "default" | "white";

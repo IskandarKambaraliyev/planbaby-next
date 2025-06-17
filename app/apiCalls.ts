@@ -13,7 +13,7 @@ import type {
 } from "@/types";
 import type { FetcherOptions } from "@/lib/fetcher";
 
-// ✨ Generic Safe Fetcher
+// ✅ Safe fetch wrapper
 async function safeFetcher<T>(
   path: string,
   locale: string,
@@ -22,144 +22,138 @@ async function safeFetcher<T>(
   try {
     const data = await fetcher<T>(path, locale, options);
     return { data, error: null };
-  } catch (err) {
-    console.error(`Error fetching ${path}:`, err);
-    return { data: null, error: err };
+  } catch (error) {
+    console.error(`❌ Error fetching ${path}:`, error);
+    return { data: null, error };
   }
 }
 
-// ✨ API Calls
-
-// Happy Families
-export async function getHappyFamilies(locale: string) {
-  return safeFetcher<HappyFamiliesApi>("/pages/main/", locale, {
-    next: { revalidate: 600 },
-  });
+// ✅ Reusable fetch utility for internal backend APIs
+async function internalFetch<T>(
+  path: string,
+  locale: string,
+  revalidate: number = 60
+): Promise<ApiResult<T>> {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_ORIGIN_URL}/api/${locale}${path}`,
+      {
+        cache: "force-cache",
+        next: { revalidate },
+      }
+    );
+    const data = (await res.json()) as T;
+    return { data, error: null };
+  } catch (error) {
+    console.error(`❌ Error fetching ${path}:`, error);
+    return { data: null, error };
+  }
 }
 
-// Products
-export async function getProducts(locale: string, limit = 12) {
-  return safeFetcher<{ results: RawProduct[] }>(
+// ✅ Query helper
+function buildQuery(
+  params: Record<string, string | number | boolean | undefined>
+) {
+  const searchParams = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) {
+    if (value !== undefined) searchParams.append(key, String(value));
+  }
+  return `?${searchParams.toString()}`;
+}
+
+// -------------------------------------------
+// ✨ API Calls
+// -------------------------------------------
+
+// 🎉 Happy Families
+export const getHappyFamilies = (locale: string) =>
+  safeFetcher<HappyFamiliesApi>("/pages/main/", locale, {
+    next: { revalidate: 600 },
+  });
+
+// 🛍 Products
+export const getProducts = (locale: string, limit = 12) =>
+  safeFetcher<{ results: RawProduct[] }>(
     `/stores/products/?limit=${limit}`,
     locale
   );
-}
 
-export async function searchProducts(locale: string, query: string) {
-  return safeFetcher<{ results: RawProduct[] }>(
+export const searchProducts = (locale: string, query: string) =>
+  safeFetcher<{ results: RawProduct[] }>(
     `/stores/products/?search=${query}`,
     locale
   );
-}
 
-// Sliders
-export async function getSliders(locale: string) {
-  return safeFetcher<PaginatedResponse<Slider>>("/pages/sliders/", locale);
-}
+// 🖼 Sliders
+export const getSliders = (locale: string) =>
+  safeFetcher<PaginatedResponse<Slider>>("/pages/sliders/", locale);
 
-// Tools
-export async function getTools(locale: string) {
-  return safeFetcher<PaginatedResponse<ToolChild>>(`/pages/tools/`, locale);
-}
+// 🧰 Tools
+export const getTools = (locale: string) =>
+  safeFetcher<PaginatedResponse<ToolChild>>("/pages/tools/", locale);
 
-// Stories
-export async function getStories(locale: string) {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_ORIGIN_URL}/api/${locale}/feedback`,
-      {
-        cache: "force-cache",
-        next: { revalidate: 60 },
-      }
-    );
-    const data = (await res.json()) as FeedbackApi;
+// 🧡 Stories
+export const getStories = (locale: string) =>
+  internalFetch<FeedbackApi>("/feedback", locale, 60);
 
-    return data;
-  } catch (error) {
-    console.error("Error fetching stories:", error);
-    return { error: "Failed to fetch stories" };
-  }
-}
-
-// Blog
+// 📚 Blog list
 export async function getBlog(
   locale: string,
   limit = 12,
   category?: BlogCategoryForApi,
   video?: boolean
-) {
-  const queryParams = new URLSearchParams();
-  queryParams.append("limit", limit.toString());
-  if (category) queryParams.append("category", category);
-  if (video !== undefined) queryParams.append("youtube", String(video));
+): Promise<ApiResult<PaginatedResponse<Blog>>> {
+  const query = buildQuery({
+    limit,
+    category,
+    youtube: video,
+  });
 
-  const url = `${
-    process.env.NEXT_PUBLIC_BASE_URL
-  }/${locale}/api/articles/all/?${queryParams.toString()}`;
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/all/${query}`;
   try {
     const res = await fetch(url, {
       cache: "force-cache",
       next: { revalidate: 60 },
     });
     const data = (await res.json()) as PaginatedResponse<Blog>;
-
-    return { data };
+    return { data, error: null };
   } catch (error) {
-    console.error("Error fetching blog:", url, error);
-    return { error: "Failed to fetch blog", data: null };
+    console.error("❌ Error fetching blog list:", error);
+    return { data: null, error };
   }
 }
 
-// Blog search
-export async function searchBlog(
+// 🔍 Blog search
+export const searchBlog = (
   locale: string,
   query: string,
   category: BlogCategoryForApi
-) {
+) =>
+  internalFetch<PaginatedResponse<Blog>>(
+    `/articles?${buildQuery({ search: query, category })}`,
+    locale
+  );
+
+// 📄 Blog detail
+export async function getBlogDetail(
+  locale: string,
+  blogId: string
+): Promise<ApiResult<BlogWithSimilarArticles>> {
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/${blogId}`;
   try {
-    const queryParams = new URLSearchParams();
-    queryParams.append("search", query);
-    queryParams.append("category", category);
-
-    const res = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_ORIGIN_URL
-      }/api/${locale}/articles?${queryParams.toString()}`,
-      {
-        cache: "force-cache",
-        next: { revalidate: 60 },
-      }
-    );
-    const data = (await res.json()) as PaginatedResponse<Blog>;
-
-    return { data };
-  } catch (error) {
-    console.error("Error searching blog:", error);
-    return { error: "Failed to search blog", data: null };
-  }
-}
-
-export async function getBlogDetail(locale: string, blogId: string) {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/${blogId}`,
-      {
-        cache: "force-cache",
-        next: { revalidate: 60 },
-      }
-    );
-    const data = (await res.json()) as BlogWithSimilarArticles;
+    const res = await fetch(url, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
 
     if (!res.ok) {
-      return {
-        error: "Blog not found",
-        data: null,
-      };
+      return { data: null, error: "Blog not found" };
     }
 
-    return { data };
+    const data = (await res.json()) as BlogWithSimilarArticles;
+    return { data, error: null };
   } catch (error) {
-    console.error("Error fetching blog detail:", error);
-    return { error: "Failed to fetch blog detail", data: null };
+    console.error("❌ Error fetching blog detail:", error);
+    return { data: null, error };
   }
 }

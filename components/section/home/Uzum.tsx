@@ -1,6 +1,5 @@
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import React from "react";
 
 const Uzum = () => {
   const t = useTranslations("home");
