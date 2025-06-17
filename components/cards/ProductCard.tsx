@@ -52,6 +52,7 @@ const ProductCard = ({
           width={300}
           height={300}
           className="w-full aspect-square rounded-[1.5rem]"
+          loading="lazy"
         />
 
         <div className="flex-1 flex flex-col gap-1">

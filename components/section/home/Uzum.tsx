@@ -1,9 +1,9 @@
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
-const Uzum = () => {
-  const t = useTranslations("home");
-  const locale = useLocale();
+const Uzum = async () => {
+  const t = await getTranslations("home");
+  const locale = await getLocale();
   return (
     <a
       href={`https://uzum.uz/${locale}/shop/planbaby`}

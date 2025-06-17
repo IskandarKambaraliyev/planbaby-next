@@ -20,6 +20,7 @@ const VideoArticleCard = ({ item }: Props) => {
         sizes="(max-width: 768px) 18rem, (min-width: 769px) 24rem"
         className="size-full object-cover  group-hover:scale-105 transition duration-300 ease-in-out"
         quality={100}
+        loading="lazy"
       />
 
       <div className="absolute inset-center w-12 md:w-20 aspect-square bg-dark-blue-400 rounded-full backdrop-blur-[0.625rem] opacity-0 transition-opacity duration-300 ease-in-out flex-center group-hover:opacity-100">

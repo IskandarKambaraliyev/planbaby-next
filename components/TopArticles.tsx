@@ -59,6 +59,7 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
           width={300}
           height={200}
           className="size-full object-cover group-hover:scale-105 transition ease-in-out"
+          loading="lazy"
         />
 
         <div className="absolute inset-0 bg-gradient-to-b from-transparent from-40% to-black/60" />

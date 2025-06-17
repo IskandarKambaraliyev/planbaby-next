@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/custom";
 import {
@@ -8,8 +8,8 @@ import {
   PreparationIcon,
 } from "@/components/icons";
 
-const Categories = () => {
-  const t = useTranslations("home.categories");
+const Categories = async () => {
+  const t = await getTranslations("home.categories");
 
   const categories = [
     {
