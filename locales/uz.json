@@ -2,7 +2,7 @@
   "hello": "Salom",
   "about": "Biz haqimizda",
   "metadata": {
-    "keywords": "plan baby, sogʻlom homiladorlik, homiladorlikni rejalashtirish uchun maslahatlar,  homiladorlik uchun maslahatlar, sogʻlom bolalar uchun maslahatlar, chaqaloqlarni oziqlantirish, chaqaloqlarni parvarish qilish, chaqaloqlarni tarbiyalash, chaqaloqlarni parvarish qilish bo'yicha maslahatlar, chaqaloqlarni tarbiyalash bo'yicha maslahatlar",
+    "keywords": "plan baby, sogʻlom homiladorlik, homiladorlikni rejalashtirish uchun maslahatlar,  homiladorlik uchun maslahatlar, sogʻlom bolalar uchun maslahatlar, chaqaloqlarni oziqlantirish, chaqaloqlarni parvarish qilish, chaqaloqlarni tarbiyalash, chaqaloqlarni parvarish qilish bo‘yicha maslahatlar, chaqaloqlarni tarbiyalash bo‘yicha maslahatlar",
     "home": {
       "title": "PlanBaby | Sogʻlom homiladorlik uchun birinchi qadam!",
       "description": "Sogʻlom homiladorlik uchun birinchi qadam!"
@@ -31,7 +31,7 @@
     "about": "Biz haqimizda",
     "blog": "Blog",
     "contact": "Kontaktlar",
-    "store": "Do'kon",
+    "store": "Do‘kon",
     "cart": "Savat",
     "search": "Qidirish",
     "phone": "{number} telefon raqami"
@@ -68,13 +68,13 @@
     "invalid_phone": "Raqam +998901234567 shaklida boʻlishi kerak",
     "btn": "Yuborish",
     "privacy": "Ushbu formani yuborish orqali siz {link}ga rozilik bergan boʻlasiz",
-    "link": "ma'lumotlarni qayta ishlash siyosati",
+    "link": "ma‘lumotlarni qayta ishlash siyosati",
     "call_text": "Yoki bizga qoʻngʻiroq qiling",
     "submitting": "Yuborilmoqda...",
     "error": {
       "title": "Xatolik yuz berdi",
-      "description": "Iltimos, kiritilgan ma'lumotlarni tekshirib, qayta urinib ko'ring.",
-      "btn": "Qayta urinib ko'rish"
+      "description": "Iltimos, kiritilgan ma‘lumotlarni tekshirib, qayta urinib ko‘ring.",
+      "btn": "Qayta urinib ko‘rish"
     },
     "success": {
       "title": "Ariza yuborganingiz uchun rahmat!",
@@ -108,22 +108,22 @@
     "categories": {
       "preparation": {
         "title": "Toʻydan oldingi tayyorgarlik",
-        "description": "Ushbu turkumdagi maqolalar endigina turmushga chiqmoqchi bo'lgan va hayotdagi ushbu muhim qadamga tayyor bo'lishni istaganlar uchun mo'ljallangan. Bu yerda siz sog‘lom va barkamol oilani yaratish bo‘yicha maslahatlar, munosabatlarning muhim jihatlarini muhokama qilish, turmush qurishga qanday tayyorgarlik ko‘rish bo‘yicha amaliy maslahatlar topasiz.",
+        "description": "Ushbu turkumdagi maqolalar endigina turmushga chiqmoqchi bo‘lgan va hayotdagi ushbu muhim qadamga tayyor bo‘lishni istaganlar uchun mo‘ljallangan. Bu yerda siz sog‘lom va barkamol oilani yaratish bo‘yicha maslahatlar, munosabatlarning muhim jihatlarini muhokama qilish, turmush qurishga qanday tayyorgarlik ko‘rish bo‘yicha amaliy maslahatlar topasiz.",
         "btn": "Mavzuga oid"
       },
       "planning": {
         "title": "Rejalashtirish",
-        "description": "Ushbu turkumda biz homiladorlikni rejalashtirish bilan bog'liq hamma narsani muhokama qilamiz. Bu erda siz homilador bo'lish imkoniyatini qanday oshirish, kelajakdagi chaqalog'ingizga qanday tayyorgarlik ko'rish va oilani rejalashtirishni boshlashdan oldin qanday qadamlar qo'yish kerakligi haqida foydali maslahatlar topasiz.",
+        "description": "Ushbu turkumda biz homiladorlikni rejalashtirish bilan bog‘liq hamma narsani muhokama qilamiz. Bu erda siz homilador bo‘lish imkoniyatini qanday oshirish, kelajakdagi chaqalog‘ingizga qanday tayyorgarlik ko‘rish va oilani rejalashtirishni boshlashdan oldin qanday qadamlar qo‘yish kerakligi haqida foydali maslahatlar topasiz.",
         "btn": "Mavzuga oid"
       },
       "pregnancy": {
         "title": "Homiladorlik",
-        "description": "Ushbu turkumda biz homiladorlikning barcha jihatlarini ko'rib chiqamiz, dastlabki belgilar va alomatlardan tortib, bachadonda bola rivojlanishining muhim bosqichlarigacha. Bu erda siz homiladorlik davrida sog'lom turmush tarzi haqida ma'lumot, homiladorlik va tug'ish bo'yicha maslahatlar, shuningdek, bo'lajak onalar uchun keng tarqalgan savollarga javoblarni topasiz.",
+        "description": "Ushbu turkumda biz homiladorlikning barcha jihatlarini ko‘rib chiqamiz, dastlabki belgilar va alomatlardan tortib, bachadonda bola rivojlanishining muhim bosqichlarigacha. Bu erda siz homiladorlik davrida sog‘lom turmush tarzi haqida ma‘lumot, homiladorlik va tug‘ish bo‘yicha maslahatlar, shuningdek, bo‘lajak onalar uchun keng tarqalgan savollarga javoblarni topasiz.",
         "btn": "Mavzuga oid"
       },
       "nutrition": {
         "title": "Ovqatlantirish",
-        "description": "Ushbu turkum chaqaloqni oziqlantirishning barcha jihatlarini qamrab oladi - oziqlantirish usulini tanlashdan tortib, qattiq oziq-ovqatlarni kiritish va chaqalog'ingiz uchun to'g'ri oziq-ovqatlarni tanlashga oid savollargacha. Bu erda siz emizish, shishadan oziqlantirish bo'yicha maslahatlar, shuningdek, bir yildan keyin bolani boqish haqida ma'lumot topasiz.",
+        "description": "Ushbu turkum chaqaloqni oziqlantirishning barcha jihatlarini qamrab oladi - oziqlantirish usulini tanlashdan tortib, qattiq oziq-ovqatlarni kiritish va chaqalog‘ingiz uchun to‘g‘ri oziq-ovqatlarni tanlashga oid savollargacha. Bu erda siz emizish, shishadan oziqlantirish bo‘yicha maslahatlar, shuningdek, bir yildan keyin bolani boqish haqida ma‘lumot topasiz.",
         "btn": "Mavzuga oid"
       }
     },
@@ -140,10 +140,15 @@
   },
   "errorPage": {
     "title": "Sahifa topilmadi",
-    "description": "Siz tashrif buyurgan sahifa mavjud emas yoki o'chirilgan.",
+    "description": "Siz tashrif buyurgan sahifa mavjud emas yoki o‘chirilgan.",
     "btn": "Bosh sahifaga qaytish"
   },
+  "cartPage": {
+    "title": "Sizning savatingiz",
+    "currencyItem": "{price} so‘m / dona",
+    "total": "Umumiy: ({count} ta dorilar)"
+  },
   "a11y": {
-    "goHome": "Bosh sahifaga o'tish"
+    "goHome": "Bosh sahifaga o‘tish"
   }
 }

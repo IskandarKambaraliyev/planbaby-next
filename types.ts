@@ -66,6 +66,7 @@ export type CartProduct = {
   image: string;
   count: number;
   total_price: string;
+  total_old_price: string;
 };
 
 // Sliders

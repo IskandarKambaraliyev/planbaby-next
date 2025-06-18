@@ -11,7 +11,7 @@ const Uzum = async () => {
       rel="noopener noreferrer"
       className="relative container flex gap-10 rounded-3xl bg-uzum-violet text-white max-lg:flex-col items-center max-lg:p-8 max-lg:pb-0 max-md:p-5 max-md:pb-0"
     >
-      <h3 className="text-lg md:text-3xl font-bold max-lg:text-center lg:p-10">
+      <h3 className="text-lg md:text-3xl font-bold max-lg:text-center lg:p-10 lg:pr-0">
         {t("uzum")}
       </h3>
 
@@ -30,7 +30,7 @@ const Uzum = async () => {
         alt="Uzum market"
         width={486}
         height={244}
-        className="absolute bottom-0 h-[130%] w-auto max-w-[40%] object-contain object-bottom lg:rounded-br-3xl max-lg:hidden max-lg:left-1/2 max-lg:-translate-x-1/2 lg:right-0"
+        className="absolute bottom-0 h-[130%] lg:h-[115%] w-auto max-lg:max-w-[40%] object-contain object-bottom lg:rounded-br-3xl max-lg:hidden max-lg:left-1/2 max-lg:-translate-x-1/2 lg:right-0"
         loading="lazy"
       />
     </a>
