@@ -75,7 +75,7 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
           "relative py-4 md:absolute md:p-3": !isFirst,
         })}
       >
-        <h5
+        <h3
           className={cn("text-lg font-bold line-clamp-2", {
             "md:text-3xl text-white": isFirst,
             "text-foreground md:text-white group-hover:max-md:text-blue-main transition":
@@ -83,7 +83,7 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
           })}
         >
           {item.title}
-        </h5>
+        </h3>
 
         {!isFirst && (
           <CategoryBadge

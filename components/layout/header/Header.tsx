@@ -109,6 +109,7 @@ const Header = ({ className }: PropsWithClassName) => {
                         pathname !== link.href,
                     })}
                     aria-current={pathname === link.href ? "page" : undefined}
+                    aria-label={link.label}
                   >
                     {link.label}
                   </Link>

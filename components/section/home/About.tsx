@@ -7,9 +7,9 @@ const About = async () => {
   return (
     <div className="container bg-blue-main rounded-3xl p-5 md:p-10 !pb-0 md:!pr-0 flex max-md:flex-col">
       <div className="flex-1 max-md:text-center text-white pb-5 md:pb-10">
-        <h3 className="text-[2rem] leading-[2.5rem] md:text-[2.25rem] md:leading-[2.625rem] font-bold">
+        <h2 className="text-[2rem] leading-[2.5rem] md:text-[2.25rem] md:leading-[2.625rem] font-bold">
           {t("title")}
-        </h3>
+        </h2>
 
         <p
           dangerouslySetInnerHTML={{

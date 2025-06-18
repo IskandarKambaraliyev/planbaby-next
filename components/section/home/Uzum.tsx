@@ -11,9 +11,9 @@ const Uzum = async () => {
       rel="noopener noreferrer"
       className="relative container flex gap-10 rounded-3xl bg-uzum-violet text-white max-lg:flex-col items-center max-lg:p-8 max-lg:pb-0 max-md:p-5 max-md:pb-0"
     >
-      <span className="text-lg md:text-3xl font-bold max-lg:text-center lg:p-10">
+      <h3 className="text-lg md:text-3xl font-bold max-lg:text-center lg:p-10">
         {t("uzum")}
-      </span>
+      </h3>
 
       <img
         src={proxyImage("/uzum.png")}

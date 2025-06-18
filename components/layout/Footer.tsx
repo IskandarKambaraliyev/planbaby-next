@@ -114,7 +114,7 @@ const Footer = async ({ className }: PropsWithClassName) => {
     >
       <div className="container flex max-lg:flex-col gap-y-8 gap-x-16">
         <div className="flex flex-col gap-4">
-          <Link href="/">
+          <Link href="/" aria-label={t("a11y.goHome")}>
             <Logo color="white" />
           </Link>
 
@@ -134,6 +134,7 @@ const Footer = async ({ className }: PropsWithClassName) => {
                       href={item.href}
                       className="flex gap-2 items-center"
                       target={item.href.startsWith("/") ? undefined : "_blank"}
+                      aria-label={item.label}
                     >
                       {item.icon && (
                         <item.icon className="text-pink-main size-5" />
@@ -187,6 +188,7 @@ const SocialLinks = ({ className }: PropsWithClassName) => {
           key={index}
           color="white-transparent"
           size="md"
+          aria-label={"Social link"}
         >
           <item.icon className="size-5 text-white" />
         </CircleButton>

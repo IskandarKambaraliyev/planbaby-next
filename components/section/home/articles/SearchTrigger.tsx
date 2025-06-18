@@ -16,12 +16,7 @@ const SearchTrigger = () => {
         startIcon={<SearchIcon />}
         label={t("modal.search.blog")}
         readOnly
-        role="button"
         tabIndex={0}
-        aria-haspopup="dialog"
-        aria-controls="products-modal"
-        aria-label={t("modal.search.blog")}
-        onClick={() => openModal("products")}
       />
 
       <button

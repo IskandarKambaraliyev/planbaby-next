@@ -20,8 +20,11 @@ const Store = async ({ data }: Props) => {
 
         <SearchTrigger />
       </div>
-      
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-4">
+
+      <div
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-4"
+        role="list"
+      >
         {data.map((item) => (
           <ProductCard key={item.id} item={item} />
         ))}

@@ -65,7 +65,7 @@ const ProductCard = ({
         />
 
         <div className="flex-1 flex flex-col gap-1">
-          <h4
+          <h3
             className={cn(
               "line-clamp-1 font-bold transition group-hover/card:text-blue-main",
               {
@@ -75,7 +75,7 @@ const ProductCard = ({
             )}
           >
             {name}
-          </h4>
+          </h3>
 
           <div
             className={cn("line-clamp-2", {
@@ -132,7 +132,8 @@ const ProductCard = ({
             "-translate-x-[calc(100%+1rem)]": isInCart,
             "translate-x-0": !isInCart,
           })}
-          aria-hidden={isInCart}
+          inert={isInCart ? true : undefined}
+          aria-live="polite"
         >
           <Button
             className={cn("w-full", {
@@ -167,7 +168,7 @@ const ProductCard = ({
               "translate-x-[calc(100%+1rem)]": !isInCart,
             }
           )}
-          aria-hidden={!isInCart}
+          inert={!isInCart ? true : undefined}
           aria-live="polite"
           role="region"
           aria-label={`${name} quantity controls`}
