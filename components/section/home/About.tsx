@@ -1,7 +1,6 @@
-import Image from "next/image";
-
 import { Button } from "@/components/custom";
 import { getTranslations } from "next-intl/server";
+import { proxyImage } from "@/lib/proxyImage";
 
 const About = async () => {
   const t = await getTranslations("home.about");
@@ -24,8 +23,8 @@ const About = async () => {
         </Button>
       </div>
       <div className="w-full md:w-3/5 flex items-end md:-ml-12">
-        <Image
-          src="/about-image-min.svg"
+        <img
+          src={proxyImage("/about-image-min.svg")}
           alt="About Image"
           width={706}
           height={386}

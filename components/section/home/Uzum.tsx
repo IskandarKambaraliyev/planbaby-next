@@ -1,5 +1,5 @@
+import { proxyImage } from "@/lib/proxyImage";
 import { getLocale, getTranslations } from "next-intl/server";
-import Image from "next/image";
 
 const Uzum = async () => {
   const t = await getTranslations("home");
@@ -15,8 +15,8 @@ const Uzum = async () => {
         {t("uzum")}
       </span>
 
-      <Image
-        src="/uzum.png"
+      <img
+        src={proxyImage("/uzum.png")}
         alt="Uzum market"
         width={806}
         height={374}
@@ -25,8 +25,8 @@ const Uzum = async () => {
         loading="lazy"
       />
 
-      <Image
-        src="/uzum.png"
+      <img
+        src={proxyImage("/uzum.png")}
         alt="Uzum market"
         width={486}
         height={244}

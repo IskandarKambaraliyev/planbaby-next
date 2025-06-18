@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 import { AnimatedNumber } from "@/components/ui/animated-number";
 import { HappyFamilyTextIcon } from "@/components/icons";
+import { proxyImage } from "@/lib/proxyImage";
 
 const images = [
   "/hero/family-img-1.png",
@@ -67,7 +68,7 @@ const HeroAnimation = ({ count }: Props) => {
                 initial={{ opacity: 0, x: index + 1 * 16 }}
                 animate={{ opacity: 1, x: index * -20 }}
                 transition={{ duration: 0.35, delay: index * 0.25 }}
-                src={image}
+                src={proxyImage(image)}
                 alt={`hero-image-${index}`}
                 width={64}
                 height={64}

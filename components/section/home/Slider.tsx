@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState, useRef } from "react";
@@ -11,6 +10,7 @@ import { LeftIcon, RightIcon } from "@/components/icons";
 
 import type { Swiper as SwiperClass } from "swiper/types";
 import type { Slider as SliderType } from "@/types";
+import { proxyImage } from "@/lib/proxyImage";
 
 type Props = { data: SliderType[] };
 
@@ -47,7 +47,7 @@ const Slider = ({ data }: Props) => {
           <SwiperSlide key={`${item.id}-${index}`}>
             <a href={item.link} className="w-full">
               <img
-                src={`/api/proxy/icon?url=${item.image_large}`}
+                src={proxyImage(item.image_large)}
                 alt={`Slider-${index}`}
                 width={1261}
                 height={388}
@@ -55,7 +55,7 @@ const Slider = ({ data }: Props) => {
                 loading="lazy"
               />
               <img
-                src={`/api/proxy/icon?url=${item.image_medium}`}
+                src={proxyImage(item.image_medium)}
                 alt={`Slider-${index}`}
                 width={728}
                 height={310}

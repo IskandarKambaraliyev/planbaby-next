@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { AnimatePresence } from "motion/react";
@@ -9,6 +8,7 @@ import { Pagination } from "swiper/modules";
 import { useRegionStore } from "@/stores/region";
 
 import type { FeedbackApi, Story } from "@/types";
+import { proxyImage } from "@/lib/proxyImage";
 
 type StorySliderProps = {
   data: FeedbackApi;
@@ -47,7 +47,7 @@ const StorySlider = ({ data }: StorySliderProps) => {
                 >
                   <div className="relative size-full rounded-full overflow-hidden">
                     <img
-                      src={`/api/proxy/icon?url=${item.thumbnail}`}
+                      src={proxyImage(item.thumbnail)}
                       alt={`Story image - ${item.id}`}
                       width={160}
                       height={160}

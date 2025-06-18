@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Link } from "@/i18n/navigation";
+import { proxyImage } from "@/lib/proxyImage";
 import { Blog } from "@/types";
 
 type Props = {
@@ -14,7 +14,7 @@ const VideoArticleCard = ({ item }: Props) => {
       className="relative block group size-full rounded-2xl md:rounded-3xl overflow-hidden"
     >
       <img
-        src={`/api/proxy/icon?url=${item.image_large}`}
+        src={proxyImage(item.image_large)}
         alt={`Blog image for - ${item.title}`}
         width={192}
         height={342}

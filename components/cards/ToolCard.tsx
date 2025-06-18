@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import { proxyImage } from "@/lib/proxyImage";
 import type { ToolChild } from "@/types";
 
 type Props = {
@@ -14,7 +14,7 @@ const ToolCard = ({ item }: Props) => {
         {item.name}
       </h6>
       <img
-        src={`/api/proxy/icon?url=${encodeURIComponent(item.icon)}`}
+        src={proxyImage(item.icon)}
         width={64}
         height={64}
         alt={`Tool icon - ${item.name}`}

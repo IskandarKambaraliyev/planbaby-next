@@ -96,6 +96,7 @@ const RegionSelect = ({ color = "white", className }: Props) => {
       onValueChange={(value) => setRegion(value as Region["key"])}
       defaultValue={region}
       value={region}
+      aria-label={t("select")}
     >
       <SelectTrigger
         className={cn(
@@ -109,6 +110,8 @@ const RegionSelect = ({ color = "white", className }: Props) => {
           },
           className
         )}
+        aria-haspopup="listbox"
+        aria-expanded={open}
       >
         <LocationIcon
           className={cn("shrink-0 size-6 transition", {
@@ -141,6 +144,7 @@ const RegionSelect = ({ color = "white", className }: Props) => {
             className={cn("rounded-full py-2 px-4", {
               "!text-blue-main !bg-blue-200": region === item.key,
             })}
+            aria-selected={region === item.key}
           >
             {item.label}
           </SelectItem>

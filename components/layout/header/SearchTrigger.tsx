@@ -12,7 +12,11 @@ const SearchTrigger = () => {
 
   const openModal = useModalStore((state) => state.openModal);
   return (
-    <CircleButton onClick={() => openModal("both")} aria-label={t("search")}>
+    <CircleButton
+      onClick={() => openModal("both")}
+      aria-label={t("search")}
+      title={t("search")}
+    >
       <SearchIcon />
     </CircleButton>
   );

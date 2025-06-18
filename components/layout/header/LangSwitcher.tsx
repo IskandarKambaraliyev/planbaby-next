@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useLocale } from "next-intl";
 // eslint-disable-next-line no-restricted-imports
@@ -24,6 +24,7 @@ const LangSwitcher = ({ className }: PropsWithClassName) => {
     <CircleButton
       className={cn("", className)}
       onClick={handleChangeLocale}
+      title={`Switch language to ${locale === "uz" ? "Russian" : "Uzbek"}`}
       aria-label={`Switch language to ${locale === "uz" ? "Russian" : "Uzbek"}`}
     >
       {locale === "uz" ? "Ru" : "Uz"}

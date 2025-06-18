@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -13,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { formatPrice } from "@/utility/formatPrice";
 
 import type { PropsWithClassName, RawProduct } from "@/types";
+import { proxyImage } from "@/lib/proxyImage";
 
 type Props = {
   item: RawProduct;
@@ -46,16 +46,22 @@ const ProductCard = ({
         "group/card relative overflow-hidden rounded-3xl sm:rounded-4xl transition hover:shadow-400",
         className
       )}
+      role="listitem"
     >
       {/* Product Info Section */}
-      <Link href={`/products/${id}`} className="flex-1 p-2 flex flex-col gap-2">
+      <Link
+        href={`/products/${id}`}
+        className="flex-1 p-2 flex flex-col gap-2"
+        aria-label={`${name}, ${formatPrice(finalPrice)} ${t("currency")}`}
+      >
         <img
-          src={`/api/proxy/icon?url=${image}`}
+          src={proxyImage(image)}
           alt={name}
           width={300}
           height={300}
           className="w-full aspect-square rounded-[1.5rem]"
           loading="lazy"
+          aria-label={name}
         />
 
         <div className="flex-1 flex flex-col gap-1">
@@ -126,6 +132,7 @@ const ProductCard = ({
             "-translate-x-[calc(100%+1rem)]": isInCart,
             "translate-x-0": !isInCart,
           })}
+          aria-hidden={isInCart}
         >
           <Button
             className={cn("w-full", {
@@ -139,6 +146,7 @@ const ProductCard = ({
               e.stopPropagation();
               addProduct(item);
             }}
+            aria-label={`${t("addCart")} ${name}`}
           >
             <CartPlusIcon
               className={cn("shrink-0 ", {
@@ -159,6 +167,10 @@ const ProductCard = ({
               "translate-x-[calc(100%+1rem)]": !isInCart,
             }
           )}
+          aria-hidden={!isInCart}
+          aria-live="polite"
+          role="region"
+          aria-label={`${name} quantity controls`}
         >
           <div className="flex">
             <button
@@ -172,6 +184,7 @@ const ProductCard = ({
                   "h-10 [&_svg]:size-6": !responsive,
                 }
               )}
+              aria-label={`${t("removeOneFromCart")} ${name}`}
             >
               <MinusIcon />
             </button>
@@ -181,6 +194,9 @@ const ProductCard = ({
                 "h-8 text-sm sm:h-10 sm:text-base lg:h-14": responsive,
                 "h-10 text-sm": !responsive,
               })}
+              role="status"
+              aria-live="polite"
+              aria-label={`${t("quantity")}: ${productSummary?.count}`}
             >
               {productSummary?.count}
             </div>
@@ -196,6 +212,7 @@ const ProductCard = ({
                   "h-10 [&_svg]:size-6": !responsive,
                 }
               )}
+              aria-label={`${t("addOneToCart")} ${name}`}
             >
               <PlusIcon />
             </button>
@@ -208,6 +225,7 @@ const ProductCard = ({
                 responsive,
               "size-10 [&_svg]:size-6": !responsive,
             })}
+            aria-label={`${t("removeAllFromCart")} ${name}`}
           >
             <DeleteIcon />
           </CircleButton>

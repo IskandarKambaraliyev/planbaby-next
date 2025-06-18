@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import {
   Products,
   ShareBlog,
@@ -12,6 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 
 import type { BlogWithSimilarArticles, PropsWithClassName } from "@/types";
+import { proxyImage } from "@/lib/proxyImage";
 
 type Props = {
   data: BlogWithSimilarArticles;
@@ -37,19 +36,19 @@ const Article = ({ data, className }: Props) => {
         />
 
         <div className="relative w-full aspect-[3/2] md:aspect-[2/1] rounded-3xl overflow-hidden select-none mt-4 border border-dark-blue-200">
-          <Image
-            src={data.image_large}
+          <img
+            src={proxyImage(data.image_large)}
             alt={`Banner image for - ${data.title}`}
-            fill
-            className="inset-0 size-full object-cover"
+            className="absolute inset-0 size-full object-cover"
           />
           <div className="absolute inset-0 backdrop-blur-lg" />
-          <Image
-            src={data.image_large}
+          <img
+            src={proxyImage(data.image_large)}
             alt={`Blog image`}
             width={1040}
             height={693}
             className="relative w-full h-full object-contain"
+            loading="eager"
           />
         </div>
 

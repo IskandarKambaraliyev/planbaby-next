@@ -35,7 +35,7 @@ const SearchTrigger = dynamic(() => import("./SearchTrigger"), {
 });
 
 const Header = ({ className }: PropsWithClassName) => {
-  const t = useTranslations("nav");
+  const t = useTranslations();
   const pathname = usePathname();
 
   const [isScrolled, setIsScrolled] = useState(true);
@@ -60,23 +60,23 @@ const Header = ({ className }: PropsWithClassName) => {
   const navLinks = [
     {
       href: "/",
-      label: t("home"),
+      label: t("nav.home"),
     },
     {
       href: "/about",
-      label: t("about"),
+      label: t("nav.about"),
     },
     {
       href: "/blog",
-      label: t("blog"),
+      label: t("nav.blog"),
     },
     {
       href: "/contact",
-      label: t("contact"),
+      label: t("nav.contact"),
     },
     {
       href: "/store",
-      label: t("store"),
+      label: t("nav.store"),
     },
   ];
   return (
@@ -92,7 +92,7 @@ const Header = ({ className }: PropsWithClassName) => {
     >
       <div className="container flex items-center justify-between gap-4">
         <div className="flex items-center gap-8">
-          <Link href="/">
+          <Link href="/" aria-label={t("a11y.goHome")}>
             <Logo />
           </Link>
 
@@ -124,7 +124,7 @@ const Header = ({ className }: PropsWithClassName) => {
           <CircleButton
             href="/cart"
             className="max-lg:!hidden"
-            aria-label={t("cart")}
+            aria-label={t("nav.cart")}
           >
             <CartCounter />
           </CircleButton>
@@ -139,7 +139,7 @@ const Header = ({ className }: PropsWithClassName) => {
             outlined
             className="max-md:!hidden"
             data-testid="call-link"
-            aria-label={t("phone", {
+            aria-label={t("nav.phone", {
               number: "+998 71 200-08-07",
             })}
           >

@@ -13,6 +13,11 @@ type Props = PropsWithChildren &
     color?: "transparent" | "white" | "white-transparent";
     target?: "_blank" | "_self" | "_parent" | "_top";
     onClick?: () => void;
+    title?: string;
+    ariaLabel?: string;
+    ariaPressed?: boolean;
+    ariaExpanded?: boolean;
+    ariaControls?: string;
   };
 
 const CircleButton = ({
@@ -26,6 +31,11 @@ const CircleButton = ({
   color = "transparent",
   target,
   onClick,
+  title,
+  ariaLabel,
+  ariaPressed,
+  ariaExpanded,
+  ariaControls,
 }: Props) => {
   const classes = cn(
     "rounded-full border border-dark-blue-200 text-foreground transition overflow-hidden flex-center",
@@ -39,7 +49,8 @@ const CircleButton = ({
       "bg-transparent hover:bg-dark-blue-100 active:bg-dark-blue-200":
         color === "transparent",
       "bg-white hover:bg-[#F0F0F4] active:bg-[#E0E1E9]": color === "white",
-      "bg-transparent hover:bg-white-100 border-white-200": color === "white-transparent",
+      "bg-transparent hover:bg-white-100 border-white-200":
+        color === "white-transparent",
     },
     className
   );
@@ -51,6 +62,11 @@ const CircleButton = ({
         onClick={onClick}
         className={`${classes}`}
         target={target}
+        aria-label={ariaLabel}
+        aria-pressed={ariaPressed}
+        aria-expanded={ariaExpanded}
+        aria-controls={ariaControls}
+        title={title}
       >
         {children}
       </Link>
@@ -63,6 +79,11 @@ const CircleButton = ({
       disabled={disabled}
       onClick={onClick}
       className={`${classes}`}
+      aria-label={ariaLabel}
+      aria-pressed={ariaPressed}
+      aria-expanded={ariaExpanded}
+      aria-controls={ariaControls}
+      title={title}
     >
       {children}
     </button>

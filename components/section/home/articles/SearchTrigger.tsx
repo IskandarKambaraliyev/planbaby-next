@@ -15,13 +15,20 @@ const SearchTrigger = () => {
         color="white"
         startIcon={<SearchIcon />}
         label={t("modal.search.blog")}
-        className=""
+        readOnly
+        role="button"
+        tabIndex={0}
+        aria-haspopup="dialog"
+        aria-controls="products-modal"
+        aria-label={t("modal.search.blog")}
+        onClick={() => openModal("products")}
       />
 
       <button
         type="button"
         className="absolute inset-0 rounded-full"
         onClick={() => openModal("blogs")}
+        aria-label={t("modal.search.blog")}
       />
     </div>
   );

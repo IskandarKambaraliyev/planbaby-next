@@ -86,6 +86,10 @@
   "videoArticles": "Video maqolalar",
   "currency": "soʻm",
   "addCart": "Savatchaga qoʻshish",
+  "removeOneFromCart": "Savatchadan bitta mahsulot olib tashlash",
+  "removeAllFromCart": "Savatchadan barcha mahsulotlarni olib tashlash",
+  "addOneToCart": "Savatchaga bitta mahsulot qoʻshish",
+  "quantity": "Miqdor",
   "calculator": "Ovulyatsiya kalkulyatori",
   "spermogram": "Spermogramma tasnifi",
   "names": "Bolalar uchun ismlar",
@@ -138,5 +142,8 @@
     "title": "Sahifa topilmadi",
     "description": "Siz tashrif buyurgan sahifa mavjud emas yoki o'chirilgan.",
     "btn": "Bosh sahifaga qaytish"
+  },
+  "a11y": {
+    "goHome": "Bosh sahifaga o'tish"
   }
 }

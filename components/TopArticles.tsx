@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 import { Link } from "@/i18n/navigation";
 
 import useSeparateCategories from "@/hooks/useSeparateCategories";
 import { cn } from "@/lib/utils";
 
 import type { Blog, PropsWithClassName } from "@/types";
+import { proxyImage } from "@/lib/proxyImage";
 
 type Props = {
   data: Blog[];
@@ -54,7 +54,7 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
         })}
       >
         <img
-          src={`/api/proxy/icon?url=${item.image_large}`}
+          src={proxyImage(item.image_large)}
           alt={`Blog image of - ${item.title}`}
           width={300}
           height={200}

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { YouTubeEmbed } from "@next/third-parties/google";
 
 import {
@@ -15,6 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 import getYoutubeVideoId from "@/utility/getYoutubeVideoId";
 import type { BlogWithSimilarArticles, PropsWithClassName } from "@/types";
+import { proxyImage } from "@/lib/proxyImage";
 
 type Props = {
   data: BlogWithSimilarArticles;
@@ -24,12 +24,11 @@ const VideoArticle = ({ data, className }: Props) => {
   return (
     <article className={cn("relative py-8", className)}>
       <div className="absolute -z-1 top-0 left-0 w-full h-[14.375rem] sm:h-[18.75rem] md:h-[25rem] lg:h-[31.25rem]">
-        <Image
-          src={data.image_large}
+        <img
+          src={proxyImage(data.image_large)}
           alt={`Banner image for ${data.title}`}
-          fill
           className="w-full  object-cover select-none"
-          priority
+          loading="eager"
         />
         <div className="absolute inset-0 bg-dark-blue-400 backdrop-blur-sm" />
       </div>
