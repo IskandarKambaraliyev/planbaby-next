@@ -112,6 +112,10 @@ const RegionSelect = ({ color = "white", className }: Props) => {
         )}
         aria-haspopup="listbox"
         aria-expanded={open}
+        aria-labelledby="region-select-label"
+        aria-activedescendant={region}
+        id="region-select-trigger"
+        role="combobox"
       >
         <LocationIcon
           className={cn("shrink-0 size-6 transition", {
@@ -121,7 +125,10 @@ const RegionSelect = ({ color = "white", className }: Props) => {
         />
 
         <div className="flex-1 flex flex-col text-left">
-          <span className="text-xs text-blue-main line-clamp-1">
+          <span
+            className="text-xs text-blue-main line-clamp-1"
+            id="region-select-label"
+          >
             {t("select")}
           </span>
           <span className="text-sm text-foreground line-clamp-1">

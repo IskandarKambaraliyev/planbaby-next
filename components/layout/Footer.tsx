@@ -161,34 +161,39 @@ const SocialLinks = ({ className }: PropsWithClassName) => {
     {
       icon: InstagramIcon,
       href: "https://www.instagram.com/planbaby_uz/",
+      key: "Instagram",
     },
     {
       icon: YouTubeIcon,
       href: "https://www.youtube.com/@planbabyuz",
+      key: "YouTube",
     },
     {
       icon: FacebookIcon,
       href: "https://www.facebook.com/PlanBabyUz/",
+      key: "Facebook",
     },
     {
       icon: TwitterIcon,
       href: "https://twitter.com/",
+      key: "Twitter",
     },
     {
       icon: TelegramIcon,
       href: "https://t.me/planbaby_doraline_bot",
+      key: "Telegram",
     },
   ];
   return (
     <div className={cn("flex gap-4 items-center", className)}>
-      {socials.map((item, index) => (
+      {socials.map((item) => (
         <CircleButton
           href={item.href}
           target="_blank"
-          key={index}
+          key={item.key}
           color="white-transparent"
           size="md"
-          aria-label={"Social link"}
+          aria-label={`Follow us on ${item.key}`}
         >
           <item.icon className="size-5 text-white" />
         </CircleButton>

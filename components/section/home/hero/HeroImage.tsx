@@ -12,7 +12,6 @@ const HeroImage = ({ className }: PropsWithClassName) => {
       width={500}
       height={437}
       loading="eager"
-      decoding="async"
       fetchPriority="high"
     />
   );

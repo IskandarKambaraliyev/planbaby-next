@@ -10,9 +10,9 @@ const ToolCard = ({ item }: Props) => {
       href={item.link}
       className="group relative w-full h-full overflow-hidden p-5 pb-8 rounded-3xl text-center flex flex-col justify-between items-center gap-12 border border-blue-200 transition-all duration-300 ease-out select-none"
     >
-      <h6 className="font-bold text-lg group-hover:text-blue-main">
+      <h3 className="font-bold text-lg group-hover:text-blue-main">
         {item.name}
-      </h6>
+      </h3>
       <img
         src={proxyImage(item.icon)}
         width={64}

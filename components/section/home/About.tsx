@@ -23,14 +23,14 @@ const About = async () => {
         </Button>
       </div>
       <div className="w-full md:w-3/5 flex items-end md:-ml-12">
-        <img
-          src={proxyImage("/about-image-min.svg")}
-          alt="About Image"
-          width={706}
-          height={386}
-          className="w-full h-auto"
-          loading="lazy"
-        />
+        <div className="relative w-full aspect-[706/386]">
+          <img
+            src={proxyImage("/about-image-min.svg")}
+            alt="About Image"
+            className="object-contain rounded-2xl"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   );
