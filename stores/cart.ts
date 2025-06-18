@@ -4,10 +4,12 @@ import type { CartProduct, RawProduct } from "@/types";
 import { formatPrice } from "@/utility/formatPrice";
 
 type CartState = {
+  hydrated: boolean;
   products: CartProduct[];
   all_count: number;
   all_price: string;
   all_oldPrice: string;
+  setHasHydrated: (state: boolean) => void;
   addProduct: (product: RawProduct) => void;
   removeProduct: (productId: number) => void;
   increaseProduct: (productId: number) => void;
@@ -32,10 +34,17 @@ const parsePrice = (value: string | undefined | null): number => {
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
+      hydrated: false,
       products: [],
       all_count: 0,
       all_price: "0",
       all_oldPrice: "0",
+
+      setHasHydrated: (state) => {
+        set({
+          hydrated: state,
+        });
+      },
 
       addProduct: (product: RawProduct) => {
         set((state) => {
@@ -245,6 +254,9 @@ export const useCartStore = create<CartState>()(
     }),
     {
       name: "cart-storage",
+      onRehydrateStorage: (state) => {
+        return () => state.setHasHydrated(true);
+      },
     }
   )
 );
