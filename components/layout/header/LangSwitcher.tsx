@@ -10,13 +10,17 @@ import { usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 import type { PropsWithClassName } from "@/types";
+import { useState } from "react";
+import { Loader2Icon } from "lucide-react";
 
 const LangSwitcher = ({ className }: PropsWithClassName) => {
+  const [loading, setLoading] = useState(false);
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
 
   const handleChangeLocale = () => {
+    setLoading(true);
     const lang = locale === "uz" ? "ru" : "uz";
     router.push(`/${lang}${pathname}`);
   };
@@ -26,8 +30,15 @@ const LangSwitcher = ({ className }: PropsWithClassName) => {
       onClick={handleChangeLocale}
       title={`Switch language to ${locale === "uz" ? "Russian" : "Uzbek"}`}
       aria-label={`Switch language to ${locale === "uz" ? "Russian" : "Uzbek"}`}
+      disabled={loading}
     >
-      {locale === "uz" ? "Ru" : "Uz"}
+      {loading ? (
+        <Loader2Icon className="size-5 animate-spin text-dark-blue-400" />
+      ) : locale === "uz" ? (
+        "Ru"
+      ) : (
+        "Uz"
+      )}
     </CircleButton>
   );
 };
