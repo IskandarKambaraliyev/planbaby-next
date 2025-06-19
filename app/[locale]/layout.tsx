@@ -107,7 +107,7 @@ export default async function LocaleLayout({
       <body className={`${ttFonts.variable}`}>
         <NextIntlClientProvider locale={locale}>
           <Providers>
-            <Loader />
+            {/* <Loader /> */}
             <Header />
             <main className="mt-18 md:mt-22">{children}</main>
             <Footer className="pb-40" />
