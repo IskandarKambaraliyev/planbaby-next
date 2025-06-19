@@ -9,7 +9,7 @@ import SearchTrigger from "./SearchTrigger";
 import ProductCard from "@/components/cards/ProductCard";
 
 import type { RawProduct } from "@/types";
-import StoreSkeleton from "@/components/StoreSkeleton";
+import devLog from "@/utility/devLog";
 
 type Props = {
   data: RawProduct[];
@@ -20,7 +20,6 @@ const BATCH_SIZE = 8;
 const Store = ({ data }: Props) => {
   const t = useTranslations();
   const [visibleCount, setVisibleCount] = useState(BATCH_SIZE);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const { ref, inView } = useInView({
     threshold: 0.5,
@@ -28,17 +27,11 @@ const Store = ({ data }: Props) => {
   });
 
   useEffect(() => {
-    if (inView && !isLoadingMore && visibleCount < data.length) {
-      setIsLoadingMore(true);
-      const nextCount = Math.min(visibleCount + BATCH_SIZE, data.length);
-
-      setTimeout(() => {
-        setVisibleCount(nextCount);
-        setIsLoadingMore(false);
-      }, 300);
-      console.log(`Loading more products: ${nextCount} visible`);
+    if (inView && visibleCount < data.length) {
+      setVisibleCount((prev) => Math.min(prev + BATCH_SIZE, data.length));
+      devLog("Loading more products:", visibleCount + BATCH_SIZE);
     }
-  }, [inView, isLoadingMore, visibleCount, data.length]);
+  }, [inView, visibleCount, data.length]);
 
   const visibleProducts = data.slice(0, visibleCount);
 
@@ -63,8 +56,6 @@ const Store = ({ data }: Props) => {
           />
         ))}
       </div>
-
-      {isLoadingMore && <StoreSkeleton />}
     </div>
   );
 };
