@@ -1,4 +1,4 @@
-import StoredSection from "@/components/section/cart/StoredSection";
+import StoredSection from "@/components/section/cart/Section";
 import StoreSection from "@/components/section/home/store/Section";
 import { Suspense } from "react";
 

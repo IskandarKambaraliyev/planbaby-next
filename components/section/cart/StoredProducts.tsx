@@ -2,12 +2,14 @@
 
 import { useTranslations } from "next-intl";
 
+import { AnimatePresence, motion } from "motion/react";
 import { CircleButton, Title } from "@/components/custom";
 import { DeleteIcon, MinusIcon, PlusIcon } from "@/components/icons";
 
 import { proxyImage } from "@/lib/proxyImage";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/stores/cart";
+import { fadeVariants } from "@/variants";
 
 import type { CartProduct, PropsWithClassName } from "@/types";
 
@@ -20,9 +22,11 @@ const StoredProducts = ({ className }: PropsWithClassName) => {
       <Title>{t("cartPage.title")}</Title>
 
       <div className="flex flex-col divide-y divide-dark-blue-200">
-        {products.map((product) => (
-          <ProductCard key={product.id} item={product} />
-        ))}
+        <AnimatePresence>
+          {products.map((product) => (
+            <ProductCard key={product.id} item={product} />
+          ))}
+        </AnimatePresence>
       </div>
     </div>
   );
@@ -44,7 +48,13 @@ const ProductCard = ({ item }: { item: CartProduct }) => {
   const hasDiscount = product.total_old_price !== product.total_price;
 
   return (
-    <div className="flex items-center gap-2 md:gap-4 py-4">
+    <motion.div
+      variants={fadeVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="flex items-center gap-2 md:gap-4 py-4"
+    >
       {/* Image wrapper */}
       <div className="size-[6rem] md:size-[7rem] rounded-lg overflow-hidden">
         <img
@@ -85,7 +95,9 @@ const ProductCard = ({ item }: { item: CartProduct }) => {
             </button>
 
             <div
-              className={cn("h-10 md:h-12 min-w-10 bg-blue-100 flex-center")}
+              className={cn(
+                "h-10 md:h-12 min-w-10 bg-blue-100 flex-center will-change-contents"
+              )}
               role="status"
               aria-live="polite"
               aria-label={`${t("quantity")}: ${product?.count}`}
@@ -115,16 +127,19 @@ const ProductCard = ({ item }: { item: CartProduct }) => {
         {/* Prices */}
         <div className="flex flex-wrap items-center md:flex-col md:items-end md:min-w-[9rem] gap-x-2">
           <span
-            className={cn("font-bold text-sm md:text-base", {
-              "text-pink-main": hasDiscount,
-              "text-foreground": !hasDiscount,
-            })}
+            className={cn(
+              "font-bold text-sm md:text-base will-change-contents",
+              {
+                "text-pink-main": hasDiscount,
+                "text-foreground": !hasDiscount,
+              }
+            )}
           >
             {product.total_price} {t("currency")}
           </span>
 
           {hasDiscount && (
-            <span className="text-xs md:text-sm text-dark-blue-400 line-through">
+            <span className="text-xs md:text-sm text-dark-blue-400 line-through will-change-contents">
               {product.total_old_price} {t("currency")}
             </span>
           )}
@@ -135,6 +150,6 @@ const ProductCard = ({ item }: { item: CartProduct }) => {
       <CircleButton onClick={() => clearProduct(item.id)}>
         <DeleteIcon />
       </CircleButton>
-    </div>
+    </motion.div>
   );
 };

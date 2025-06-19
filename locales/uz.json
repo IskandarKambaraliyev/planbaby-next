@@ -146,7 +146,10 @@
   "cartPage": {
     "title": "Sizning savatingiz",
     "currencyItem": "{price} so‘m / dona",
-    "total": "Umumiy: ({count} ta dorilar)"
+    "total": "Umumiy: ({count} ta dorilar)",
+    "noItems": "Hozircha savatingizda mahsulotlar yo‘q",
+    "noItemsDescription": "Bosh sahifadagi mahsulotlardan boshlang yoki qidiruv orqali kerakli mahsulotni toping",
+    "goHome": "Bosh sahifaga o‘tish"
   },
   "a11y": {
     "goHome": "Bosh sahifaga o‘tish"

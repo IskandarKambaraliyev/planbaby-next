@@ -33,7 +33,7 @@ const LangSwitcher = ({ className }: PropsWithClassName) => {
       disabled={loading}
     >
       {loading ? (
-        <Loader2Icon className="size-5 animate-spin text-dark-blue-400" />
+        <Loader2Icon className="size-6 animate-spin text-dark-blue-400" />
       ) : locale === "uz" ? (
         "Ru"
       ) : (
