@@ -8,12 +8,13 @@ import VideoArticle from "@/components/section/blog/VideoArticle";
 import htmlToPlainText from "@/utility/htmlToPlainText";
 
 import type { Blog } from "@/types";
+import type { Metadata } from "next";
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ blogId: string; locale: string }>;
-}) {
+}): Promise<Metadata> {
   const { blogId, locale } = await params;
 
   const { data, error } = await getBlogDetail(locale, blogId);

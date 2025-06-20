@@ -10,6 +10,7 @@ import type {
   FeedbackApi,
   ToolChild,
   BlogWithSimilarArticles,
+  SlugApi,
 } from "@/types";
 import type { FetcherOptions } from "@/lib/fetcher";
 
@@ -157,3 +158,24 @@ export async function getBlogDetail(
     return { data: null, error };
   }
 }
+
+// Slug pages
+export const getSlugPage = async (locale: string, slug: string) => {
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/pages/page/${slug}/`;
+  try {
+    const res = await fetch(url, {
+      cache: "force-cache",
+      next: { revalidate: 300 },
+    });
+
+    if (!res.ok) {
+      return { data: null, error: "Slug not found" };
+    }
+
+    const data = (await res.json()) as SlugApi;
+    return { data, error: null };
+  } catch (error) {
+    console.error("❌ Error fetching slug page:", error);
+    return { data: null, error };
+  }
+};

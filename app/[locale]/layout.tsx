@@ -18,6 +18,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import ConsultationModal from "@/components/layout/ConsultationModal";
 
 const ttFonts = localFont({
   src: [
@@ -109,6 +110,7 @@ export default async function LocaleLayout({
           <Providers>
             <Loader />
             <Header />
+            <ConsultationModal />
             <main className="mt-18 md:mt-22">{children}</main>
             <Footer className="pb-40" />
             <Navbar />

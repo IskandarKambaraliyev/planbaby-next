@@ -18,7 +18,7 @@ const About = async () => {
           className="mt-4 mb-8 text-base md:text-lg line-clamp-6"
         />
 
-        <Button color="white" linkIcon className="max-md:w-full">
+        <Button href="/about" color="white" linkIcon className="max-md:w-full">
           {t("btn")}
         </Button>
       </div>

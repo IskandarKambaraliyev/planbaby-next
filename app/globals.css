@@ -372,3 +372,9 @@
   aspect-ratio: unset !important;
   max-height: 40rem;
 }
+.detail-content.large-image img {
+  max-height: unset;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

@@ -132,3 +132,16 @@ export type Blog = {
 export type BlogWithSimilarArticles = Blog & {
   similar_articles: Blog[];
 };
+
+// Slug
+
+export type SlugApi = {
+  id: number;
+  languages: string[];
+  title: string;
+  short_content: string;
+  content: string;
+  slug: string;
+  image: string;
+  is_active: boolean;
+};
