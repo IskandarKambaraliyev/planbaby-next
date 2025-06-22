@@ -1,6 +1,6 @@
 "use client";
 
-import { JSX, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Sheet } from "react-modal-sheet";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -85,6 +85,7 @@ type BlogBtnProps = {
 const BlogBtn = (props: BlogBtnProps) => {
   const t = useTranslations("categories");
   const [isOpen, setOpen] = useState(false);
+  const pathname = usePathname();
 
   const links = [
     {
@@ -112,6 +113,10 @@ const BlogBtn = (props: BlogBtnProps) => {
       href: "/category/nutrition",
     },
   ];
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
   return (
     <>
       <button
