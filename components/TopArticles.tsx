@@ -2,9 +2,9 @@ import { Link } from "@/i18n/navigation";
 
 import useSeparateCategories from "@/hooks/useSeparateCategories";
 import { cn } from "@/lib/utils";
+import { proxyImage } from "@/lib/proxyImage";
 
 import type { Blog, PropsWithClassName } from "@/types";
-import { proxyImage } from "@/lib/proxyImage";
 
 type Props = {
   data: Blog[];
@@ -42,7 +42,6 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
         {
           "rounded-[1.25rem]": isFirst,
           "md:rounded-[1.25rem]": !isFirst,
-          "": categoryBadge,
         },
         className
       )}
@@ -64,10 +63,12 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
 
         <div className="absolute inset-0 bg-gradient-to-b from-transparent from-40% to-black/60" />
 
-        <CategoryBadge
-          category={item.category}
-          className="absolute top-0 left-0 rounded-br-2xl"
-        />
+        {categoryBadge && (
+          <CategoryBadge
+            category={item.category}
+            className="absolute top-0 left-0 rounded-br-2xl"
+          />
+        )}
       </div>
       <div
         className={cn("flex flex-col gap-2 bottom-0 left-0 w-full", {
@@ -85,7 +86,7 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
           {item.title}
         </h3>
 
-        {!isFirst && (
+        {!isFirst && categoryBadge && (
           <CategoryBadge
             category={item.category}
             className="rounded-full md:hidden"

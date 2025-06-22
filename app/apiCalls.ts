@@ -1,4 +1,6 @@
 import { fetcher } from "@/lib/fetcher";
+import type { FetcherOptions } from "@/lib/fetcher";
+
 import type {
   ApiResult,
   PaginatedResponse,
@@ -12,7 +14,6 @@ import type {
   BlogWithSimilarArticles,
   SlugApi,
 } from "@/types";
-import type { FetcherOptions } from "@/lib/fetcher";
 
 // ✅ Safe fetch wrapper
 async function safeFetcher<T>(
@@ -102,12 +103,16 @@ export async function getBlog(
   locale: string,
   limit = 12,
   category?: BlogCategoryForApi,
-  video?: boolean
+  video?: boolean,
+  isPineed?: boolean,
+  offset?: number
 ): Promise<ApiResult<PaginatedResponse<Blog>>> {
   const query = buildQuery({
     limit,
     category,
     youtube: video,
+    is_pinned: isPineed,
+    offset,
   });
 
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/all/${query}`;

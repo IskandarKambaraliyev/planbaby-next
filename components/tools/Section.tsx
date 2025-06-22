@@ -1,6 +1,8 @@
-import { getTools } from "@/app/apiCalls";
 import { getLocale } from "next-intl/server";
-import Tools from "../Tools";
+
+import Tools from "../section/home/Tools";
+
+import { getTools } from "@/app/apiCalls";
 
 export async function ToolsSection() {
   const locale = await getLocale();

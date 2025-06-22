@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
+
+import Providers from "./providers";
 import {
   Header,
   Footer,
@@ -11,14 +13,13 @@ import {
   StoreModal,
   Loader,
 } from "@/components/layout";
-import Providers from "./providers";
+import ConsultationModal from "@/components/layout/ConsultationModal";
 
 import "../globals.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import ConsultationModal from "@/components/layout/ConsultationModal";
 
 const ttFonts = localFont({
   src: [
@@ -87,7 +88,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  return [{ locale: "uz" }, { locale: "ru" }];
+  return routing.locales.map((locale) => ({
+    locale,
+  }));
 }
 
 export default async function LocaleLayout({

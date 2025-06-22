@@ -1,15 +1,17 @@
 "use client";
 
+import { useEffect } from "react";
+import { useTranslations } from "next-intl";
+
 import { Button, Title } from "@/components/custom";
 import { NotFoundIcon } from "@/components/icons";
-import devLog from "@/utility/devLog";
-import { useTranslations } from "next-intl";
-import { useEffect } from "react";
 
-const Error = ({ error }: { error: Error & { digest?: string } }) => {
+import devLog from "@/utility/devLog";
+
+const NotFoundPage = ({ error }: { error: Error & { digest?: string } }) => {
   const t = useTranslations();
   useEffect(() => {
-    devLog("Error in Blog Detail Page:", error);
+    devLog("Not Found Page:", error);
   }, [error]);
 
   return (
@@ -28,4 +30,4 @@ const Error = ({ error }: { error: Error & { digest?: string } }) => {
   );
 };
 
-export default Error;
+export default NotFoundPage;

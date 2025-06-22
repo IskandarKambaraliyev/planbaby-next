@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 
 import { AnimatePresence, motion } from "motion/react";
 import {
@@ -15,12 +15,14 @@ import {
 
 import useClickOutside from "@/hooks/useClickOutside";
 import { cn } from "@/lib/utils";
+
 import { dropdownTransition, dropdownVariants } from "@/variants";
 
 const BlogCategories = () => {
   const t = useTranslations();
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   const categories = [
     {
@@ -54,6 +56,10 @@ const BlogCategories = () => {
   ] as const;
 
   useClickOutside(wrapperRef, () => setIsOpen(false));
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   return (
     <div className="relative" ref={wrapperRef}>

@@ -1,13 +1,20 @@
-import { getLocale } from "next-intl/server";
-import { getHappyFamilies } from "../apiCalls";
-
-import { Hero, Categories, About, Uzum } from "@/components/section/home";
 import { Suspense } from "react";
-import SliderSection from "@/components/section/home/slider/Section";
-import StoriesSection from "@/components/section/home/story/Section";
-import { ToolsSection } from "@/components/section/home/tools/Section";
-import ArticlesSection from "@/components/section/home/articles/ArticleSection";
-import StoreSection from "@/components/section/home/store/Section";
+import { getLocale } from "next-intl/server";
+
+import {
+  Hero,
+  SliderSection,
+  StoriesSection,
+  ArticlesSection,
+  StoreSection,
+  Categories,
+  About,
+  Uzum,
+} from "@/components/section/home";
+import { ToolsSection } from "@/components/tools/Section";
+import ToolsSkeleton from "@/components/tools/ToolsSkeleton";
+
+import { getHappyFamilies } from "../apiCalls";
 
 export default async function HomePage() {
   const locale = await getLocale();
@@ -35,7 +42,7 @@ export default async function HomePage() {
       </Suspense>
 
       {/* Tools */}
-      <Suspense fallback={<div>Loading Tools...</div>}>
+      <Suspense fallback={<ToolsSkeleton />}>
         <ToolsSection />
       </Suspense>
 

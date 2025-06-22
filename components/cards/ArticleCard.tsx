@@ -1,3 +1,4 @@
+import React, { forwardRef } from "react";
 import Image from "next/image";
 
 import { Link } from "@/i18n/navigation";
@@ -8,7 +9,8 @@ import type { Blog, PropsWithClassName } from "@/types";
 type Props = {
   item: Blog;
 } & PropsWithClassName;
-const ArticleCard = ({ item, className }: Props) => {
+
+const ArticleCard = forwardRef<HTMLAnchorElement, Props>(({ item, className }, ref) => {
   return (
     <Link
       href={`/blog/${item.id}`}
@@ -16,6 +18,7 @@ const ArticleCard = ({ item, className }: Props) => {
         "group flex flex-col gap-2 p-2 rounded-2xl md:rounded-3xl lg:rounded-4xl",
         className
       )}
+      ref={ref}
     >
       <div className="overflow-hidden rounded-xl md:rounded-2xl lg:rounded-3xl">
         <Image
@@ -31,6 +34,8 @@ const ArticleCard = ({ item, className }: Props) => {
       </span>
     </Link>
   );
-};
+});
+
+ArticleCard.displayName = "ArticleCard";
 
 export default ArticleCard;

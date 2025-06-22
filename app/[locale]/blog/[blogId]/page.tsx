@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation";
+import { type Metadata } from "next";
+import { routing } from "@/i18n/routing";
 
 import { getBlogDetail } from "@/app/apiCalls";
 
@@ -8,7 +10,6 @@ import VideoArticle from "@/components/section/blog/VideoArticle";
 import htmlToPlainText from "@/utility/htmlToPlainText";
 
 import type { Blog } from "@/types";
-import type { Metadata } from "next";
 
 export async function generateMetadata({
   params,
@@ -64,12 +65,10 @@ export default async function BlogDetailPage({
   );
 }
 
-const LOCALES = ["uz", "ru"];
-
 export async function generateStaticParams() {
   const staticParams: { blogId: string; locale: string }[] = [];
 
-  for (const locale of LOCALES) {
+  for (const locale of routing.locales) {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/api/articles/all/?limit=10`;
     try {
       const res = await fetch(url);
