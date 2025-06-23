@@ -27,7 +27,7 @@ const About = async () => {
           <img
             src={proxyImage("/about-image-min.svg")}
             alt="About Image"
-            className="object-contain rounded-2xl"
+            className="object-contain w-full rounded-2xl"
             loading="lazy"
           />
         </div>
