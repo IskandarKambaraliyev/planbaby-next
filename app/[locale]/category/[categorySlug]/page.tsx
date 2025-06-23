@@ -10,7 +10,7 @@ import {
   BlogsSkeleton,
 } from "@/components/section/category";
 import { ToolsSection } from "@/components/tools/Section";
-import ToolsSkeleton from "@/components/tools/ToolsSkeleton";
+import { ToolsSkeleton } from "@/components/skeleton";
 
 import { categories } from "@/schemas";
 import type { BlogCategory } from "@/types";

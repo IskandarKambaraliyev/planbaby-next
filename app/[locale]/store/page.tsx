@@ -1,6 +1,7 @@
-import StoreSection from "@/components/section/home/store/Section";
-import StoreSkeleton from "@/components/StoreSkeleton";
 import { Suspense } from "react";
+
+import StoreSection from "@/components/section/home/store/Section";
+import { StoreSkeleton } from "@/components/skeleton";
 
 export default async function StorePage() {
   return (

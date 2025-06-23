@@ -1,5 +1,6 @@
 import StoredSection from "@/components/section/cart/Section";
 import StoreSection from "@/components/section/home/store/Section";
+import { StoreSkeleton } from "@/components/skeleton";
 import { Suspense } from "react";
 
 export default async function CartPage() {
@@ -8,7 +9,7 @@ export default async function CartPage() {
       <StoredSection />
 
       <section className="py-20">
-        <Suspense fallback={<div>Loading Store...</div>}>
+        <Suspense fallback={<StoreSkeleton />}>
           <StoreSection />
         </Suspense>
       </section>

@@ -12,7 +12,11 @@ import {
   Uzum,
 } from "@/components/section/home";
 import { ToolsSection } from "@/components/tools/Section";
-import ToolsSkeleton from "@/components/tools/ToolsSkeleton";
+import {
+  SliderSkeleton,
+  StoreSkeleton,
+  ToolsSkeleton,
+} from "@/components/skeleton";
 
 import { getHappyFamilies } from "../apiCalls";
 
@@ -27,7 +31,7 @@ export default async function HomePage() {
 
       {/* Slider, Categories, About */}
       <section className="flex flex-col py-20 gap-20">
-        <Suspense fallback={<div>Loading Sliders...</div>}>
+        <Suspense fallback={<SliderSkeleton />}>
           <SliderSection />
         </Suspense>
 
@@ -37,7 +41,7 @@ export default async function HomePage() {
       </section>
 
       {/* Stories */}
-      <Suspense fallback={<div>Loading Stories...</div>}>
+      <Suspense>
         <StoriesSection />
       </Suspense>
 
@@ -47,13 +51,13 @@ export default async function HomePage() {
       </Suspense>
 
       {/* Blogs */}
-      <Suspense fallback={<div>Loading Articles...</div>}>
+      <Suspense>
         <ArticlesSection />
       </Suspense>
 
       {/* Store, Uzum */}
       <section className="flex flex-col py-20 gap-20">
-        <Suspense fallback={<div>Loading Store...</div>}>
+        <Suspense fallback={<StoreSkeleton />}>
           <StoreSection />
         </Suspense>
 
