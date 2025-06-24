@@ -1,5 +1,4 @@
 {
-  "hello": "Salom",
   "about": "Biz haqimizda",
   "metadata": {
     "keywords": "plan baby, sogʻlom homiladorlik, homiladorlikni rejalashtirish uchun maslahatlar,  homiladorlik uchun maslahatlar, sogʻlom bolalar uchun maslahatlar, chaqaloqlarni oziqlantirish, chaqaloqlarni parvarish qilish, chaqaloqlarni tarbiyalash, chaqaloqlarni parvarish qilish bo‘yicha maslahatlar, chaqaloqlarni tarbiyalash bo‘yicha maslahatlar",
@@ -151,6 +150,7 @@
     "title": "Sizning savatingiz",
     "currencyItem": "{price} so‘m / dona",
     "total": "Umumiy: ({count} ta dorilar)",
+    "totalCost": "Umumiy qiymati",
     "noItems": "Hozircha savatingizda mahsulotlar yo‘q",
     "noItemsDescription": "Bosh sahifadagi mahsulotlardan boshlang yoki qidiruv orqali kerakli mahsulotni toping",
     "goHome": "Bosh sahifaga o‘tish"

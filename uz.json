@@ -1,0 +1,60 @@
+{
+  "common": {
+    "ovulationCalculator": "Ovulyatsiya kalkulyatori",
+    "spermogram": "Spermogramma tasnifi",
+    "babyNames": "Bolalar uchun ismlar",
+    "rightNutrition": "Toʻgʻri ovqatlantirish"
+  },
+  "header": {
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "blog": "Blog",
+    "contact": "Kontaktlar",
+    "store": "Do‘kon",
+    "cart": "Savat",
+    "search": "Qidirish"
+  },
+  "navbar": {
+    "home": "Bosh sahifa",
+    "store": "Do‘kon",
+    "blog": "Blog",
+    "cart": "Savat"
+  },
+  "footer": {
+    "copyright": "© 2024 «PlanBaby». Barcha huquqlar himoyalangan",
+    "contacts": "Kontaktlar",
+    "address": "Toshkent, Yunusobod t, 6-daha, Moʻljal: Amerika elchixonasi",
+    "company": "Kompaniya",
+    "about": "Biz haqimizda",
+    "blog": "Blog",
+    "useful": "Foydali"
+  },
+  "categories": {
+    "preparation": "Toʻydan oldingi tayyorgarlik",
+    "planning": "Rejalashtirish",
+    "pregnancy": "Homiladorlik",
+    "nutrition": "Oziqlantirish",
+    "preparationDescription": "Ushbu turkumdagi maqolalar endigina turmushga chiqmoqchi bo'lgan va hayotdagi ushbu muhim qadamga tayyor bo'lishni istaganlar uchun mo'ljallangan. Bu yerda siz sog‘lom va barkamol oilani yaratish bo‘yicha maslahatlar, munosabatlarning muhim jihatlarini muhokama qilish, turmush qurishga qanday tayyorgarlik ko‘rish bo‘yicha amaliy maslahatlar topasiz.",
+    "planningDescription": "Ushbu turkumda biz homiladorlikni rejalashtirish bilan bog'liq hamma narsani muhokama qilamiz. Bu erda siz homilador bo'lish imkoniyatini qanday oshirish, kelajakdagi chaqalog'ingizga qanday tayyorgarlik ko'rish va oilani rejalashtirishni boshlashdan oldin qanday qadamlar qo'yish kerakligi haqida foydali maslahatlar topasiz.",
+    "pregnancyDescription": "Ushbu turkumda biz homiladorlikning barcha jihatlarini ko'rib chiqamiz, dastlabki belgilar va alomatlardan tortib, bachadonda bola rivojlanishining muhim bosqichlarigacha. Bu erda siz homiladorlik davrida sog'lom turmush tarzi haqida ma'lumot, homiladorlik va tug'ish bo'yicha maslahatlar, shuningdek, bo'lajak onalar uchun keng tarqalgan savollarga javoblarni topasiz.",
+    "nutritionDescription": "Ushbu turkum chaqaloqni oziqlantirishning barcha jihatlarini qamrab oladi - oziqlantirish usulini tanlashdan tortib, qattiq oziq-ovqatlarni kiritish va chaqalog'ingiz uchun to'g'ri oziq-ovqatlarni tanlashga oid savollargacha. Bu erda siz emizish, shishadan oziqlantirish bo'yicha maslahatlar, shuningdek, bir yildan keyin bolani boqish haqida ma'lumot topasiz."
+  },
+  "regions": {
+    "tashkent": "Toshkent",
+    "andijan": "Andijon viloyati",
+    "bukhara": "Buxoro viloyati",
+    "jizzakh": "Jizzax viloyati",
+    "kashkadarya": "Qashqadaryo viloyati",
+    "navoi": "Navoiy viloyati",
+    "namangan": "Namangan viloyati",
+    "samarkand": "Samarqand viloyati",
+    "surkhandarya": "Surxondaryo viloyati",
+    "syrdarya": "Sirdaryo viloyati",
+    "tashkent_region": "Toshkent viloyati",
+    "fergana": "Fargʻona viloyati",
+    "khorezm": "Xorazm viloyati",
+    "karakalpakstan": "Qoraqalpogʻiston Respublikasi",
+    "other": "Boshqa davlat",
+    "select": "Shaharni tanlang"
+  }
+}

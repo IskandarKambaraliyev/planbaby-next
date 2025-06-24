@@ -14,6 +14,7 @@ import type {
   BlogWithSimilarArticles,
   SlugApi,
 } from "@/types";
+import devLog from "@/utility/devLog";
 
 // ✅ Safe fetch wrapper
 async function safeFetcher<T>(
@@ -25,7 +26,7 @@ async function safeFetcher<T>(
     const data = await fetcher<T>(path, locale, options);
     return { data, error: null };
   } catch (error) {
-    console.error(`❌ Error fetching ${path}:`, error);
+    devLog(`❌ Error fetching ${path}:`, error);
     return { data: null, error };
   }
 }
@@ -47,7 +48,7 @@ async function internalFetch<T>(
     const data = (await res.json()) as T;
     return { data, error: null };
   } catch (error) {
-    console.error(`❌ Error fetching ${path}:`, error);
+    devLog(`❌ Error fetching ${path}:`, error);
     return { data: null, error };
   }
 }
@@ -85,6 +86,11 @@ export const searchProducts = (locale: string, query: string) =>
     `/stores/products/?search=${query}`,
     locale
   );
+
+export const getProductDetail = (locale: string, productId: string) =>
+  safeFetcher<RawProduct>(`/stores/products/${productId}/`, locale, {
+    next: { revalidate: 300 },
+  });
 
 // 🖼 Sliders
 export const getSliders = (locale: string) =>
@@ -124,7 +130,7 @@ export async function getBlog(
     const data = (await res.json()) as PaginatedResponse<Blog>;
     return { data, error: null };
   } catch (error) {
-    console.error("❌ Error fetching blog list:", error);
+    devLog("❌ Error fetching blog list:", error);
     return { data: null, error };
   }
 }
@@ -159,7 +165,7 @@ export async function getBlogDetail(
     const data = (await res.json()) as BlogWithSimilarArticles;
     return { data, error: null };
   } catch (error) {
-    console.error("❌ Error fetching blog detail:", error);
+    devLog("❌ Error fetching blog detail:", error);
     return { data: null, error };
   }
 }
@@ -180,7 +186,7 @@ export const getSlugPage = async (locale: string, slug: string) => {
     const data = (await res.json()) as SlugApi;
     return { data, error: null };
   } catch (error) {
-    console.error("❌ Error fetching slug page:", error);
+    devLog("❌ Error fetching slug page:", error);
     return { data: null, error };
   }
 };
