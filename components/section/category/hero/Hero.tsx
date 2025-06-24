@@ -69,7 +69,7 @@ const Hero = async ({ category, className }: Props) => {
         className
       )}
     >
-      <div className="max-lg:max-w-2xl">
+      <div className="max-lg:max-w-2xl space-y-4">
         <div className="flex max-md:flex-col md:items-center gap-4">
           <h1
             className={cn(

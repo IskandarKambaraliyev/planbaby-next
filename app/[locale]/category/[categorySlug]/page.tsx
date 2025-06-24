@@ -14,6 +14,8 @@ import { ToolsSkeleton } from "@/components/skeleton";
 
 import { categories } from "@/schemas";
 import type { BlogCategory } from "@/types";
+import { getTranslations } from "next-intl/server";
+import { Metadata } from "next";
 
 export default async function CategoryPage({
   params,
@@ -44,13 +46,17 @@ export default async function CategoryPage({
       </Suspense>
 
       {/* First Blogs Section */}
-      <Suspense fallback={<BlogsSkeleton />}>
-        <BlogsSection category={categorySlug} isFirstSection />
+      <Suspense fallback={<BlogsSkeleton className="mb-20" />}>
+        <BlogsSection
+          category={categorySlug}
+          isFirstSection
+          className="mb-20"
+        />
       </Suspense>
 
       {/* Video Articles */}
-      <Suspense fallback={<div>Loading Video Articles...</div>}>
-        <VideoBlogs category={categorySlug} className="my-20" />
+      <Suspense>
+        <VideoBlogs category={categorySlug} className="mb-20" />
       </Suspense>
 
       {/* Second Blogs Section */}
@@ -59,6 +65,31 @@ export default async function CategoryPage({
       </Suspense>
     </>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{
+    locale: string;
+    categorySlug: BlogCategory;
+  }>;
+}): Promise<Metadata> {
+  const { categorySlug } = await params;
+  const t = await getTranslations();
+
+  if (categories.includes(categorySlug) === false) {
+    return {};
+  }
+
+  return {
+    title: t(`categories.${categorySlug}`),
+    description: t(`categories.${categorySlug}Description`),
+    openGraph: {
+      title: t(`categories.${categorySlug}`),
+      description: t(`categories.${categorySlug}Description`),
+    },
+  };
 }
 
 export function generateStaticParams() {

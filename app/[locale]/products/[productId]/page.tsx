@@ -6,10 +6,12 @@ import {
   ProductInfo,
 } from "@/components/section/products/Detail";
 
-import { getProductDetail } from "@/app/apiCalls";
+import { getProductDetail, getProducts } from "@/app/apiCalls";
 import { Suspense } from "react";
 import { StoreSkeleton } from "@/components/skeleton";
 import { StoreSection } from "@/components/section/home";
+import htmlToPlainText from "@/utility/htmlToPlainText";
+import { routing } from "@/i18n/routing";
 
 export default async function ProductDetailPage({
   params,
@@ -51,4 +53,50 @@ export default async function ProductDetailPage({
       </section>
     </>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; productId: string }>;
+}) {
+  const { locale, productId } = await params;
+
+  const { data, error } = await getProductDetail(locale, productId);
+
+  if (error || !data) {
+    return {};
+  }
+
+  return {
+    title: data.name,
+    description: htmlToPlainText(data.short_description),
+    openGraph: {
+      title: data.name,
+      description: htmlToPlainText(data.short_description),
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  const productParams: {
+    locale: string;
+    productId: string;
+  }[] = [];
+  const locales = routing.locales;
+
+  for (const locale of locales) {
+    const { data } = await getProducts(locale);
+
+    if (data && data?.results.length > 0) {
+      for (const product of data.results) {
+        productParams.push({
+          locale,
+          productId: product.id.toString(),
+        });
+      }
+    }
+  }
+
+  return productParams;
 }

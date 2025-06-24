@@ -165,6 +165,7 @@ export const Cart = ({
           animate="animate"
           exit="exit"
           key="loading"
+          className={cn("bg-blue-200 rounded-3xl p-5", className)}
         >
           Loading Cart
         </motion.div>
