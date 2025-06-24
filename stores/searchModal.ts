@@ -12,7 +12,7 @@ type ModalActions = {
   closeModal: () => void;
 };
 
-export const useModalStore = create<ModalState & ModalActions>((set) => ({
+export const useSearchModalStore = create<ModalState & ModalActions>((set) => ({
   isOpen: false,
   view: null,
   blogCategory: null,

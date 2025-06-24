@@ -5,12 +5,12 @@ import { useTranslations } from "next-intl";
 import { CircleButton } from "@/components/custom";
 import { SearchIcon } from "@/components/icons";
 
-import { useModalStore } from "@/stores/modal";
+import { useSearchModalStore } from "@/stores/searchModal";
 
 const SearchTrigger = () => {
   const t = useTranslations();
 
-  const openModal = useModalStore((state) => state.openModal);
+  const openModal = useSearchModalStore((state) => state.openModal);
   return (
     <CircleButton
       onClick={() => openModal("both")}

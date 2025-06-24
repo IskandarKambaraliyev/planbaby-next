@@ -10,7 +10,7 @@ import {
   Header,
   Footer,
   Navbar,
-  StoreModal,
+  SearchModal,
   Loader,
 } from "@/components/layout";
 import ConsultationModal from "@/components/layout/ConsultationModal";
@@ -117,7 +117,7 @@ export default async function LocaleLayout({
             <main className="mt-18 md:mt-22">{children}</main>
             <Footer className="pb-40" />
             <Navbar />
-            <StoreModal />
+            <SearchModal />
           </Providers>
         </NextIntlClientProvider>
       </body>

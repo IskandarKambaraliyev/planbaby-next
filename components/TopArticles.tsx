@@ -61,7 +61,19 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
           loading="lazy"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent from-40% to-black/60" />
+        {Array.from({ length: 4 }).map((_, index) => (
+          <div
+            className={cn(
+              "absolute inset-x-0 bottom-0 h-[50%] backdrop-blur-sm mask-gradient-to-top pointer-events-none",
+              {
+                "sm:h-[30%]": isFirst,
+              }
+            )}
+            key={index}
+          />
+        ))}
+
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent from-40% to-black/50" />
 
         {categoryBadge && (
           <CategoryBadge
@@ -78,8 +90,8 @@ const Card = ({ className, item, categoryBadge, isFirst }: CardProps) => {
       >
         <h3
           className={cn("text-lg font-bold line-clamp-2", {
-            "md:text-3xl text-white": isFirst,
-            "text-foreground md:text-white group-hover:max-md:text-blue-main transition":
+            "md:text-2xl text-white": isFirst,
+            "text-sm text-foreground md:text-white group-hover:max-md:text-blue-main transition":
               !isFirst,
           })}
         >

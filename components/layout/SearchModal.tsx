@@ -30,7 +30,7 @@ import {
 } from "../icons";
 
 import { cn } from "@/lib/utils";
-import { useModalStore } from "@/stores/modal";
+import { useSearchModalStore } from "@/stores/searchModal";
 
 import type { Blog, RawProduct } from "@/types";
 
@@ -85,16 +85,16 @@ const fetchStoreSearch = async (
   };
 };
 
-const StoreModal = () => {
+const SearchModal = () => {
   const t = useTranslations();
   const locale = useLocale();
   const pathname = usePathname();
   const [inputValue, setInputValue] = useState("");
   const [search, setSearch] = useState("");
 
-  const isOpen = useModalStore((state) => state.isOpen);
-  const view = useModalStore((state) => state.view);
-  const closeModal = useModalStore((state) => state.closeModal);
+  const isOpen = useSearchModalStore((state) => state.isOpen);
+  const view = useSearchModalStore((state) => state.view);
+  const closeModal = useSearchModalStore((state) => state.closeModal);
 
   const debouncedSetSearch = useMemo(
     () => debounce((value: string) => setSearch(value), 500),
@@ -282,7 +282,8 @@ const StoreModal = () => {
                               ) : (
                                 <ArticleCard
                                   item={item as Blog}
-                                  className="h-full hover:shadow-none border border-dark-blue-100 select-none"
+                                  className="select-none rounded-2xl"
+                                  textClassName="text-sm inset-x-2 bottom-2"
                                 />
                               )}
                             </SwiperSlide>
@@ -301,4 +302,4 @@ const StoreModal = () => {
   );
 };
 
-export default StoreModal;
+export default SearchModal;

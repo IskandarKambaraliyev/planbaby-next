@@ -252,6 +252,11 @@
   background: var(--color-white-main);
 }
 
+.mask-gradient-to-top {
+  -webkit-mask-image: linear-gradient(to top, black, transparent);
+  mask-image: linear-gradient(to top, black, transparent);
+}
+
 .detail-content {
   font-family: "Inter", sans-serif;
   font-size: 1rem;
