@@ -14,7 +14,7 @@ const Articles = async ({ data }: Props) => {
     <section>
       <div className="container space-y-8">
         <div className="flex items-center md:grid grid-cols-2 gap-4">
-          <Title className="flex-1">{t("articles")}</Title>
+          <Title className="flex-1">{t("common.articles")}</Title>
 
           <SearchTrigger />
         </div>

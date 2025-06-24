@@ -50,7 +50,7 @@ const ProductCard = forwardRef<HTMLDivElement, Props>(
         <Link
           href={`/products/${id}`}
           className="flex-1 p-2 flex flex-col gap-2"
-          aria-label={`${name}, ${formatPrice(finalPrice)} ${t("currency")}`}
+          aria-label={`${name}, ${formatPrice(finalPrice)} ${t("common.currency")}`}
         >
           <img
             src={proxyImage(image)}
@@ -92,7 +92,7 @@ const ProductCard = forwardRef<HTMLDivElement, Props>(
                   "text-sm": !responsive,
                 })}
               >
-                {formatPrice(finalPrice)} {t("currency")}
+                {formatPrice(finalPrice)} {t("common.currency")}
               </span>
 
               {hasDiscount && (
@@ -102,7 +102,7 @@ const ProductCard = forwardRef<HTMLDivElement, Props>(
                     "text-xs": !responsive,
                   })}
                 >
-                  {formatPrice(price)} {t("currency")}
+                  {formatPrice(price)} {t("common.currency")}
                 </span>
               )}
             </div>
@@ -145,7 +145,7 @@ const ProductCard = forwardRef<HTMLDivElement, Props>(
                 e.stopPropagation();
                 addProduct(item);
               }}
-              aria-label={`${t("addCart")} ${name}`}
+              aria-label={`${t("common.addToCart")} ${name}`}
             >
               <CartPlusIcon
                 className={cn("shrink-0 ", {
@@ -153,7 +153,7 @@ const ProductCard = forwardRef<HTMLDivElement, Props>(
                   "size-5": !responsive,
                 })}
               />
-              <span className="truncate">{t("addCart")}</span>
+              <span className="truncate">{t("common.addToCart")}</span>
             </Button>
           </div>
 
@@ -183,7 +183,6 @@ const ProductCard = forwardRef<HTMLDivElement, Props>(
                     "h-10 [&_svg]:size-6": !responsive,
                   }
                 )}
-                aria-label={`${t("removeOneFromCart")} ${name}`}
               >
                 <MinusIcon />
               </button>
@@ -195,7 +194,6 @@ const ProductCard = forwardRef<HTMLDivElement, Props>(
                 })}
                 role="status"
                 aria-live="polite"
-                aria-label={`${t("quantity")}: ${productSummary?.count}`}
               >
                 {productSummary?.count}
               </div>
@@ -211,7 +209,6 @@ const ProductCard = forwardRef<HTMLDivElement, Props>(
                     "h-10 [&_svg]:size-6": !responsive,
                   }
                 )}
-                aria-label={`${t("addOneToCart")} ${name}`}
               >
                 <PlusIcon />
               </button>
@@ -224,7 +221,6 @@ const ProductCard = forwardRef<HTMLDivElement, Props>(
                   responsive,
                 "size-10 [&_svg]:size-6": !responsive,
               })}
-              aria-label={`${t("removeAllFromCart")} ${name}`}
             >
               <DeleteIcon />
             </CircleButton>

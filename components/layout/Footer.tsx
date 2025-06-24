@@ -90,19 +90,19 @@ const Footer = async ({ className }: PropsWithClassName) => {
       title: t("footer.useful"),
       children: [
         {
-          label: t("calculator"),
+          label: t("common.ovulationCalculator"),
           href: "/tools/calculator",
         },
         {
-          label: t("spermogram"),
+          label: t("common.spermogram"),
           href: "/tools/spermogram",
         },
         {
-          label: t("names"),
+          label: t("common.babyNames"),
           href: "/tools/names",
         },
         {
-          label: t("right_nutrition"),
+          label: t("common.rightNutrition"),
           href: "/tag/правильное_питание",
         },
       ],
@@ -114,7 +114,7 @@ const Footer = async ({ className }: PropsWithClassName) => {
     >
       <div className="container flex max-lg:flex-col gap-y-8 gap-x-16">
         <div className="flex flex-col gap-4">
-          <Link href="/" aria-label={t("a11y.goHome")}>
+          <Link href="/" aria-label={t("common.goHome")}>
             <Logo color="white" />
           </Link>
 

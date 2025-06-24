@@ -16,7 +16,7 @@ const VideoArticles = ({ data }: Props) => {
   const t = useTranslations();
   return (
     <div className="container space-y-8 text-white">
-      <Title className="text-white">{t("videoArticles")}</Title>
+      <Title className="text-white">{t("common.videoArticles")}</Title>
 
       <Swiper
         slidesPerView={"auto"}

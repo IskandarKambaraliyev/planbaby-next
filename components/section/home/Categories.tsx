@@ -9,38 +9,38 @@ import {
 } from "@/components/icons";
 
 const Categories = async () => {
-  const t = await getTranslations("home.categories");
+  const t = await getTranslations();
 
   const categories = [
     {
-      title: t("preparation.title"),
-      description: t("preparation.description"),
+      title: t("categories.preparation"),
+      description: t("categories.preparationDescription"),
       icon: <PreparationIcon className="size-3/5" />,
-      btn: t("preparation.btn"),
+      btn: t("common.onTopic"),
       link: "/category/preparation",
       color: "yellow",
     },
     {
-      title: t("planning.title"),
-      description: t("planning.description"),
+      title: t("categories.planning"),
+      description: t("categories.planningDescription"),
       icon: <PlanningIcon className="size-3/5" />,
-      btn: t("planning.btn"),
+      btn: t("common.onTopic"),
       link: "/category/planning",
       color: "blue",
     },
     {
-      title: t("pregnancy.title"),
-      description: t("pregnancy.description"),
+      title: t("categories.pregnancy"),
+      description: t("categories.pregnancyDescription"),
       icon: <PregnancyIcon className="size-3/5" />,
-      btn: t("pregnancy.btn"),
+      btn: t("common.onTopic"),
       link: "/category/pregnancy",
       color: "green",
     },
     {
-      title: t("nutrition.title"),
-      description: t("nutrition.description"),
+      title: t("categories.nutrition"),
+      description: t("categories.nutritionDescription"),
       icon: <NutritionIcon className="size-3/5" />,
-      btn: t("nutrition.btn"),
+      btn: t("common.onTopic"),
       link: "/category/nutrition",
       color: "pink",
     },

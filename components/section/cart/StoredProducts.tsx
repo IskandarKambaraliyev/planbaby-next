@@ -89,7 +89,6 @@ const ProductCard = ({ item }: { item: CartProduct }) => {
               className={cn(
                 "h-10 md:h-12 aspect-square flex-center rounded-l-full bg-blue-100 hover:bg-blue-300 transition"
               )}
-              aria-label={`${t("removeOneFromCart")} ${item.title}`}
             >
               <MinusIcon />
             </button>
@@ -100,7 +99,6 @@ const ProductCard = ({ item }: { item: CartProduct }) => {
               )}
               role="status"
               aria-live="polite"
-              aria-label={`${t("quantity")}: ${product?.count}`}
             >
               {product?.count}
             </div>
@@ -111,14 +109,13 @@ const ProductCard = ({ item }: { item: CartProduct }) => {
               className={cn(
                 "h-10 md:h-12 aspect-square flex-center rounded-r-full bg-blue-100 hover:bg-blue-300 transition"
               )}
-              aria-label={`${t("addOneToCart")} ${item.title}`}
             >
               <PlusIcon />
             </button>
           </div>
 
           <span className="text-sm md:text-base text-dark-blue-500">
-            {t("cartPage.currencyItem", {
+            {t("common.currencyItem", {
               price: product.current_price,
             })}
           </span>
@@ -135,12 +132,12 @@ const ProductCard = ({ item }: { item: CartProduct }) => {
               }
             )}
           >
-            {product.total_price} {t("currency")}
+            {product.total_price} {t("common.currency")}
           </span>
 
           {hasDiscount && (
             <span className="text-xs md:text-sm text-dark-blue-400 line-through will-change-contents">
-              {product.total_old_price} {t("currency")}
+              {product.total_old_price} {t("common.currency")}
             </span>
           )}
         </div>

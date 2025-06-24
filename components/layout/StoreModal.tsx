@@ -144,7 +144,7 @@ const StoreModal = () => {
 
   const titles = {
     products: {
-      title: t("nav.store"),
+      title: t("common.store"),
       icon: StoreIcon,
       href: "/store",
       bgColor: "bg-dark-blue-200",
@@ -201,7 +201,7 @@ const StoreModal = () => {
               onClick={closeModal}
               className="absolute bottom-[calc(100%+1rem)] right-4"
             >
-              <span>{t("modal.close")}</span>
+              <span>{t("common.close")}</span>
               <XIcon className="-ml-2" />
             </Button>
 
@@ -211,10 +211,10 @@ const StoreModal = () => {
                   id="store-search-input"
                   label={
                     view === "products"
-                      ? t("modal.search.product")
+                      ? t("common.searchProducts")
                       : view === "blogs"
-                      ? t("modal.search.blog")
-                      : t("modal.search.both")
+                      ? t("common.searchArticles")
+                      : t("common.searchStore")
                   }
                   color="blue"
                   startIcon={<SearchIcon />}

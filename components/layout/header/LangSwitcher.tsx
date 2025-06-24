@@ -1,17 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { useLocale } from "next-intl";
 // eslint-disable-next-line no-restricted-imports
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
+import { Loader2Icon } from "lucide-react";
 import { CircleButton } from "@/components/custom";
 
 import { usePathname } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
 
 import type { PropsWithClassName } from "@/types";
-import { useState } from "react";
-import { Loader2Icon } from "lucide-react";
 
 const LangSwitcher = ({ className }: PropsWithClassName) => {
   const [loading, setLoading] = useState(false);
@@ -24,12 +24,14 @@ const LangSwitcher = ({ className }: PropsWithClassName) => {
     const lang = locale === "uz" ? "ru" : "uz";
     router.push(`/${lang}${pathname}`);
   };
+
+  const title = locale === "ru" ? "O‘zbek tili" : "Русский язык";
   return (
     <CircleButton
       className={cn("", className)}
       onClick={handleChangeLocale}
-      title={`Switch language to ${locale === "uz" ? "Russian" : "Uzbek"}`}
-      aria-label={`Switch language to ${locale === "uz" ? "Russian" : "Uzbek"}`}
+      title={title}
+      aria-label={title}
       disabled={loading}
     >
       {loading ? (

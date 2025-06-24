@@ -39,7 +39,7 @@ export default async function SlugPage({
         <div className="relative container text-center text-white">
           <h1 className="text-4xl md:text-5xl font-bold">{data.title}</h1>
           <div
-            className="detail-content !text-white mt-6 md:mt-8"
+            className="detail-content text-white mt-6 md:mt-8"
             dangerouslySetInnerHTML={{ __html: data.short_content }}
           />
         </div>

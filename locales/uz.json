@@ -1,11 +1,62 @@
 {
-  "about": "Biz haqimizda",
-  "metadata": {
-    "keywords": "plan baby, sogʻlom homiladorlik, homiladorlikni rejalashtirish uchun maslahatlar,  homiladorlik uchun maslahatlar, sogʻlom bolalar uchun maslahatlar, chaqaloqlarni oziqlantirish, chaqaloqlarni parvarish qilish, chaqaloqlarni tarbiyalash, chaqaloqlarni parvarish qilish bo‘yicha maslahatlar, chaqaloqlarni tarbiyalash bo‘yicha maslahatlar",
-    "home": {
-      "title": "PlanBaby | Sogʻlom homiladorlik uchun birinchi qadam!",
-      "description": "Sogʻlom homiladorlik uchun birinchi qadam!"
-    }
+  "common": {
+    "ovulationCalculator": "Ovulyatsiya kalkulyatori",
+    "spermogram": "Spermogramma tasnifi",
+    "babyNames": "Bolalar uchun ismlar",
+    "rightNutrition": "Toʻgʻri ovqatlantirish",
+    "goHome": "Bosh sahifaga qaytish",
+    "onTopic": "Mavzuga oid",
+    "searchArticles": "Maqolalarni qidirish",
+    "searchProducts": "Mahsulotlarni qidirish",
+    "searchStore": "Mahsulot yoki maqolalarni qidirish",
+    "articles": "Maqolalar",
+    "videoArticles": "Video maqolalar",
+    "products": "Mahsulotlar",
+    "store": "Do‘kon",
+    "addToCart": "Savatchaga qo‘shish",
+    "currency": "so‘m",
+    "yourName": "Ismingiz",
+    "yourPhone": "Telefon raqamingiz",
+    "close": "Yopish",
+    "currencyItem": "{price} so‘m / dona",
+    "totalCost": "Umumiy qiymati",
+    "share": "Ulashish",
+    "copy": "Nusxalash",
+    "copied": "Nusxalandi",
+    "recommendedProducts": "Tavsiya etilgan mahsulotlar",
+    "similarArticles": "O‘xshash maqolalar"
+  },
+  "error": {
+    "shortName": "Ism kamida 3ta harfdan iborat bo‘lishi kerak",
+    "invalidPhone": "Telefon raqami +998901234567 formatida bo‘lishi kerak"
+  },
+  "header": {
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "blog": "Blog",
+    "contact": "Kontaktlar",
+    "store": "Do‘kon",
+    "cart": "Savat",
+    "search": "Qidirish"
+  },
+  "footer": {
+    "copyright": "© 2024 «PlanBaby». Barcha huquqlar himoyalangan",
+    "contacts": "Kontaktlar",
+    "address": "Toshkent, Yunusobod t, 6-daha, Moʻljal: Amerika elchixonasi",
+    "company": "Kompaniya",
+    "about": "Biz haqimizda",
+    "blog": "Blog",
+    "useful": "Foydali"
+  },
+  "categories": {
+    "preparation": "Toʻydan oldingi tayyorgarlik",
+    "planning": "Rejalashtirish",
+    "pregnancy": "Homiladorlik",
+    "nutrition": "Oziqlantirish",
+    "preparationDescription": "Ushbu turkumdagi maqolalar endigina turmushga chiqmoqchi bo‘lgan va hayotdagi ushbu muhim qadamga tayyor bo‘lishni istaganlar uchun mo‘ljallangan. Bu yerda siz sog‘lom va barkamol oilani yaratish bo‘yicha maslahatlar, munosabatlarning muhim jihatlarini muhokama qilish, turmush qurishga qanday tayyorgarlik ko‘rish bo‘yicha amaliy maslahatlar topasiz.",
+    "planningDescription": "Ushbu turkumda biz homiladorlikni rejalashtirish bilan bog‘liq hamma narsani muhokama qilamiz. Bu erda siz homilador bo‘lish imkoniyatini qanday oshirish, kelajakdagi chaqalog‘ingizga qanday tayyorgarlik ko‘rish va oilani rejalashtirishni boshlashdan oldin qanday qadamlar qo‘yish kerakligi haqida foydali maslahatlar topasiz.",
+    "pregnancyDescription": "Ushbu turkumda biz homiladorlikning barcha jihatlarini ko‘rib chiqamiz, dastlabki belgilar va alomatlardan tortib, bachadonda bola rivojlanishining muhim bosqichlarigacha. Bu erda siz homiladorlik davrida sog‘lom turmush tarzi haqida ma‘lumot, homiladorlik va tug‘ish bo‘yicha maslahatlar, shuningdek, bo‘lajak onalar uchun keng tarqalgan savollarga javoblarni topasiz.",
+    "nutritionDescription": "Ushbu turkum chaqaloqni oziqlantirishning barcha jihatlarini qamrab oladi - oziqlantirish usulini tanlashdan tortib, qattiq oziq-ovqatlarni kiritish va chaqalog‘ingiz uchun to‘g‘ri oziq-ovqatlarni tanlashga oid savollargacha. Bu erda siz emizish, shishadan oziqlantirish bo‘yicha maslahatlar, shuningdek, bir yildan keyin bolani boqish haqida ma‘lumot topasiz."
   },
   "regions": {
     "tashkent": "Toshkent",
@@ -25,114 +76,39 @@
     "other": "Boshqa davlat",
     "select": "Shaharni tanlang"
   },
-  "nav": {
-    "home": "Bosh sahifa",
-    "about": "Biz haqimizda",
-    "blog": "Blog",
-    "contact": "Kontaktlar",
-    "store": "Do‘kon",
-    "cart": "Savat",
-    "search": "Qidirish",
-    "phone": "{number} telefon raqami"
-  },
-  "footer": {
-    "copyright": "© 2024 «PlanBaby». Barcha huquqlar himoyalangan",
-    "contacts": "Kontaktlar",
-    "address": "Toshkent, Yunusobod t, 6-daha, Moʻljal: Amerika elchixonasi",
-    "company": "Kompaniya",
-    "about": "Biz haqimizda",
-    "blog": "Blog",
-    "useful": "Foydali"
-  },
-  "categories": {
-    "preparation": "Toʻydan oldingi tayyorgarlik",
-    "planning": "Rejalashtirish",
-    "pregnancy": "Homiladorlik",
-    "nutrition": "Oziqlantirish",
-    "preparationDescription": "Ushbu turkumdagi maqolalar endigina turmushga chiqmoqchi bo'lgan va hayotdagi ushbu muhim qadamga tayyor bo'lishni istaganlar uchun mo'ljallangan. Bu yerda siz sog‘lom va barkamol oilani yaratish bo‘yicha maslahatlar, munosabatlarning muhim jihatlarini muhokama qilish, turmush qurishga qanday tayyorgarlik ko‘rish bo‘yicha amaliy maslahatlar topasiz.",
-    "planningDescription": "Ushbu turkumda biz homiladorlikni rejalashtirish bilan bog'liq hamma narsani muhokama qilamiz. Bu erda siz homilador bo'lish imkoniyatini qanday oshirish, kelajakdagi chaqalog'ingizga qanday tayyorgarlik ko'rish va oilani rejalashtirishni boshlashdan oldin qanday qadamlar qo'yish kerakligi haqida foydali maslahatlar topasiz.",
-    "pregnancyDescription": "Ushbu turkumda biz homiladorlikning barcha jihatlarini ko'rib chiqamiz, dastlabki belgilar va alomatlardan tortib, bachadonda bola rivojlanishining muhim bosqichlarigacha. Bu erda siz homiladorlik davrida sog'lom turmush tarzi haqida ma'lumot, homiladorlik va tug'ish bo'yicha maslahatlar, shuningdek, bo'lajak onalar uchun keng tarqalgan savollarga javoblarni topasiz.",
-    "nutritionDescription": "Ushbu turkum chaqaloqni oziqlantirishning barcha jihatlarini qamrab oladi - oziqlantirish usulini tanlashdan tortib, qattiq oziq-ovqatlarni kiritish va chaqalog'ingiz uchun to'g'ri oziq-ovqatlarni tanlashga oid savollargacha. Bu erda siz emizish, shishadan oziqlantirish bo'yicha maslahatlar, shuningdek, bir yildan keyin bolani boqish haqida ma'lumot topasiz."
-  },
-  "modal": {
-    "search": {
-      "both": "Mahsulot yoki maqolani qidiring",
-      "product": "Mahsulotni qidiring",
-      "blog": "Maqolani qidiring"
-    },
-    "close": "Yopish"
-  },
-  "consultationModal": {
+  "apply": {
     "title": "Ariza qoldirish",
     "description": "Ariza qoldiring va biz tez orada siz bilan bogʻlanamiz",
-    "name": "Ismingiz",
-    "name_3": "Ism kamida 2 ta harfdan iborat boʻlishi kerak",
-    "phone": "Telefon raqamingiz",
-    "invalid_phone": "Raqam +998901234567 shaklida boʻlishi kerak",
-    "btn": "Yuborish",
-    "privacy": "Ushbu formani yuborish orqali siz {link}ga rozilik bergan boʻlasiz",
-    "link": "ma‘lumotlarni qayta ishlash siyosati",
-    "call_text": "Yoki bizga qoʻngʻiroq qiling",
-    "submitting": "Yuborilmoqda...",
+    "privacyText": "Ushbu formani yuborish orqali siz {link}ga rozilik bergan boʻlasiz",
+    "privacyLink": "ma‘lumotlarni qayta ishlash siyosati",
+    "orCall": "Yoki bizga qoʻngʻiroq qiling",
     "error": {
-      "title": "Xatolik yuz berdi",
-      "description": "Iltimos, kiritilgan ma‘lumotlarni tekshirib, qayta urinib ko‘ring.",
+      "title": "Ariza yuborishda xatolik",
+      "description": "Iltimos, keyinroq qayta urinib ko‘ring",
       "btn": "Qayta urinib ko‘rish"
     },
     "success": {
-      "title": "Ariza yuborganingiz uchun rahmat!",
-      "description": "Sizning arizangiz muvaffaqiyatli yuborildi. Biz tez orada siz bilan bogʻlanamiz.",
+      "title": "Ariza muvaffaqiyatli yuborildi",
+      "description": "Biz tez orada siz bilan bogʻlanamiz",
       "btn": "Yaxshi"
-    }
-  },
-  "articles": "Maqolalar",
-  "videoArticles": "Video maqolalar",
-  "currency": "soʻm",
-  "addCart": "Savatchaga qoʻshish",
-  "removeOneFromCart": "Savatchadan bitta mahsulot olib tashlash",
-  "removeAllFromCart": "Savatchadan barcha mahsulotlarni olib tashlash",
-  "addOneToCart": "Savatchaga bitta mahsulot qoʻshish",
-  "quantity": "Miqdor",
-  "calculator": "Ovulyatsiya kalkulyatori",
-  "spermogram": "Spermogramma tasnifi",
-  "names": "Bolalar uchun ismlar",
-  "right_nutrition": "Toʻgʻri ovqatlanish",
-  "recommended_products": "Tavsiya etilgan mahsulotlar",
-  "similar_articles": "Oʻxshash maqolalar",
-  "share": "Ulashish",
-  "copy": "Nusxalash",
-  "copied": "Nusxalandi",
-  "home": {
-    "banner": {
-      "title": "Sogʻlom homiladorlik sari {span}",
-      "span": "<br />birinchi qadam",
-      "btn": "Ariza qoldirish"
     },
-    "categories": {
-      "preparation": {
-        "title": "Toʻydan oldingi tayyorgarlik",
-        "description": "Ushbu turkumdagi maqolalar endigina turmushga chiqmoqchi bo‘lgan va hayotdagi ushbu muhim qadamga tayyor bo‘lishni istaganlar uchun mo‘ljallangan. Bu yerda siz sog‘lom va barkamol oilani yaratish bo‘yicha maslahatlar, munosabatlarning muhim jihatlarini muhokama qilish, turmush qurishga qanday tayyorgarlik ko‘rish bo‘yicha amaliy maslahatlar topasiz.",
-        "btn": "Mavzuga oid"
-      },
-      "planning": {
-        "title": "Rejalashtirish",
-        "description": "Ushbu turkumda biz homiladorlikni rejalashtirish bilan bog‘liq hamma narsani muhokama qilamiz. Bu erda siz homilador bo‘lish imkoniyatini qanday oshirish, kelajakdagi chaqalog‘ingizga qanday tayyorgarlik ko‘rish va oilani rejalashtirishni boshlashdan oldin qanday qadamlar qo‘yish kerakligi haqida foydali maslahatlar topasiz.",
-        "btn": "Mavzuga oid"
-      },
-      "pregnancy": {
-        "title": "Homiladorlik",
-        "description": "Ushbu turkumda biz homiladorlikning barcha jihatlarini ko‘rib chiqamiz, dastlabki belgilar va alomatlardan tortib, bachadonda bola rivojlanishining muhim bosqichlarigacha. Bu erda siz homiladorlik davrida sog‘lom turmush tarzi haqida ma‘lumot, homiladorlik va tug‘ish bo‘yicha maslahatlar, shuningdek, bo‘lajak onalar uchun keng tarqalgan savollarga javoblarni topasiz.",
-        "btn": "Mavzuga oid"
-      },
-      "nutrition": {
-        "title": "Ovqatlantirish",
-        "description": "Ushbu turkum chaqaloqni oziqlantirishning barcha jihatlarini qamrab oladi - oziqlantirish usulini tanlashdan tortib, qattiq oziq-ovqatlarni kiritish va chaqalog‘ingiz uchun to‘g‘ri oziq-ovqatlarni tanlashga oid savollargacha. Bu erda siz emizish, shishadan oziqlantirish bo‘yicha maslahatlar, shuningdek, bir yildan keyin bolani boqish haqida ma‘lumot topasiz.",
-        "btn": "Mavzuga oid"
-      }
+    "submitting": "Ariza yuborilmoqda...",
+    "submit": "Arizani yuborish"
+  },
+  "homePage": {
+    "meta": {
+      "title": "PlanBaby | Sogʻlom homiladorlik uchun birinchi qadam!",
+      "description": "Sogʻlom homiladorlik uchun birinchi qadam!",
+      "keywords": "plan baby, sogʻlom homiladorlik, homiladorlikni rejalashtirish uchun maslahatlar,  homiladorlik uchun maslahatlar, sogʻlom bolalar uchun maslahatlar, chaqaloqlarni oziqlantirish, chaqaloqlarni parvarish qilish, chaqaloqlarni tarbiyalash, chaqaloqlarni parvarish qilish bo‘yicha maslahatlar, chaqaloqlarni tarbiyalash bo‘yicha maslahatlar"
+    },
+    "hero": {
+      "title": "Sogʻlom homiladorlik sari <br />{span}",
+      "span": "birinchi qadam",
+      "btn": "Ariza qoldirish"
     },
     "about": {
       "title": "Biz haqimizda",
-      "description": "“Plan Baby” kompaniyasi o‘z faoliyatini birinchi marta 2019-yil 14-yanvarda boshlagan. <br /><br />Loyiha tashkil etilganidan buyon “Plan Baby” jamoasi oilalar ota-onalikdan baxtiyor bo‘lishlari uchun o‘z quvonchlarini baham ko‘rmoqda.",
+      "description": "“Plan Baby” kompaniyasi o‘z faoliyatini birinchi marta 2019-yil 14-yanvarda boshlagan.<br />Loyiha tashkil etilganidan buyon “Plan Baby” jamoasi oilalar ota-onalikdan baxtiyor bo‘lishlari uchun o‘z quvonchlarini baham ko‘rmoqda.",
       "btn": "Batafsil"
     },
     "stories": {
@@ -141,21 +117,15 @@
     },
     "uzum": "Qulay bo‘lib to‘lash orqali UZUM marketda xarid qiling!"
   },
+  "cartPage": {
+    "title": "Sizning savatingiz"
+  },
+  "productPage": {
+    "description": "Mahsulot tavsifi"
+  },
   "errorPage": {
     "title": "Sahifa topilmadi",
     "description": "Siz tashrif buyurgan sahifa mavjud emas yoki o‘chirilgan.",
     "btn": "Bosh sahifaga qaytish"
-  },
-  "cartPage": {
-    "title": "Sizning savatingiz",
-    "currencyItem": "{price} so‘m / dona",
-    "total": "Umumiy: ({count} ta dorilar)",
-    "totalCost": "Umumiy qiymati",
-    "noItems": "Hozircha savatingizda mahsulotlar yo‘q",
-    "noItemsDescription": "Bosh sahifadagi mahsulotlardan boshlang yoki qidiruv orqali kerakli mahsulotni toping",
-    "goHome": "Bosh sahifaga o‘tish"
-  },
-  "a11y": {
-    "goHome": "Bosh sahifaga o‘tish"
   }
 }

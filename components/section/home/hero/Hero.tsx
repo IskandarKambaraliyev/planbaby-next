@@ -7,12 +7,12 @@ import HeroBtn from "./HeroBtn";
 import type { HappyFamiliesApi } from "@/types";
 
 const Hero = async ({ data }: { data: HappyFamiliesApi | null }) => {
-  const t = await getTranslations("home.banner");
+  const t = await getTranslations();
 
   const count = data?.results[0].results_count || 0;
 
-  const title = t("title", {
-    span: `<span class="text-pink-main">${t("span")}</span>`,
+  const title = t("homePage.hero.title", {
+    span: `<span class="text-pink-main">${t("homePage.hero.span")}</span>`,
   });
 
   return (

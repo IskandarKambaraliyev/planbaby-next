@@ -37,19 +37,19 @@ const variants = {
 };
 
 const ConsultationModal = () => {
-  const t = useTranslations("consultationModal");
+  const t = useTranslations();
   const [loading, setLoading] = useState(false);
 
   const formSchema = z.object({
     fullname: z
       .string()
-      .min(3, { message: t("name_3") })
+      .min(3, { message: t("error.shortName") })
       .max(50),
     phone: z
       .string()
       .transform((val) => val.replace(/\s+/g, ""))
       .refine((val) => /^\+998\d{9}$/.test(val), {
-        message: t("invalid_phone"),
+        message: t("error.invalidPhone"),
       }),
   });
 
@@ -131,9 +131,9 @@ const ConsultationModal = () => {
     }
   };
 
-  const privacyText = t("privacy", {
-    link: `<a href="/${locale}/privacy-policy" target="_blank" class="text-blue-500 hover:underline">${t(
-      "link"
+  const privacyText = t("apply.privacyText", {
+    link: `<a href="/${locale}/privacy-policy" target="_blank" class="text-blue-main hover:underline">${t(
+      "apply.privacyLink"
     )}</a>`,
   });
 
@@ -156,10 +156,10 @@ const ConsultationModal = () => {
               <ErrorIcon className="mx-auto" />
               <DialogHeader>
                 <DialogTitle className="text-2xl md:text-3xl font-bold text-center">
-                  {t("error.title")}
+                  {t("apply.error.title")}
                 </DialogTitle>
                 <DialogDescription className="text-center text-dark-blue-400">
-                  {t("error.description")}
+                  {t("apply.error.description")}
                 </DialogDescription>
               </DialogHeader>
 
@@ -169,7 +169,7 @@ const ConsultationModal = () => {
                 onClick={() => setStep("form")}
                 className="w-full"
               >
-                {t("error.btn")}
+                {t("apply.error.btn")}
               </Button>
 
               <Bottom />
@@ -187,10 +187,10 @@ const ConsultationModal = () => {
               <SuccesIcon className="mx-auto" />
               <DialogHeader>
                 <DialogTitle className="text-2xl md:text-3xl font-bold text-center">
-                  {t("success.title")}
+                  {t("apply.success.title")}
                 </DialogTitle>
                 <DialogDescription className="text-center text-dark-blue-400">
-                  {t("success.description")}
+                  {t("apply.success.description")}
                 </DialogDescription>
               </DialogHeader>
 
@@ -200,7 +200,7 @@ const ConsultationModal = () => {
                 onClick={close}
                 className="w-full"
               >
-                {t("success.btn")}
+                {t("apply.success.btn")}
               </Button>
             </motion.div>
           ) : (
@@ -215,10 +215,10 @@ const ConsultationModal = () => {
             >
               <DialogHeader>
                 <DialogTitle className="text-2xl md:text-3xl font-bold text-center">
-                  {t("title")}
+                  {t("apply.title")}
                 </DialogTitle>
                 <DialogDescription className="text-center text-dark-blue-400">
-                  {t("description")}
+                  {t("apply.description")}
                 </DialogDescription>
               </DialogHeader>
               <Form {...form}>
@@ -234,7 +234,7 @@ const ConsultationModal = () => {
                       <FormItem>
                         <FormControl>
                           <Input
-                            label={t("name")}
+                            label={t("common.yourName")}
                             startIcon={<UserIcon />}
                             color="blue"
                             autoComplete="name"
@@ -254,7 +254,7 @@ const ConsultationModal = () => {
                         <FormControl>
                           <Input
                             type="tel"
-                            label={t("phone")}
+                            label={t("common.yourPhone")}
                             startIcon={<PhoneIcon />}
                             color="blue"
                             autoComplete="tel"
@@ -276,10 +276,10 @@ const ConsultationModal = () => {
                     {loading ? (
                       <>
                         <Loader2Icon className="animate-spin" />
-                        {t("submitting")}
+                        {t("apply.submitting")}
                       </>
                     ) : (
-                      t("btn")
+                      t("apply.submit")
                     )}
                   </Button>
 
@@ -302,14 +302,14 @@ const ConsultationModal = () => {
 export default ConsultationModal;
 
 const Bottom = () => {
-  const t = useTranslations("consultationModal");
+  const t = useTranslations();
   return (
     <>
       <div className="w-full h-[1px] bg-dark-blue-200" />
 
       <div className="flex items-center gap-2 sm:gap-4">
         <span className="text-dark-blue-400 text-sm max-[380px]:text-xs">
-          {t("call_text")}
+          {t("apply.orCall")}
         </span>
 
         <Button

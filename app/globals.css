@@ -261,15 +261,6 @@
   overflow-wrap: break-word;
 }
 
-.detail-content {
-  font-family: "Inter", sans-serif;
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--color-dark-blue-600);
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
-
 /* Remove margin from all p tags */
 .detail-content p {
   margin: 0;
@@ -449,4 +440,87 @@
 /* Remove double breaks */
 .detail-content br + br {
   display: none;
+}
+
+.detail-content.text-white {
+  color: var(--color-white-600);
+}
+
+.detail-content.text-white * {
+  color: inherit;
+}
+
+/* Headings */
+.detail-content.text-white h1,
+.detail-content.text-white h2,
+.detail-content.text-white h3,
+.detail-content.text-white h4,
+.detail-content.text-white h5,
+.detail-content.text-white h6 {
+  color: var(--color-white-main);
+}
+
+/* Emphasis */
+.detail-content.text-white strong {
+  color: var(--color-white-500);
+}
+
+/* Links */
+.detail-content.text-white a {
+  color: var(--color-white-400);
+  text-decoration: underline;
+}
+.detail-content.text-white a:hover {
+  color: var(--color-white-main);
+  text-decoration: underline;
+}
+
+/* Blockquote */
+.detail-content.text-white blockquote {
+  border-left-color: var(--color-white-300);
+  background-color: var(--color-white-100);
+  color: var(--color-white-500);
+}
+
+/* Code blocks */
+.detail-content.text-white pre {
+  background-color: var(--color-white-100);
+  color: var(--color-white-600);
+}
+.detail-content.text-white code {
+  background-color: var(--color-white-200);
+  color: var(--color-white-600);
+}
+
+/* Tables */
+.detail-content.text-white table {
+  color: var(--color-white-600);
+}
+.detail-content.text-white th {
+  background-color: var(--color-white-200);
+  color: var(--color-white-main);
+  border-color: var(--color-white-300);
+}
+.detail-content.text-white td {
+  background-color: var(--color-white-100);
+  border-color: var(--color-white-200);
+}
+
+/* Horizontal rule */
+.detail-content.text-white hr {
+  border-top: 1px solid var(--color-white-300);
+}
+
+/* Media elements */
+.detail-content.text-white img,
+.detail-content.text-white iframe,
+.detail-content.text-white video {
+  filter: brightness(0.9) contrast(1.1);
+}
+
+/* Optional: soft text variants */
+.detail-content.text-white .muted,
+.detail-content.text-white small,
+.detail-content.text-white figcaption {
+  color: var(--color-white-400);
 }

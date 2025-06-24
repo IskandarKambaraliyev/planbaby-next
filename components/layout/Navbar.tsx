@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
 import type { PropsWithClassName } from "@/types";
 
 const Navbar = ({ className }: PropsWithClassName) => {
-  const t = useTranslations("nav");
+  const t = useTranslations();
   return (
     <nav
       className={cn(
@@ -30,13 +30,13 @@ const Navbar = ({ className }: PropsWithClassName) => {
         className
       )}
     >
-      <NavItem href="/" label={t("home")} icon={HomeIcon} />
+      <NavItem href="/" label={t("header.home")} icon={HomeIcon} />
 
-      <NavItem href="/store" label={t("store")} icon={StoreIcon} />
+      <NavItem href="/store" label={t("header.store")} icon={StoreIcon} />
 
-      <BlogBtn label={t("blog")} icon={DocumentIcon} />
+      <BlogBtn label={t("header.blog")} icon={DocumentIcon} />
 
-      <NavItem href="/cart" label={t("cart")} icon={CartIcon} count />
+      <NavItem href="/cart" label={t("header.cart")} icon={CartIcon} count />
     </nav>
   );
 };
@@ -83,32 +83,32 @@ type BlogBtnProps = {
   icon: ({ className }: PropsWithClassName) => JSX.Element;
 };
 const BlogBtn = (props: BlogBtnProps) => {
-  const t = useTranslations("categories");
+  const t = useTranslations();
   const [isOpen, setOpen] = useState(false);
   const pathname = usePathname();
 
   const links = [
     {
       icon: PreparationIcon,
-      label: t("preparation"),
+      label: t("categories.preparation"),
       bgColor: "bg-yellow-200",
       href: "/category/preparation",
     },
     {
       icon: PlanningIcon,
-      label: t("planning"),
+      label: t("categories.planning"),
       bgColor: "bg-blue-200",
       href: "/category/planning",
     },
     {
       icon: PregnancyIcon,
-      label: t("pregnancy"),
+      label: t("categories.pregnancy"),
       bgColor: "bg-green-200",
       href: "/category/pregnancy",
     },
     {
       icon: NutritionIcon,
-      label: t("nutrition"),
+      label: t("categories.nutrition"),
       bgColor: "bg-pink-200",
       href: "/category/nutrition",
     },

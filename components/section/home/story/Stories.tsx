@@ -22,7 +22,7 @@ const Stories = ({ data }: StoriesProps) => {
   if ("error" in data && data.error) {
     return (
       <div className={cn("container flex flex-col gap-5 md:gap-8")}>
-        <Title className="w-fit max-w-max">{t("home.stories.title")}</Title>
+        <Title className="w-fit max-w-max">{t("homePage.stories.title")}</Title>
         <p className="text-pink-main">{data.error}</p>
       </div>
     );
@@ -32,11 +32,13 @@ const Stories = ({ data }: StoriesProps) => {
     <div className="container flex flex-col gap-5 md:gap-8">
       <div className="flex max-lg:flex-col lg:items-center justify-between gap-4">
         <div className="flex max-sm:flex-col sm:items-center gap-4 w-full md:w-[35rem] lg:w-1/2">
-          <Title className="w-fit max-w-max">{t("home.stories.title")}</Title>
+          <Title className="w-fit max-w-max">
+            {t("homePage.stories.title")}
+          </Title>
           <RegionSelect color="white" className="flex-1" />
         </div>
         <p className="w-full lg:w-2/5 text-sm md:text-base text-dark-blue-400">
-          {t("home.stories.description")}
+          {t("homePage.stories.description")}
         </p>
       </div>
 

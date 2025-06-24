@@ -2,7 +2,7 @@ import { proxyImage } from "@/lib/proxyImage";
 import { getLocale, getTranslations } from "next-intl/server";
 
 const Uzum = async () => {
-  const t = await getTranslations("home");
+  const t = await getTranslations();
   const locale = await getLocale();
   return (
     <a
@@ -12,7 +12,7 @@ const Uzum = async () => {
       className="relative container flex gap-10 rounded-3xl bg-uzum-violet text-white max-lg:flex-col items-center max-lg:p-8 max-lg:pb-0 max-md:p-5 max-md:pb-0"
     >
       <h3 className="text-lg md:text-3xl font-bold max-lg:text-center lg:p-10 lg:pr-0">
-        {t("uzum")}
+        {t("homePage.uzum")}
       </h3>
 
       <img

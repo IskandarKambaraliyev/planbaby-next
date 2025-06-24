@@ -14,7 +14,7 @@ const SearchTrigger = () => {
       <Input
         color="white"
         startIcon={<SearchIcon />}
-        label={t("modal.search.blog")}
+        label={t("common.searchArticles")}
         readOnly
         tabIndex={0}
       />
@@ -23,7 +23,7 @@ const SearchTrigger = () => {
         type="button"
         className="absolute inset-0 rounded-full"
         onClick={() => openModal("blogs")}
-        aria-label={t("modal.search.blog")}
+        aria-label={t("common.searchArticles")}
       />
     </div>
   );

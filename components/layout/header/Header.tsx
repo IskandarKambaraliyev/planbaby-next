@@ -60,23 +60,23 @@ const Header = ({ className }: PropsWithClassName) => {
   const navLinks = [
     {
       href: "/",
-      label: t("nav.home"),
+      label: t("header.home"),
     },
     {
       href: "/about",
-      label: t("nav.about"),
+      label: t("header.about"),
     },
     {
       href: "/blog",
-      label: t("nav.blog"),
+      label: t("header.blog"),
     },
     {
       href: "/contact",
-      label: t("nav.contact"),
+      label: t("header.contact"),
     },
     {
       href: "/store",
-      label: t("nav.store"),
+      label: t("header.store"),
     },
   ];
   return (
@@ -92,7 +92,7 @@ const Header = ({ className }: PropsWithClassName) => {
     >
       <div className="container flex items-center justify-between gap-4">
         <div className="flex items-center gap-8">
-          <Link href="/" aria-label={t("a11y.goHome")}>
+          <Link href="/" aria-label={t("common.goHome")}>
             <Logo />
           </Link>
 
@@ -125,7 +125,7 @@ const Header = ({ className }: PropsWithClassName) => {
           <CircleButton
             href="/cart"
             className="max-lg:!hidden"
-            aria-label={t("nav.cart")}
+            aria-label={t("header.cart")}
           >
             <CartCounter />
           </CircleButton>
@@ -140,9 +140,6 @@ const Header = ({ className }: PropsWithClassName) => {
             outlined
             className="max-md:!hidden"
             data-testid="call-link"
-            aria-label={t("nav.phone", {
-              number: "+998 71 200-08-07",
-            })}
           >
             <PhoneIcon />
             <span>+998 71 200-08-07</span>

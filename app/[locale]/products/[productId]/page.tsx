@@ -34,7 +34,7 @@ export default async function ProductDetailPage({
           {/* Add To Cart Section for Mobile and Tablet */}
           <Cart product={data} className="lg:hidden h-fit w-full my-8" />
 
-          <ProductDetail product={data} />
+          <ProductDetail product={data} className="mt-8" />
         </div>
 
         {/* Add To Cart Section for Desktop */}

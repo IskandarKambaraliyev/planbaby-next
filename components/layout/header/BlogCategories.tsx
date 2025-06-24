@@ -31,6 +31,7 @@ const BlogCategories = () => {
       icon: PreparationIcon,
       bgColor: "bg-yellow-200",
       hoverColor: "hover:bg-yellow-200",
+      label: t("categories.preparation"),
     },
     {
       key: "planning",
@@ -38,6 +39,7 @@ const BlogCategories = () => {
       icon: PlanningIcon,
       bgColor: "bg-blue-200",
       hoverColor: "hover:bg-blue-200",
+      label: t("categories.planning"),
     },
     {
       key: "pregnancy",
@@ -45,6 +47,7 @@ const BlogCategories = () => {
       icon: PregnancyIcon,
       bgColor: "bg-green-200",
       hoverColor: "hover:bg-green-200",
+      label: t("categories.pregnancy"),
     },
     {
       key: "nutrition",
@@ -52,6 +55,7 @@ const BlogCategories = () => {
       icon: NutritionIcon,
       bgColor: "bg-pink-200",
       hoverColor: "hover:bg-pink-200",
+      label: t("categories.nutrition"),
     },
   ] as const;
 
@@ -78,7 +82,7 @@ const BlogCategories = () => {
         aria-controls="blog-categories-menu"
         id="blog-categories-button"
       >
-        <span>{t("nav.blog")}</span>
+        <span>{t("header.blog")}</span>
         <DownIcon
           className={cn("size-6 transition", {
             "rotate-180": isOpen,
@@ -122,9 +126,7 @@ const BlogCategories = () => {
                     <category.icon className="size-4.5" aria-hidden="true" />
                   </div>
 
-                  <span className="w-max text-lg">
-                    {t(`categories.${category.key}`)}
-                  </span>
+                  <span className="w-max text-lg">{category.label}</span>
                 </Link>
               );
             })}

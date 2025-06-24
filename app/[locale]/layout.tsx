@@ -42,12 +42,12 @@ const ttFonts = localFont({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("metadata");
+  const t = await getTranslations();
   const locale = await getLocale();
 
   return {
-    title: t("home.title"),
-    description: t("home.description"),
+    title: t("homePage.meta.title"),
+    description: t("homePage.meta.description"),
     metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/`),
     alternates: {
       canonical: "/",
@@ -57,8 +57,8 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: t("home.title"),
-      description: t("home.description"),
+      title: t("homePage.meta.title"),
+      description: t("homePage.meta.description"),
       url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
       siteName: "Plan Baby",
       type: "website",
@@ -72,7 +72,7 @@ export async function generateMetadata(): Promise<Metadata> {
       ],
       locale: locale,
     },
-    keywords: t("keywords"),
+    keywords: t("homePage.meta.keywords"),
     icons: {
       icon: "/favicon.ico",
       shortcut: "/favicon.ico",

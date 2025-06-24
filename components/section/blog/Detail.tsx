@@ -123,7 +123,7 @@ export const Products = ({
   const t = useTranslations();
   return (
     <div className={cn("space-y-4", className)}>
-      <CustomTitle>{t("recommended_products")}</CustomTitle>
+      <CustomTitle>{t("common.recommendedProducts")}</CustomTitle>
       <div
         className={cn("grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-4")}
       >
@@ -144,7 +144,7 @@ export const SimilarArticles = ({
   const t = useTranslations();
   return (
     <div className={cn("space-y-4", className)}>
-      <CustomTitle>{t("similar_articles")}</CustomTitle>
+      <CustomTitle>{t("common.similarArticles")}</CustomTitle>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {blogs.map((item) => (
@@ -222,7 +222,7 @@ export const ShareBlog = ({
         ),
     },
     {
-      label: copied ? t("copied") : t("copy"),
+      label: copied ? t("common.copied") : t("common.copy"),
       icon: copied ? ClipboardCheckIcon : ClipboardIcon,
       onClick: handleCopy,
     },
@@ -237,7 +237,7 @@ export const ShareBlog = ({
             className
           )}
         >
-          <h6 className="text-2xl font-bold">{t("share")}</h6>
+          <h6 className="text-2xl font-bold">{t("common.share")}</h6>
 
           <div className="flex flex-col items-end gap-2">
             {socialLinks.map((item) => (
@@ -260,7 +260,7 @@ export const ShareBlog = ({
           <Popover>
             <PopoverTrigger asChild>
               <button className="flex items-center gap-1 hover:opacity-70">
-                {t("share")}
+                {t("common.share")}
                 <ShareIcon className="size-4" />
               </button>
             </PopoverTrigger>

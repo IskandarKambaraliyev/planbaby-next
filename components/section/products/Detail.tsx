@@ -56,7 +56,7 @@ export const Cart = ({
               >
                 <div className="flex flex-col">
                   <span className="font-semibold">
-                    {t("cartPage.totalCost")}:
+                    {t("common.totalCost")}:
                   </span>
 
                   {/* Total Price */}
@@ -67,7 +67,7 @@ export const Cart = ({
                         "text-foreground": !hasDiscount,
                       })}
                     >
-                      {productSummary.total_price} {t("currency")}
+                      {productSummary.total_price} {t("common.currency")}
                     </span>
 
                     {hasDiscount && (
@@ -77,7 +77,7 @@ export const Cart = ({
                         )}
                       >
                         {productSummary.total_old_price}
-                        {t("currency")}
+                        {t("common.currency")}
                       </span>
                     )}
                   </div>
@@ -92,7 +92,6 @@ export const Cart = ({
                       className={cn(
                         "h-10 md:h-12 aspect-square flex-center rounded-l-full bg-white hover:bg-gray-50 transition"
                       )}
-                      aria-label={`${t("removeOneFromCart")} ${product.name}`}
                     >
                       <MinusIcon />
                     </button>
@@ -103,7 +102,6 @@ export const Cart = ({
                       )}
                       role="status"
                       aria-live="polite"
-                      aria-label={`${t("quantity")}: ${productSummary.count}`}
                     >
                       {productSummary.count}
                     </div>
@@ -114,14 +112,13 @@ export const Cart = ({
                       className={cn(
                         "h-10 md:h-12 aspect-square flex-center rounded-r-full bg-white hover:bg-gray-50 transition"
                       )}
-                      aria-label={`${t("addOneToCart")} ${product.name}`}
                     >
                       <PlusIcon />
                     </button>
                   </div>
 
                   <span className="text-dark-blue-500">
-                    {t("cartPage.currencyItem", {
+                    {t("common.currencyItem", {
                       price: productSummary.current_price,
                     })}
                   </span>
@@ -143,19 +140,19 @@ export const Cart = ({
                       "text-foreground": !hasDiscount,
                     })}
                   >
-                    {formatPrice(finalPrice)} {t("currency")}
+                    {formatPrice(finalPrice)} {t("common.currency")}
                   </span>
 
                   {hasDiscount && (
                     <span className={cn("text-dark-blue-400 line-through")}>
-                      {formatPrice(product.price)} {t("currency")}
+                      {formatPrice(product.price)} {t("common.currency")}
                     </span>
                   )}
                 </div>
 
                 <Button onClick={() => addProduct(product)}>
                   <CartPlusIcon className={cn("shrink-0 ")} />
-                  <span className="truncate">{t("addCart")}</span>
+                  <span className="truncate">{t("common.addToCart")}</span>
                 </Button>
               </motion.div>
             )}
@@ -204,14 +201,16 @@ export const ProductInfo = ({ product, className }: Props) => {
 export const ProductDetail = ({ product, className }: Props) => {
   const t = useTranslations();
   return (
-    <>
-      <h2></h2>
+    <div className={cn("space-y-2", className)}>
+      <h2 className="font-bold text-2xl md:text-3xl">
+        {t("productPage.description")}
+      </h2>
       <div
-        className={cn("detail-content", className)}
+        className="detail-content"
         dangerouslySetInnerHTML={{
           __html: product.description,
         }}
       />
-    </>
+    </div>
   );
 };

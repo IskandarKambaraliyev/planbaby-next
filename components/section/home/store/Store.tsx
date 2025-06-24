@@ -39,7 +39,7 @@ const Store = ({ data }: Props) => {
     <div className="container space-y-8">
       <div className="flex items-center md:grid grid-cols-2 gap-4">
         <Title href="/store" className="flex-1">
-          {t("nav.store")}
+          {t("common.store")}
         </Title>
         <SearchTrigger />
       </div>
