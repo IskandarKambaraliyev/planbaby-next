@@ -119,7 +119,19 @@
     },
     "uzum": "Qulay bo‘lib to‘lash orqali UZUM marketda xarid qiling!"
   },
+  "storePage": {
+    "meta": {
+      "title": "Do‘kon | PlanBaby",
+      "description": "PlanBaby do‘konida homiladorlik va chaqaloqni parvarish qilish uchun zarur bo‘lgan mahsulotlarni toping. Bizning assortimentimizda vitaminlar, qo‘shimchalar, bolalar oziq-ovqatlari va boshqa mahsulotlar mavjud.",
+      "keywords": "do‘kon, homiladorlik uchun mahsulotlar, chaqaloq parvarishi, vitaminlar, qo‘shimchalar, bolalar oziq-ovqatlari, PlanBaby do‘kon"
+    }
+  },
   "cartPage": {
+    "meta": {
+      "title": "Savat | PlanBaby",
+      "description": "Sizning savatingizdagi mahsulotlar ro‘yxatini ko‘ring. Savatdagi mahsulotlarni tahrirlash, olib tashlash yoki xaridni davom ettirish imkoniyatiga ega bo‘ling.",
+      "keywords": "savat, xarid, mahsulotlar, savatdagi mahsulotlar, PlanBaby"
+    },
     "title": "Sizning savatingiz",
     "empty": "Savatda hozircha mahsulot mavjud emas",
     "continueShopping": "Bosh sahifadagi mahsulotlardan boshlang yoki qidiruv orqali kerakli mahsulotni toping"
