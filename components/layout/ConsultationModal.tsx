@@ -1,15 +1,13 @@
 "use client";
 
 import { useEffect, useCallback, useState } from "react";
-import { usePathname } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { Loader2Icon } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { usePathname } from "@/i18n/navigation";
 
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
+import { AnimatePresence, motion } from "motion/react";
+import { Loader2Icon } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -24,10 +22,13 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { useConsultationModal } from "@/stores/consultationModal";
 import { Button, Input, RegionSelect } from "../custom";
 import { ErrorIcon, PhoneIcon, SuccesIcon, UserIcon } from "../icons";
+
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import devLog from "@/utility/devLog";
+import { useConsultationModal } from "@/stores/consultationModal";
 import { useRegionStore } from "@/stores/region";
 
 const variants = {

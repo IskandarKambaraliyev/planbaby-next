@@ -20,6 +20,7 @@
     "close": "Yopish",
     "currencyItem": "{price} so‘m / dona",
     "totalCost": "Umumiy qiymati",
+    "totalProducts": "Umumiy: {count}ta dorilar",
     "share": "Ulashish",
     "copy": "Nusxalash",
     "copied": "Nusxalandi",
@@ -90,7 +91,8 @@
     "success": {
       "title": "Ariza muvaffaqiyatli yuborildi",
       "description": "Biz tez orada siz bilan bogʻlanamiz",
-      "btn": "Yaxshi"
+      "btn": "Yaxshi",
+      "timer": "{second} soniyadan so‘ng bosh sahifaga yo‘naltirilasiz"
     },
     "submitting": "Ariza yuborilmoqda...",
     "submit": "Arizani yuborish"
@@ -118,7 +120,9 @@
     "uzum": "Qulay bo‘lib to‘lash orqali UZUM marketda xarid qiling!"
   },
   "cartPage": {
-    "title": "Sizning savatingiz"
+    "title": "Sizning savatingiz",
+    "empty": "Savatda hozircha mahsulot mavjud emas",
+    "continueShopping": "Bosh sahifadagi mahsulotlardan boshlang yoki qidiruv orqali kerakli mahsulotni toping"
   },
   "productPage": {
     "description": "Mahsulot tavsifi"

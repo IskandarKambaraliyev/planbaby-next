@@ -32,7 +32,7 @@ const ArticleCard = forwardRef<HTMLAnchorElement, Props>(
 
         {Array.from({ length: 4 }).map((_, index) => (
           <div
-            className="absolute inset-x-0 bottom-0 h-[50%] backdrop-blur-sm mask-gradient-to-top pointer-events-none"
+            className="absolute inset-x-0 bottom-0 h-[35%] md:h-[50%] backdrop-blur-sm mask-gradient-to-top pointer-events-none"
             key={index}
           />
         ))}

@@ -20,12 +20,12 @@ const EmptyCart = () => {
       <NotFoundIcon />
 
       <div className="space-y-2 text-center">
-        <Title className="text-pink-main">{t("cartPage.noItems")}</Title>
-        <p>{t("cartPage.noItemsDescription")}</p>
+        <Title className="text-pink-main">{t("cartPage.empty")}</Title>
+        <p>{t("cartPage.continueShopping")}</p>
       </div>
 
       <Button href="/" color="blue" linkIcon>
-        {t("cartPage.goHome")}
+        {t("common.goHome")}
       </Button>
     </motion.div>
   );

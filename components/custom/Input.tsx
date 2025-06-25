@@ -82,7 +82,7 @@ const Input: React.FC<Props> = ({
         {startIcon && (
           <div
             className={cn(
-              "absolute top-1/2 -translate-y-1/2 left-4 flex-center text-dark-blue-400 peer-focus:text-blue-main transition",
+              "absolute top-1/2 -translate-y-1/2 left-4 flex-center text-dark-blue-400 peer-focus:text-blue-main transition pointer-events-none",
               {
                 "size-5": size === "md",
                 "size-6": size === "lg",
